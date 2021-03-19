@@ -1,4 +1,6 @@
-# Ohjelmistotekniikka, harjoitustyo
+# Ohjelmistotekniikka, harjoitustyö
 ## Tehtävät
 ### Viikko 1
-Tähän tulee tekstiä sekä *kursivoituna* että **boldattuna**
+
+[gitlog.txt](https://github.com/nothros/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+[komentorivi.txt](https://github.com/nothros/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
