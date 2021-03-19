@@ -1,4 +1,4 @@
-<h1>Tämä on otsikko<h1>
-<h2>tämä on väliotsikko<h2>
+<h1>Tämä on otsikko
+<h2>tämä on väliotsikko
 
 Tähän tulee tekstiä sekä *kursivoituna* että **boldattuna**
