@@ -1,0 +1,113 @@
+commit 4f586f3b0478749a97d9acbc1cceafc343f50647
+Author: Erika Horros-Wallin <erika.horros@gmail.com>
+Date:   Fri Mar 19 18:03:49 2021 +0200
+
+    poistetaan tiedosto ja vaihdetaan nimi
+
+ tiedostoja/file2.txt                 | 0
+ tiedostoja/{file1.txt => file22.txt} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 81a2fee3ee922ed4886be81bc478ad7afb0ab0a3
+Author: Erika Horros-Wallin <erika.horros@gmail.com>
+Date:   Fri Mar 19 17:59:45 2021 +0200
+
+    lisätään kolme tiedostoa
+
+ tiedostoja/file1.txt | 0
+ tiedostoja/file2.txt | 0
+ tiedostoja/file3.txt | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 264e87577340f4d81e0d0cd7cb949b058d7dc40a
+Author: Erika Horros-Wallin <erika.horros@gmail.com>
+Date:   Fri Mar 19 17:37:56 2021 +0200
+
+    Muutetaan kahta tiedostoa
+
+ eka.txt    | 4 ++--
+ kolmas.txt | 3 ++-
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+commit cb84c775b1b9fbed920a974ea04e5ae9dae4f9bf
+Author: Erika Horros-Wallin <erika.horros@gmail.com>
+Date:   Fri Mar 19 17:35:29 2021 +0200
+
+    Vaihdetaan tiedoston nimeä
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 299d6a7a4b847f9cc02a20b0b91d54a8be2d1aa5
+Author: Erika Horros-Wallin <erika.horros@gmail.com>
+Date:   Fri Mar 19 17:33:08 2021 +0200
+
+    poistetaan toinen.txt
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 65ee46556fe73544c087f725b730f108df6a8a52
+Author: Erika Horros-Wallin <erika.horros@gmail.com>
+Date:   Fri Mar 19 17:30:49 2021 +0200
+
+    Muokattiin tekstiä
+
+ tiedosto.txt | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+commit efb9d6b44adf1074803a008fe4390c94df986cd7
+Author: Erika Horros-Wallin <erika.horros@gmail.com>
+Date:   Fri Mar 19 17:29:59 2021 +0200
+
+    Lisätään paljon tekstiä
+
+ tiedosto.txt | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+commit 6ea31a2be39a97885cd7d959037ed50775e69d8d
+Author: Erika Horros-Wallin <erika.horros@gmail.com>
+Date:   Fri Mar 19 17:27:55 2021 +0200
+
+    lisättiin tiedosto
+
+ stuff/jokintiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 9c4430429a2f94c21303c93f68e339a9ecea70e1
+Author: Erika Horros-Wallin <erika.horros@gmail.com>
+Date:   Fri Mar 19 17:26:58 2021 +0200
+
+    Muokattiin sisältöä
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 0bbe60c129e751908a83484c2e4e5cae1070312b
+Author: Erika Horros-Wallin <erika.horros@gmail.com>
+Date:   Fri Mar 19 17:26:13 2021 +0200
+
+    lisätään tiedosto
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 44cb7ea74fa9ae45ff654bec3aaf32787947f244
+Author: Erika Horros-Wallin <erika.horros@gmail.com>
+Date:   Fri Mar 19 17:25:19 2021 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit b5498e212131a45516438b099b2b4cb67f07c8f2
+Author: Erika Horros-Wallin <erika.horros@gmail.com>
+Date:   Fri Mar 19 17:23:39 2021 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
