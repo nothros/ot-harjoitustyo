@@ -9,4 +9,4 @@
 ### Viikko 2
   
 
-  - [screenshot.png](https://github.com/nothros/ot-harjoitustyö/blob/master/laskarit/viikko2/screenshot.png)
+  - [screenshot.png](https://github.com/nothros/ot-harjoitustyo/blob/master/laskarit/viikko2/screenshot.png)
