@@ -1,4 +1,7 @@
 # Ohjelmistotekniikka, harjoitustyö
+ - [Työaikakirjanpito](https://github.com/nothros/ot-harjoitustyo/blob/master/ot-projekti/dokumentaatio/tyoaika.md)
+ - [Vaatimusmäärittely](https://github.com/nothros/ot-harjoitustyo/blob/master/ot-projekti/dokumentaatio/vaatimusmaarittely.md)
+
 ## Tehtävät
 ### Viikko 1
 
@@ -10,4 +13,4 @@
   
 
   - [screenshot.png](https://github.com/nothros/ot-harjoitustyo/blob/master/laskarit/viikko2/screenshot.png)
-  - [Vaatimusmäärittely](https://github.com/nothros/ot-harjoitustyo/blob/master/ot-projekti/dokumentaatio/vaatimusmaarittely.md)
+  
