@@ -11,6 +11,9 @@ Sovellus koostuu kolmesta näkymästä
 - Login- näkymä, josta käyttäjä kirjautuu sisään tai 
 - Register- näkymä, josta käyttäjätilin voi luoda
 - Päänäkymä (kirjautumisen jälkeen) Jossa kaikki toiminnallisuus
+
+<img src="https://raw.githubusercontent.com/nothros/ot-harjoitustyo/master/ot-projekti/dokumentaatio/kuvat/kayttoliittymaluonnos.png" width="750">
+
  
 ## Toiminnallisuus
 ### Ennen kirjautumista
