@@ -7,3 +7,4 @@
 | 28.3.21 | 4 |Scenebuilderilla rakenteen luomista  |
 | 29.3.21 | 3 |Javan konfigurointiin...  |
 | 30.3.21 | 4 |Scenebuilderilla rakenteen luomista  |
+| 30.3.21 | 4 |Scenebuilderilla rakenteen luomista login valmis  |
