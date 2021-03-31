@@ -4,7 +4,7 @@
 |--|--|--|
 | 27.3.21 | 2 |Javan Mieleenpalauttelua  |
 | 27.3.21 | 1 |Login/Registerruudun perusrakenne  |
-| 28.3.21 | 4 |Scenebuilderilla rakenteen luomista  |
+| 28.3.21 | 3 |Scenebuilderiin tutustumista  |
 | 29.3.21 | 3 |Javan konfigurointiin...  |
 | 30.3.21 | 4 |Scenebuilderilla rakenteen luomista  |
-| 31.3.21 | 4 |Scenebuilderilla rakenteen luomista login valmis  |
+| 31.3.21 | 4 |Scenebuilderilla rakenteen luomista. Login valmis  |
