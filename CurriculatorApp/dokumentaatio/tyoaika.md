@@ -8,3 +8,4 @@
 | 29.3.21 | 3 |Javan konfigurointiin...  |
 | 30.3.21 | 4 |Scenebuilderilla rakenteen luomista  |
 | 31.3.21 | 4 |Scenebuilderilla rakenteen luomista. Login valmis  |
+| 2.4.21 | 2 |Pääluokan luonti ja pakkausrakenteen säätöä(ja turhaa javakonffia  |
