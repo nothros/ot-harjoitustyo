@@ -1,6 +1,6 @@
 # Ohjelmistotekniikka, harjoitustyö
- - [Työaikakirjanpito](https://github.com/nothros/ot-harjoitustyo/blob/master/ot-projekti/dokumentaatio/tyoaika.md)
- - [Vaatimusmäärittely](https://github.com/nothros/ot-harjoitustyo/blob/master/ot-projekti/dokumentaatio/vaatimusmaarittely.md)
+ - [Työaikakirjanpito](https://github.com/nothros/ot-harjoitustyo/blob/master/CurriculatorApp/dokumentaatio/mdtyoaika.md)
+ - [Vaatimusmäärittely](https://github.com/nothros/ot-harjoitustyo/blob/master/CurriculatorApp/dokumentaatio/vaatimusmaarittely.md)
 
 ## Tehtävät
 ### Viikko 1
