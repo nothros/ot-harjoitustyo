@@ -1,5 +1,5 @@
 # Ohjelmistotekniikka, harjoitustyö
- - [Työaikakirjanpito](https://github.com/nothros/ot-harjoitustyo/blob/master/CurriculatorApp/dokumentaatio/mdtyoaika.md)
+ - [Työaikakirjanpito](https://github.com/nothros/ot-harjoitustyo/blob/master/CurriculatorApp/dokumentaatio/tyoaika.md)
  - [Vaatimusmäärittely](https://github.com/nothros/ot-harjoitustyo/blob/master/CurriculatorApp/dokumentaatio/vaatimusmaarittely.md)
 
 ## Tehtävät
