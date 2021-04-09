@@ -33,6 +33,7 @@
     -fx-font-family: "Segoe UI Semibold", Helvetica, Arial, sans-serif;
     -fx-text-fill: #222221;
     -fx-opacity: 1;
+    -fx-background-color: transparent;
 }
 
 .registertext:hover {
@@ -40,6 +41,7 @@
     -fx-font-family: "Segoe UI Semibold", Helvetica, Arial, sans-serif;
     -fx-text-fill: #bd7d00;
     -fx-opacity: 1;
+    -fx-background-color: transparent;
 }
 
 .registertext:pressed, .registertext:default:hover:pressed {
@@ -47,6 +49,7 @@
     -fx-font-family: "Segoe UI Semibold", Helvetica, Arial, sans-serif;
     -fx-text-fill: white;
     -fx-opacity: 1;
+    -fx-background-color: transparent;
 }
 
 /* 
@@ -75,14 +78,17 @@
 
 .closeback_button {
     -fx-fill: #222221;
+    -fx-background-color: transparent;
 }
 
 .closeback_button:hover {
     -fx-fill: #e0a22b;
+    -fx-background-color: transparent;
 }
 
 .closeback_button:pressed  {
     -fx-fill: white;
+    -fx-background-color: transparent;
 }
 
 .reg_error-message {
