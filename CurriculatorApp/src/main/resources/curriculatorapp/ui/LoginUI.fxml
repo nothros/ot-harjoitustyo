@@ -48,10 +48,10 @@
             <TextField id="login_user" fx:id="userTextfield" layoutX="192.0" layoutY="235.0" prefHeight="37.0" prefWidth="179.0" />
             <Label layoutX="104.0" layoutY="246.0" styleClass="label-bright" text="Käyttäjätunnus" />
             <Label alignment="CENTER" layoutX="136.0" layoutY="301.0" styleClass="label-bright" text="Salasana" />
-            <Button id="login_button" fx:id="loginButton" layoutX="189.0" layoutY="341.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="179.0" styleClass="logreg_button" text="Kirjaudu" />
-            <Label alignment="CENTER" layoutX="226.0" layoutY="412.0" text="Ei käyttäjätunnusta?" />
-            <Label id="login_refgisterbutton" fx:id="registerButton" alignment="CENTER" layoutX="234.0" layoutY="429.0" styleClass="registertext" text="Rekisteröidy" />
-            <Label alignment="TOP_LEFT" ellipsisString="" graphicTextGap="0.0" layoutX="90.0" layoutY="168.0" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" opacity="0.76" pickOnBounds="false" prefHeight="55.0" prefWidth="165.0" styleClass="headerlabel" text="Tervetuloa!" textAlignment="CENTER" textFill="#222221" textOverrun="CLIP">
+            <Button id="login_button" fx:id="loginButton" layoutX="192.0" layoutY="341.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="179.0" styleClass="logreg_button" text="Kirjaudu" />
+            <Label alignment="CENTER" layoutX="229.0" layoutY="412.0" text="Ei käyttäjätunnusta?" />
+            <Label id="login_refgisterbutton" fx:id="registerButton" alignment="CENTER" layoutX="237.0" layoutY="429.0" styleClass="registertext" stylesheets="@stylesheet.css" text="Rekisteröidy" />
+            <Label ellipsisString="" graphicTextGap="0.0" layoutX="90.0" layoutY="168.0" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" opacity="0.76" pickOnBounds="false" prefHeight="55.0" prefWidth="226.0" styleClass="headerlabel" text="Tervetuloa!" textAlignment="CENTER" textFill="#222221" textOverrun="CLIP">
                <font>
                   <Font size="38.0" />
                </font>
