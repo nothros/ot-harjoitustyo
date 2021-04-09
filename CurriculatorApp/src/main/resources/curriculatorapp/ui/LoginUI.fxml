@@ -43,22 +43,22 @@
             <String fx:value="sidebar" />
          </styleClass>
       </VBox>
-      <Pane layoutX="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" styleClass="parent" stylesheets="@stylesheet.css">
+      <Pane fx:id="loginPane" layoutX="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" styleClass="parent" stylesheets="@stylesheet.css">
          <children>
-            <TextField id="login_user" layoutX="192.0" layoutY="235.0" prefHeight="37.0" prefWidth="179.0" />
+            <TextField id="login_user" fx:id="userTextfield" layoutX="192.0" layoutY="235.0" prefHeight="37.0" prefWidth="179.0" />
             <Label layoutX="104.0" layoutY="246.0" styleClass="label-bright" text="Käyttäjätunnus" />
             <Label alignment="CENTER" layoutX="136.0" layoutY="301.0" styleClass="label-bright" text="Salasana" />
-            <Button id="login_button" layoutX="189.0" layoutY="341.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="179.0" styleClass="logreg_button" text="Kirjaudu" />
+            <Button id="login_button" fx:id="loginButton" layoutX="189.0" layoutY="341.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="179.0" styleClass="logreg_button" text="Kirjaudu" />
             <Label alignment="CENTER" layoutX="226.0" layoutY="412.0" text="Ei käyttäjätunnusta?" />
-            <Label id="login_refgisterbutton" alignment="CENTER" layoutX="234.0" layoutY="429.0" styleClass="registertext" text="Rekisteröidy" />
+            <Label id="login_refgisterbutton" fx:id="registerButton" alignment="CENTER" layoutX="234.0" layoutY="429.0" styleClass="registertext" text="Rekisteröidy" />
             <Label alignment="TOP_LEFT" ellipsisString="" graphicTextGap="0.0" layoutX="90.0" layoutY="168.0" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" opacity="0.76" pickOnBounds="false" prefHeight="55.0" prefWidth="165.0" styleClass="headerlabel" text="Tervetuloa!" textAlignment="CENTER" textFill="#222221" textOverrun="CLIP">
                <font>
                   <Font size="38.0" />
                </font>
             </Label>
-            <PasswordField id="login_password" layoutX="192.0" layoutY="291.0" prefHeight="37.0" prefWidth="179.0" />
-            <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" layoutX="480.0" layoutY="20.0" size="17" smooth="false" styleClass="closeback_button" text="" />
-            <Label id="loginerrorlabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="192.0" layoutY="216.0" prefHeight="14.0" prefWidth="179.0" styleClass="reg_error-message" textAlignment="RIGHT" textFill="#cd0000">
+            <PasswordField id="login_password" fx:id="pwTextfield" layoutX="192.0" layoutY="291.0" prefHeight="37.0" prefWidth="179.0" />
+            <FontAwesomeIconView fx:id="closeButton" fill="WHITE" glyphName="CLOSE" layoutX="480.0" layoutY="20.0" size="17" smooth="false" styleClass="closeback_button" text="" />
+            <Label id="loginerrorlabel" fx:id="errorFieldLogin" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="192.0" layoutY="216.0" prefHeight="14.0" prefWidth="179.0" styleClass="log_error-message" textAlignment="RIGHT" textFill="#cd0000">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
