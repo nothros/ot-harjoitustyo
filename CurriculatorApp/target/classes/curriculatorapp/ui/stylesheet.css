@@ -67,6 +67,34 @@
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
+
+.returnbutton {
+    -fx-font-size: 12pt;
+    -fx-font-family: "Segoe UI Semibold", Helvetica, Arial, sans-serif;
+    -fx-text-fill: #222221;
+    -fx-opacity: 1;
+    -fx-background-color: transparent;
+
+    
+}
+
+.returnbutton:hover {
+    -fx-font-size: 12pt;
+    -fx-font-family: "Segoe UI Semibold", Helvetica, Arial, sans-serif;
+    -fx-text-fill: #bd7d00;
+    -fx-opacity: 1;
+    -fx-background-color: transparent;
+}
+
+.returnbutton:pressed, .returnbutton:default:hover:pressed {
+    -fx-font-size: 12pt;
+    -fx-font-family: "Segoe UI Semibold", Helvetica, Arial, sans-serif;
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+    -fx-background-color: transparent;
+}
+
+
 .logreg_button:hover {
     -fx-background-color: #e0a22b;
 }
@@ -76,10 +104,7 @@
     -fx-text-fill: #222221;
 }
 
-.closeback_button {
-    -fx-fill: #222221;
-    -fx-background-color: transparent;
-}
+
 
 .closeback_button:hover {
     -fx-fill: #e0a22b;
@@ -92,10 +117,12 @@
 }
 
 .reg_error-message {
+
     -fx-font-size: 8pt;
-    -fx-font-family: "Verdana", sans-serif;
-    -fx-width: 179;
+    -fx-font-family: "System Bold";
     
+    -fx-width: 179;
+    -fx-text-fill: #cd0000;
   
 }
 
