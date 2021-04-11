@@ -16,33 +16,29 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="parent" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane  fx:controller="curriculatorapp.ui.RegisterController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="parent" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane fx:id="registerPane" layoutX="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" styleClass="parent" stylesheets="@stylesheet.css">
          <children>
-            <Label id="loginerrorlabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="192.0" layoutY="203.0" prefHeight="14.0" prefWidth="179.0" styleClass="reg_error-message" textAlignment="RIGHT" textFill="#cd0000">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
             <FontAwesomeIconView fx:id="returnButton" glyphName="ARROW_LEFT" layoutX="6.0" layoutY="21.0" size="17" styleClass="closeback_button" />
-            <TextField id="reg_user" fx:id="newUserTextfield" layoutX="192.0" layoutY="280.0" prefHeight="37.0" prefWidth="179.0" />
+            <TextField id="reg_user" fx:id="registerUsername" layoutX="192.0" layoutY="280.0" prefHeight="37.0" prefWidth="179.0" />
             <Label layoutX="104.0" layoutY="291.0" styleClass="label-bright" text="Käyttäjätunnus" />
             <Label alignment="CENTER" layoutX="136.0" layoutY="346.0" styleClass="label-bright" text="Salasana" />
-            <Button id="reg_button" fx:id="newUserButton" layoutX="189.0" layoutY="386.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="179.0" styleClass="logreg_button" text="Rekisteröidy" />
+            
+            <Button fx:id="registerButton" onAction="#onRegisterButtonClick" layoutX="189.0" layoutY="386.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="179.0" styleClass="logreg_button" text="Rekisteröidy" />
+            
             <Label alignment="TOP_LEFT" ellipsisString="" graphicTextGap="0.0" layoutX="90.0" layoutY="149.0" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" opacity="0.76" pickOnBounds="false" prefHeight="55.0" prefWidth="450.0" styleClass="headerlabel" text="Lisää uusi käyttäjä" textAlignment="CENTER" textFill="#222221" textOverrun="CLIP">
                <font>
                   <Font size="38.0" />
                </font>
             </Label>
-            <PasswordField id="reg_password" fx:id="newPwTextfield" layoutX="192.0" layoutY="336.0" prefHeight="37.0" prefWidth="179.0" />
-            <FontAwesomeIconView fx:id="closeButton" fill="WHITE" glyphName="CLOSE" layoutX="480.0" layoutY="20.0" size="17" smooth="false" styleClass="closeback_button" text="" />
-            <TextField id="reg_name" fx:id="newNameTextfield" layoutX="192.0" layoutY="225.0" prefHeight="37.0" prefWidth="179.0" />
+            <PasswordField fx:id="registerPassword" id="reg_password"  layoutX="192.0" layoutY="336.0" prefHeight="37.0" prefWidth="179.0" />
+            <TextField fx:id="registerName" id="reg_name" layoutX="192.0" layoutY="225.0" prefHeight="37.0" prefWidth="179.0" />
             <Label layoutX="158.0" layoutY="235.0" styleClass="label-bright" text="Nimi" />
-            <Label id="loginerrorlabel" fx:id="errorFieldRegister" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="192.0" layoutY="203.0" prefHeight="14.0" prefWidth="179.0" styleClass="reg_error-message" textAlignment="RIGHT" textFill="#cd0000">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
+            <Label fx:id="registerErrorLabel" id="loginerrorlabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="192.0" layoutY="216.0" prefHeight="14.0" prefWidth="179.0" styleClass="log_error-message" textAlignment="RIGHT" textFill="#cd0000">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
             </Label>
          </children>
       </Pane>
@@ -53,7 +49,7 @@
                   <Image url="@logo.png" />
                </image>
             </ImageView>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" />
+            
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@textlogo.png" />

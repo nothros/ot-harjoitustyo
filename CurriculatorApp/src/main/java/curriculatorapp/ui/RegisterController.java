@@ -14,28 +14,21 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-
 /**
  *
  * @author ehorrosw
  */
-public class LoginController {
-
+public class RegisterController {
+private Label registerErrorLabel;
+private TextField registerUsername, registerName;
+private PasswordField registerPassword;
+    
+    
     @FXML
-    public TextField loginUsername;
-    public PasswordField loginPassword;
-    public Label loginErrorLabel;
-
-    @FXML
-    public void onNewUserButtonClick() throws IOException {
-        CurriculatorUi.setRoot("RegisterUI");
-    }
-
-    @FXML
-    public void onLoginButtonClick() {
-        if (loginUsername.getText().trim().isEmpty() || loginPassword.getText().trim().isEmpty()) {
-            loginErrorLabel.setText("Täytä kaikki kentät!");
+    public void onRegisterButtonClick() {
+        if (registerUsername.getText().trim().isEmpty()){
+            
+            registerErrorLabel.setText("Täytä kaikki kentät!");
         }
     }
-
 }
