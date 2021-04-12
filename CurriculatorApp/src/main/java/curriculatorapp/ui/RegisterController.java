@@ -5,6 +5,7 @@
  */
 package curriculatorapp.ui;
 
+import curriculatorapp.domain.User;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
@@ -44,7 +45,9 @@ public class RegisterController {
         String name = registerName.getText();
         String username = registerUsername.getText();
         String password = registerPassword.getText();
-
+        User user = new User(name, username, password);
+        System.out.print(user.getPassword());
+        
         if ((name.trim().isEmpty()) || (username.trim().isEmpty()) || (password.trim().isEmpty())) {
             registerErrorLabel.setText("Täytä kaikki kentät!");
 

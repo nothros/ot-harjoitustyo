@@ -12,7 +12,6 @@ public class User {
     private String name, username, password;
 
     public User(String name, String username, String password) {
-        System.out.print("UUSI KÖYTTÖJÖ");
         this.name = name;
         this.username = username;
         this.password = encryptPassword(password);
@@ -46,8 +45,8 @@ public class User {
         return BCrypt.hashpw(password, BCrypt.gensalt());
     }
     
-    public static Boolean checkPassword(String password, String passwordDB){
-        return BCrypt.checkpw(password, passwordDB);
+    public Boolean checkPassword(String passwordDB){
+        return BCrypt.checkpw(this.password, passwordDB);
     }
 
 }
