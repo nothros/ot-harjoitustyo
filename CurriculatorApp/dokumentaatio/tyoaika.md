@@ -11,5 +11,6 @@
 | 2.4.21 | 2 |Pääluokan luonti ja pakkausrakenteen säätöä(ja turhaa javakonffia  |
 | 11.4.21 | 3 |Login ja register kommunikoi keskenään. Register valmis  |
 | 12.4.21 | 5 |Aivan turhaa kofigurointia. Tietokantayhteys toimii ja käyttäjän lisääminen onnistuu  |
-| Yhteensä |27  |Viikko 3 | 
 |--|--|--|
+| Yhteensä |27  |Viikko 3 | 
+
