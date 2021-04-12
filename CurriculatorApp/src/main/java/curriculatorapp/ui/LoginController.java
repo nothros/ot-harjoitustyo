@@ -23,9 +23,7 @@ public class LoginController {
 
     @FXML
     public TextField loginUsername;
-    @FXML
     public PasswordField loginPassword;
-    @FXML
     public Label loginErrorLabel;
 
     @FXML
@@ -35,9 +33,8 @@ public class LoginController {
 
     @FXML
     public void onLoginButtonClick() {
-        if(loginUsername.getText().trim().isEmpty() || loginPassword.getText().trim().isEmpty()){
+        if (loginUsername.getText().trim().isEmpty() || loginPassword.getText().trim().isEmpty()) {
             loginErrorLabel.setText("Täytä kaikki kentät!");
-            } }
+        }
     }
-
-
+}

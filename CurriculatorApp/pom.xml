@@ -24,6 +24,17 @@
 </dependency>
 <!-- Thanks for using https://jar-download.com -->
 
+ <!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
+     <!-- TÄÄLLÄ ONGELMA! -->
+    
+    
+    
+    
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
