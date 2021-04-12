@@ -1,0 +1,12 @@
+package curriculatorapp;
+import curriculatorapp.ui.CurriculatorUi;
+public class Main {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        CurriculatorUi.main(args);
+    }
+    
+}

@@ -1,10 +1,9 @@
 
 
-package curriculator.domain;
+package curriculatorapp.domain;
+import java.util.*;
+import java.sql.*;
 
-
-
-import org.mindrot.jbcrypt.BCrypt;
 
 
 public class User {
@@ -40,14 +39,6 @@ public class User {
 
     public String getPassword() {
         return this.password;
-    }
-    
-        public static String encryptPassword(String password){
-        return BCrypt.hashpw(password, BCrypt.gensalt());
-    }
-    
-    public static Boolean checkPassword(String password, String passwordDB){
-        return BCrypt.checkpw(password, passwordDB);
     }
 
 }
