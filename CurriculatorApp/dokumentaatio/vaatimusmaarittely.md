@@ -19,11 +19,11 @@ Sovellus koostuu kolmesta näkymästä
 ### Ennen kirjautumista
 Käyttäjä voi luoda sovellukseen oman käyttäjätunnuksen
  - Käyttäjätunnuksen tulee olla uniikki, sovellus ilmoittaa jos näin ei ole
- - Sovellus ilmoittaa virheestä, mikäli kaikkia syöttökenttie ei ole täytetty
+ - Sovellus ilmoittaa virheestä, mikäli kaikkia syöttökenttiä ei ole täytetty _(tehty)_
 
 Tai käyttäjä voi kirjautua sovellukseen olemassa olevalla käyttäjätunnuksellaan
  - Sovellus ilmoittaa mikäli käyttäjätunnusta ei löydy tai 
- - Jos käyttäjä ei ole täyttänyt vaadittavia kenttiä
+ - Jos käyttäjä ei ole täyttänyt vaadittavia kenttiä _(tehty)_
 
 ### Kirjautumisen jälkeen
 Ensikirjautumisella käyttäjän tulee määritellä
