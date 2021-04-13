@@ -1,5 +1,5 @@
 # CurriculatorApp- kurssiseurantasovellus
-#
+
 Sovelluksen tarkoituksena on pitää kirjaa opintojen edistymisestä:
 Jäljellä olevia opintoja, ja kertynyttä keskiarvoa.
 Sovellus ei ole sidottu tietyn koulutusasteen opintoihin, sillä käyttäjä voi itse päättää, seurataanko
@@ -8,7 +8,7 @@ Sovellukseen voi luoda useampia käyttäjiä
 
 Sovellus on osa Helsingin yliopiston "Ohjelmistotekniikka -kevät 2021" suoritusta.
 
->(Curriculator- nimi tulee yhdistelmästä Curriculum[suom. kurssi] ja Calculator [laskin])
+>(Curriculator- nimi tulee yhdistelmästä Curriculum[kurssi] ja Calculator [laskin])
 
 ## Dokumentaatio
 
