@@ -6,11 +6,9 @@ Sovellus ei ole sidottu tietyn koulutusasteen opintoihin, sillä käyttäjä voi
 opintopisteitä vai osaamispisteitä, sekä merkitä kurssit vaikka omakeksimillä nimillään!
 Sovellukseen voi luoda useampia käyttäjiä
 
->(Curriculator- nimi tulee yhdistelmästä Curriculum[suom. kurssi] ja Calculator [laskin])
-
 Sovellus on osa Helsingin yliopiston "Ohjelmistotekniikka -kevät 2021" suoritusta.
 
-
+>(Curriculator- nimi tulee yhdistelmästä Curriculum[suom. kurssi] ja Calculator [laskin])
 
 ## Dokumentaatio
 
