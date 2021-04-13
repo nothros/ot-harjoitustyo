@@ -1,17 +1,31 @@
-# Ohjelmistotekniikka, harjoitustyö
+# CurriculatorApp- kurssiseurantasovellus
+#
+Sovelluksen tarkoituksena on pitää kirjaa opintojen edistymisestä:
+Jäljellä olevia opintoja, ja kertynyttä keskiarvoa.
+Sovellus ei ole sidottu tietyn koulutusasteen opintoihin, sillä käyttäjä voi itse päättää, seurataanko
+opintopisteitä vai osaamispisteitä, sekä merkitä kurssit vaikka omakeksimillä nimillään!
+Sovellukseen voi luoda useampia käyttäjiä
+
+>(Curriculator- nimi tulee yhdistelmästä Curriculum[suom. kurssi] ja Calculator [laskin])
+
+Sovellus on osa Helsingin yliopiston "Ohjelmistotekniikka -kevät 2021" suoritusta.
+
+
+
+## Dokumentaatio
+
  - [Työaikakirjanpito](https://github.com/nothros/ot-harjoitustyo/blob/master/CurriculatorApp/dokumentaatio/tyoaika.md)
  - [Vaatimusmäärittely](https://github.com/nothros/ot-harjoitustyo/blob/master/CurriculatorApp/dokumentaatio/vaatimusmaarittely.md)
 
-## Tehtävät
-### Viikko 1
+
+## Komentorivitoiminnot
+Ohjelman pom.xml löytyy kansiosta  
+```sh
+CurriculatorApp/
+```
+Ohjelman voi suorittaa komennolla
+```sh
+mvn compile exec:java -Dexec.mainClass=curriculatorapp.Main
+```
 
 
-  - [gitlog.txt](https://github.com/nothros/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
-  - [komentorivi.txt](https://github.com/nothros/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
-
-### Viikko 2
-  
-
-  - [screenshot.png](https://github.com/nothros/ot-harjoitustyo/blob/master/laskarit/viikko2/screenshot.png)
-  
-TESTI
