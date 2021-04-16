@@ -13,5 +13,5 @@
 | 12.4.21 | 5 |Aivan turhaa kofigurointia. Tietokantayhteys toimii ja käyttäjän lisääminen onnistuu  |
 | 16.4.21 | 4.5 |Aivan turhaa kofigurointia taas salasanan cryptaus toimii ja login toimii päästään sovellukseen  |
 |--|--|--|
-| Yhteensä |27  |Viikko 3 | 
+| Yhteensä |32,5  |Viikko 3 | 
 
