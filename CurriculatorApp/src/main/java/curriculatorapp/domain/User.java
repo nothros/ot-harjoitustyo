@@ -1,12 +1,16 @@
-
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package curriculatorapp.domain;
 
-import java.util.*;
-import org.mindrot.jbcrypt.BCrypt;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 
-
-
+/**
+ *
+ * @author ehorrosw
+ */
 public class User {
 
     private String name, username, password;
@@ -14,7 +18,13 @@ public class User {
     public User(String name, String username, String password) {
         this.name = name;
         this.username = username;
-        this.password = encryptPassword(password);
+        this.password = password;
+
+    }
+
+    public User(String name, String username) {
+        this.name = name;
+        this.username = username;
 
     }
 
@@ -27,7 +37,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = encryptPassword(password);
     }
 
     public String getName() {
@@ -41,12 +51,15 @@ public class User {
     public String getPassword() {
         return this.password;
     }
-   public static String encryptPassword(String password){
-        return BCrypt.hashpw(password, BCrypt.gensalt());
+
+    public String encryptPassword(String password) {
+        String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
+        return bcryptHashString;
     }
-    
-    public Boolean checkPassword(String passwordDB){
-        return BCrypt.checkpw(this.password, passwordDB);
+
+    public Boolean checkPassword(String triedPassword, String passwordDB) {
+        BCrypt.Result result = BCrypt.verifyer().verify(triedPassword.toCharArray(), passwordDB);
+        return result.verified;
     }
 
 }

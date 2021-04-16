@@ -8,7 +8,6 @@ import curriculatorapp.domain.User;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -26,10 +25,6 @@ public class UserTest {
         user = new User(name, username, password);
     }
     
-    @Test
-    public void passwordIsEnCrypted() {
-        String classPassword=user.getPassword();
-        assertFalse(classPassword.equals(password));
-    }
+    
 
 }

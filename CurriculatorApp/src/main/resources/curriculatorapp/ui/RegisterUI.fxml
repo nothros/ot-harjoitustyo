@@ -16,9 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:controller="curriculatorapp.ui.RegisterController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="parent" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="curriculatorapp.ui.LoginController" maxHeight="600.0" maxWidth="600.0" minHeight="600.0"" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" styleClass="parent" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane fx:id="registerPane" layoutX="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" styleClass="parent" stylesheets="@stylesheet.css">
+      <Pane fx:id="registerPane" layoutX="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" styleClass="parent" stylesheets="@stylesheet.css">
          <children>
             <Label fx:id="registerErrorLabel" id="loginerrorlabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="192.0" layoutY="203.0" prefHeight="14.0" prefWidth="179.0" styleClass="reg_error-message" textAlignment="RIGHT" textFill="#cd0000">
                <font>
@@ -47,24 +47,5 @@
             
          </children>
       </Pane>
-      <VBox alignment="CENTER" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0">
-         <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@logo.png" />
-               </image>
-  
-            </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@textlogo.png" />
-               </image>
-            </ImageView>
-         </children>
-         <styleClass>
-            <String fx:value="background" />
-            <String fx:value="sidebar" />
-         </styleClass>
-      </VBox>
    </children>
 </AnchorPane>
