@@ -8,9 +8,9 @@ Vain yksi käyttäjärooli eli normaalikäyttäjä
 
 ## Käyttöliittymäluonnos
 Sovellus koostuu kolmesta näkymästä
-- [x] Login- näkymä, josta käyttäjä kirjautuu sisään tai 
-- [x] Register- näkymä, josta käyttäjätilin voi luoda
-- [ ] Päänäkymä (kirjautumisen jälkeen) Jossa kaikki toiminnallisuus
+- ✅ Login- näkymä, josta käyttäjä kirjautuu sisään tai 
+- ✅ Register- näkymä, josta käyttäjätilin voi luoda
+- Päänäkymä (kirjautumisen jälkeen) Jossa kaikki toiminnallisuus
 
 <img src="https://github.com/nothros/ot-harjoitustyo/blob/master/CurriculatorApp/dokumentaatio/kuvat/kayttoliittymaluonnos.png" width="750">
 
@@ -18,26 +18,26 @@ Sovellus koostuu kolmesta näkymästä
 ## Toiminnallisuus
 ### Ennen kirjautumista
 Käyttäjä voi luoda sovellukseen oman käyttäjätunnuksen
- - [ ] Käyttäjätunnuksen tulee olla uniikki, sovellus ilmoittaa jos näin ei ole
- - [x] Sovellus ilmoittaa virheestä, mikäli kaikkia syöttökenttiä ei ole täytetty
- - [x] Sovellus kryptaa salasanan käyttäen ulkopuolista kirjastoa apunaan (BCrypt)
+ - Käyttäjätunnuksen tulee olla uniikki, sovellus ilmoittaa jos näin ei ole
+ - ✅ Sovellus ilmoittaa virheestä, mikäli kaikkia syöttökenttiä ei ole täytetty
+ - ✅  Sovellus kryptaa salasanan käyttäen ulkopuolista kirjastoa apunaan (BCrypt)
 
 Tai käyttäjä voi kirjautua sovellukseen olemassa olevalla käyttäjätunnuksellaan
- - [ ] Sovellus ilmoittaa mikäli käyttäjätunnusta ei löydy tai 
- - [x] Jos käyttäjä ei ole täyttänyt vaadittavia kenttiä
- - [ ] Mikäli salasana on väärin, ohjelma ilmoittaa siitä.
+ - Sovellus ilmoittaa mikäli käyttäjätunnusta ei löydy tai 
+ - ✅  Jos käyttäjä ei ole täyttänyt vaadittavia kenttiä
+ - Mikäli salasana on väärin, ohjelma ilmoittaa siitä.
 
 ### Kirjautumisen jälkeen
 Ensikirjautumisella käyttäjän tulee määritellä
- - [ ] Tutkinnon nimi
- - [ ] Tutkinnon kesto haluamallaan mittarilla (opintopisteet, opintoviikot, osaamispisteet)
+ - Tutkinnon nimi
+ - Tutkinnon kesto haluamallaan mittarilla (opintopisteet, opintoviikot, osaamispisteet)
 
 Päänäkymässä näkyy 
- - [ ] suoritettavat kurssit, ja ne voi merkitä tehdyksi, ja niille voi merkitä arvosanan ja suorituspäivämäärään.
- - [ ] Mahdollisuus lisätä kursseja
- - [ ] Opintojen keskiarvo
- - [ ] Ympyräkaavio suoritettujen ja suorittamattomien opintopisteiden suhteesta
- - [ ] Suoritettujen opintopisteiden lukumäärä
+ - suoritettavat kurssit, ja ne voi merkitä tehdyksi, ja niille voi merkitä arvosanan ja suorituspäivämäärään.
+ - Mahdollisuus lisätä kursseja
+ - Opintojen keskiarvo
+ - Ympyräkaavio suoritettujen ja suorittamattomien opintopisteiden suhteesta
+ - Suoritettujen opintopisteiden lukumäärä
 
 ## Jatkokehitysideat
 - Kursseille on omat pääluokat
