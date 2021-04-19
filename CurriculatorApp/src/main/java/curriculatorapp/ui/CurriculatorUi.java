@@ -1,3 +1,4 @@
+
 package curriculatorapp.ui;
 
 
@@ -33,11 +34,11 @@ public class CurriculatorUi extends Application {
     
      
 
-    static void setRoot(String fxml) throws IOException {
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
-    private static Parent loadFXML(String fxml) throws IOException {
+    public static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(CurriculatorUi.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
@@ -45,7 +46,7 @@ public class CurriculatorUi extends Application {
         launch(args);
     }
     
-    public void initTestipoyta() throws SQLException{
+    public static void initTestipoyta() throws SQLException{
              /*  * * *
         NÄMÄ EI JÄÄ TÄNNE    
             * * *  */  
@@ -61,3 +62,4 @@ public class CurriculatorUi extends Application {
         
     }
 }
+

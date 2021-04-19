@@ -6,8 +6,8 @@
 package curriculatorapp.ui;
 
 import curriculatorapp.domain.User;
+import curriculatorapp.ui.CurriculatorUi;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -31,6 +31,8 @@ import javafx.scene.layout.Pane;
  */
 public class RegisterController {
 
+    public CurriculatorUi curriculatorapp;
+
     @FXML
     private Label registerErrorLabel;
     @FXML
@@ -45,14 +47,14 @@ public class RegisterController {
         String name = registerName.getText();
         String username = registerUsername.getText();
         String password = registerPassword.getText();
-        User user = new User(name, username, password);
-        System.out.print(user.getPassword());
-        
+
         if ((name.trim().isEmpty()) || (username.trim().isEmpty()) || (password.trim().isEmpty())) {
             registerErrorLabel.setText("Täytä kaikki kentät!");
 
         } else {
-            
+            User newUser = new User(name, username);
+            newUser.setPassword(password);
+            String hashedPassword = newUser.getPassword();
             /*  * * *
         NÄMÄ EI JÄÄ TÄNNE    
             * * *  */
@@ -61,7 +63,7 @@ public class RegisterController {
             PreparedStatement p = db.prepareStatement("INSERT INTO users(name,username,password) VALUES (?,?,?)");
             p.setString(1, name);
             p.setString(2, username);
-            p.setString(3, password);
+            p.setString(3, hashedPassword);
 
             p.executeUpdate();
             System.out.println("Käyttäjä lisätty");
@@ -69,13 +71,18 @@ public class RegisterController {
 
             ResultSet r = s.executeQuery("SELECT * FROM Users");
             while (r.next()) {
-                System.out.println(r.getInt("id") + " " + r.getString("name") + " " + r.getString("username"));
+                System.out.println(r.getInt("id") + " " + r.getString("name") + " " + r.getString("password"));
+
             }
+            r.close();
+            s.close();
 
         }
     }
 
     public void onReturnbuttonClick() throws IOException {
+        System.out.println("Tämätoimii");
         CurriculatorUi.setRoot("LoginUI");
+
     }
 }
