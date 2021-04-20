@@ -3,7 +3,7 @@
 <img src ="https://raw.githubusercontent.com/nothros/ot-harjoitustyo/master/CurriculatorApp/dokumentaatio/kuvat/pakkauspuu.png">
 <em> Kuvaan lisätyt viivat tarkoittaa riippuvuksiaa, tai johteita pakkausten välillä</em>
 
-> Ohjelman rakenne on on jaoiteltu seuraavanlaisesti
+ Ohjelman rakenne on on jaoiteltu seuraavanlaisesti
   - ui: Ohjelman käyttöliittymään liittyvät luokat.
   - control: Ohjelman päätoiminnasta vastaavat luokat eli fxml- controllerit(hoitavat tapahtumia, kuten nappien paineiluita ja syötteitä)
   - logic: Sovelluslogiikasta vastaavat luokat
