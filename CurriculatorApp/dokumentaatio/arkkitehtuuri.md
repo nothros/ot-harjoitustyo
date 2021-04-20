@@ -1,7 +1,7 @@
 # Arkkitehtuurikuvaus
 ## Rakenne
 <img src ="https://raw.githubusercontent.com/nothros/ot-harjoitustyo/master/CurriculatorApp/dokumentaatio/kuvat/pakkauspuu.png">
-<em> Kuvaan lisätyt viivat tarkoittaa riippuvuksiaa, tai johteita pakkausten välillä</em>
+<em> Kuvaan lisätyt viivat tarkoittaa riippuvuksiaa, tai johteita pakkausten välillä, recources ei liity pakkausrakenteeseen, mutta sisältää tarvittavia resursseja</em>
 <p>&nbsp;</p>
 
 <p> Ohjelman rakenne on on jaoiteltu seuraavanlaisesti</p>
