@@ -18,6 +18,5 @@
 |18.4.21 | 3 | Ongelman korjaus jatkui, ja korjaantui, paluu takaisin eiliseen pakettiongelmaan. Ratkottu |
 |20.4.21 | 4 | Paketti ja FXML- ongelma ratkaistu. Vaatii uutta toiminnalisuutta. Ohjelman toiminallisuus takapakkia, muu eteenpäin paljon |
 
-|--|--|--|
-| Yhteensä |39,5  |Viikko 3 (17h)| 
+ Yhteensä 48.5  Viiko 4 (17h)
 
