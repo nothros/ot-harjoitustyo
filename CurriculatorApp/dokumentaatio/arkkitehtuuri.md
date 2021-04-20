@@ -1,7 +1,9 @@
 # Arkkitehtuurikuvaus
 ## Rakenne
+<img src ="https://raw.githubusercontent.com/nothros/ot-harjoitustyo/master/CurriculatorApp/dokumentaatio/kuvat/pakkauspuu.png">
+<em> Kuvaan lisätyt viivat tarkoittaa riippuvuksiaa, tai johteita pakkausten välillä</em>
 
-Ohjelman rakenne on on jaoiteltu seuraavanlaisesti
+> Ohjelman rakenne on on jaoiteltu seuraavanlaisesti
   - ui: Ohjelman käyttöliittymään liittyvät luokat.
   - control: Ohjelman päätoiminnasta vastaavat luokat eli fxml- controllerit(hoitavat tapahtumia, kuten nappien paineiluita ja syötteitä)
   - logic: Sovelluslogiikasta vastaavat luokat
@@ -27,6 +29,3 @@ FXML tarvitsee toimiakseen controllerin asetukset, jotta controllerit, eli nappi
 
 Käyttöliittymä luo myös uuden userdaon, sekä appservicen- joka kuuluu sovelluslogiikkaan.
 
-### Sovelluslogiikka
-
-Sovelluslogiikka on luotu kahta erinäistä luokkaa hyödyntäen. 
