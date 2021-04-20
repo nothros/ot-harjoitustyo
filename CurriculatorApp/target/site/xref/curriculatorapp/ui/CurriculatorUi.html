@@ -36,48 +36,50 @@
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>  
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>      @Override
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> start(Stage stage) <strong class="jxr_keyword">throws</strong> IOException, FileNotFoundException, SQLException {
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>          <a href="../../curriculatorapp/dao/UserDao.html">UserDao</a> dao = <strong class="jxr_keyword">new</strong> <a href="../../curriculatorapp/dao/UserDao.html">UserDao</a>();
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>          <a href="../../curriculatorapp/logic/AppService.html">AppService</a> service = <strong class="jxr_keyword">new</strong> <a href="../../curriculatorapp/logic/AppService.html">AppService</a>(dao);
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>          FXMLLoader loader = <strong class="jxr_keyword">new</strong> FXMLLoader(getClass().getResource(<span class="jxr_string">"LoginUI.fxml"</span>));
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>          Parent uiRoot = loader.load();
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>          <a href="../../curriculatorapp/controller/Controller.html">Controller</a> controller = loader.getController();
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>          controller.initService(service);
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>          <em class="jxr_comment">/*  * * *</em>
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <em class="jxr_comment">        NÄMÄ MENEE OMIIN METODEIHINSA KUNGAN KEKSIN MITEN   </em>
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <em class="jxr_comment">            * * *  */</em>
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>          <a href="../../curriculatorapp/dao/UserDao.html">UserDao</a> dao = <strong class="jxr_keyword">new</strong> <a href="../../curriculatorapp/dao/UserDao.html">UserDao</a>();
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>          <a href="../../curriculatorapp/logic/AppService.html">AppService</a> service = <strong class="jxr_keyword">new</strong> <a href="../../curriculatorapp/logic/AppService.html">AppService</a>(dao);
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>          FXMLLoader loader = <strong class="jxr_keyword">new</strong> FXMLLoader(getClass().getResource(<span class="jxr_string">"LoginUI.fxml"</span>));
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>          Parent uiRoot = loader.load();
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>          <a href="../../curriculatorapp/controller/Controller.html">Controller</a> controller = loader.getController();
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>  
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>          scene = <strong class="jxr_keyword">new</strong> Scene(uiRoot, 800, 600);
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>          stage.setScene(scene);
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>          stage.show();
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>      }
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>  
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> setRegisterRoot(String fxml) <strong class="jxr_keyword">throws</strong> IOException {
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>          scene.setRoot(loadFXML(fxml));
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>      }
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>  
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> Parent loadFXML(String fxml) <strong class="jxr_keyword">throws</strong> IOException {
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>          FXMLLoader fxmlLoader = <strong class="jxr_keyword">new</strong> FXMLLoader(CurriculatorUi.<strong class="jxr_keyword">class</strong>.getResource(fxml + <span class="jxr_string">".fxml"</span>));
-<a class="jxr_linenumber" name="L52" href="#L52">52</a>          <strong class="jxr_keyword">return</strong> fxmlLoader.load();
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>      }
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>  
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) {
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>          launch(args);
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>      }
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>  
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> initTestipoyta() <strong class="jxr_keyword">throws</strong> SQLException {
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>          <em class="jxr_comment">/*  * * *</em>
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>  <em class="jxr_comment">        NÄMÄ EI JÄÄ TÄNNE    </em>
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>  <em class="jxr_comment">            * * *  */</em>
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>  
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>          Connection db = DriverManager.getConnection(<span class="jxr_string">"jdbc:sqlite:curriculatorapp.db"</span>);
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>          controller.initService(service);
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>          scene = <strong class="jxr_keyword">new</strong> Scene(uiRoot, 800, 600);
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>          stage.setScene(scene);
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>          stage.show();
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>      }
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> setRegisterRoot(String fxml) <strong class="jxr_keyword">throws</strong> IOException {
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>          scene.setRoot(loadFXML(fxml));
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>      }
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>  
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> Parent loadFXML(String fxml) <strong class="jxr_keyword">throws</strong> IOException {
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>          FXMLLoader fxmlLoader = <strong class="jxr_keyword">new</strong> FXMLLoader(CurriculatorUi.<strong class="jxr_keyword">class</strong>.getResource(fxml + <span class="jxr_string">".fxml"</span>));
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>          <strong class="jxr_keyword">return</strong> fxmlLoader.load();
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>      }
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>  
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) {
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>          launch(args);
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>      }
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>  
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> initTestipoyta() <strong class="jxr_keyword">throws</strong> SQLException {
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>          <em class="jxr_comment">/*  * * *</em>
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>  <em class="jxr_comment">        NÄMÄ EI JÄÄ TÄNNE    </em>
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>  <em class="jxr_comment">            * * *  */</em>
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>  
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>          PreparedStatement stmt = db.prepareStatement(<span class="jxr_string">"CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name    VARCHAR(255), username    VARCHAR(255),  password   VARCHAR(255))"</span>);
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>          stmt.executeUpdate();
-<a class="jxr_linenumber" name="L68" href="#L68">68</a>          stmt.close();
-<a class="jxr_linenumber" name="L69" href="#L69">69</a>          System.out.println(<span class="jxr_string">"Luodaan tietokanta jos sitä ei ole"</span>);
-<a class="jxr_linenumber" name="L70" href="#L70">70</a>  
-<a class="jxr_linenumber" name="L71" href="#L71">71</a>      }
-<a class="jxr_linenumber" name="L72" href="#L72">72</a>  }
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>          Connection db = DriverManager.getConnection(<span class="jxr_string">"jdbc:sqlite:curriculatorapp.db"</span>);
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>  
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>          PreparedStatement stmt = db.prepareStatement(<span class="jxr_string">"CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name    VARCHAR(255), username    VARCHAR(255),  password   VARCHAR(255))"</span>);
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>          stmt.executeUpdate();
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>          stmt.close();
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>          System.out.println(<span class="jxr_string">"Luodaan tietokanta jos sitä ei ole"</span>);
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>  
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>      }
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2021. All rights reserved.</div>

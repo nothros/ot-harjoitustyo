@@ -50,6 +50,7 @@ public class RegisterController implements Controller {
 
     public void onReturnbuttonClick() throws IOException {
         System.out.println("Tämätoimii");
+        /// TÄMÄ EI TOIMI; JA VAATII JONKIN VERRAN SÄÄTÖÄ ETTÄ SAA TAKAISIN OIKEAN ROOTIN.
 
     }
 }

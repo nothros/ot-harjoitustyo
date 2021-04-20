@@ -1,8 +1,12 @@
 curriculatorapp/domain/USer.class
+curriculatorapp/logic/AppService.class
 curriculatorapp/ui/CurriculatorUi.class
 curriculatorapp/controller/LoginController.class
+curriculatorapp/dao/UserDao.class
 curriculatorapp/connect/Connect.class
 curriculatorapp/domain/User.class
-curriculatorapp/ui/RegisterController.class
+curriculatorapp/logic/LoginService.class
+curriculatorapp/controller/Controller.class
+curriculatorapp/controller/RegisterController.class
 curriculatorapp/domain/domain.class
 curriculatorapp/Main.class

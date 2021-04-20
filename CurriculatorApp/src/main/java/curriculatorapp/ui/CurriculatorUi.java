@@ -28,7 +28,9 @@ public class CurriculatorUi extends Application {
 
     @Override
     public void start(Stage stage) throws IOException, FileNotFoundException, SQLException {
-
+        /*  * * *
+        NÄMÄ MENEE OMIIN METODEIHINSA KUNGAN KEKSIN MITEN   
+            * * *  */
         UserDao dao = new UserDao();
         AppService service = new AppService(dao);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginUI.fxml"));
