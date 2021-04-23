@@ -28,47 +28,32 @@ public class CurriculatorUi extends Application {
 
     @Override
     public void start(Stage stage) throws IOException, FileNotFoundException, SQLException {
-        /*  * * *
-        NÄMÄ MENEE OMIIN METODEIHINSA KUNGAN KEKSIN MITEN   
-            * * *  */
         UserDao dao = new UserDao();
         AppService service = new AppService(dao);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginUI.fxml"));
-
-        Parent uiRoot = loader.load();
-        Controller controller = loader.getController();
-
-        controller.initService(service);
+        service.createNewUserTableIfNotExists();
+        
+        Parent uiRoot = loadFXMLAndController("LoginUI", service);
 
         scene = new Scene(uiRoot, 800, 600);
         stage.setScene(scene);
         stage.show();
     }
 
-    public static void setRegisterRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    public static Parent loadFXMLAndController(String fxml, AppService service) throws IOException {
+        FXMLLoader loader = new FXMLLoader(CurriculatorUi.class.getResource(fxml + ".fxml"));
+        Parent root = loader.load();
+        Controller controller = loader.getController();
+        controller.initService(service);
+
+        return root;
     }
 
-    public static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(CurriculatorUi.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
+    public static void loadNewScene(String fxml, AppService service) throws IOException {
+        Parent newScene = loadFXMLAndController(fxml, service);
+        scene.setRoot(newScene);
     }
 
     public static void main(String[] args) {
         launch(args);
-    }
-
-    public static void initTestipoyta() throws SQLException {
-        /*  * * *
-        NÄMÄ EI JÄÄ TÄNNE    
-            * * *  */
-
-        Connection db = DriverManager.getConnection("jdbc:sqlite:curriculatorapp.db");
-
-        PreparedStatement stmt = db.prepareStatement("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name    VARCHAR(255), username    VARCHAR(255),  password   VARCHAR(255))");
-        stmt.executeUpdate();
-        stmt.close();
-        System.out.println("Luodaan tietokanta jos sitä ei ole");
-
     }
 }

@@ -1,18 +1,15 @@
-
 package curriculatorapp.controller;
 
-import curriculatorapp.domain.User;
+import curriculatorapp.ui.CurriculatorUi;
 import curriculatorapp.logic.AppService;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.concurrent.TimeUnit;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
-
+import javafx.scene.paint.Color;
 
 public class LoginController implements Controller {
 
@@ -23,32 +20,47 @@ public class LoginController implements Controller {
     public PasswordField loginPassword;
     @FXML
     public Label loginErrorLabel;
-    @FXML
-    public Pane loginPane, registerPane;
 
+    @Override
     public void initService(AppService appservice) {
         this.appservice = appservice;
     }
 
     @FXML
     public void onNewUserButtonClick() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("RegisterUI.fxml"));
-        Parent uiRoot = loader.load();
-        Controller controller = loader.getController();
-        controller.initService(appservice);
-        loginPane.getChildren().add(uiRoot);
+        CurriculatorUi.loadNewScene("RegisterUI", appservice);
     }
 
     @FXML
-    public void onLoginButtonClick() throws SQLException, IOException {
+    public void onLoginButtonClick() throws SQLException, IOException, InterruptedException {
         String username = loginUsername.getText().trim();
         String password = loginPassword.getText().trim();
-        User u;
+
         if (username.isEmpty() || password.isEmpty()) {
+            loginErrorLabel.setTextFill(Color.RED);
             loginErrorLabel.setText("Täytä kaikki kentät!");
+            emptyFields();
+
         } else {
             System.out.println("Loginbutton toimii");
+            if (appservice.login(username, password)) {
+                loginErrorLabel.setTextFill(Color.GREEN);
+                loginErrorLabel.setText("Kirjaudutaan sisään!");
+                CurriculatorUi.loadNewScene("MainUI", appservice);
+
+            } else {
+                loginErrorLabel.setTextFill(Color.RED);
+                loginErrorLabel.setText("Jokin ei täsmää!");
+                emptyFields();
+
+            }
+
         }
+    }
+
+    public void emptyFields() {
+        loginUsername.setText("");
+        loginPassword.setText("");
     }
 
 }

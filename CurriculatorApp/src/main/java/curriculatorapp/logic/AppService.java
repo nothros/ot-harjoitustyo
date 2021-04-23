@@ -19,10 +19,23 @@ import java.sql.Statement;
  */
 public class AppService {
 
-    UserDao userdao;
+    private UserDao userdao;
 
     public AppService(UserDao userdao) {
-        this.userdao = userdao;
+        this.userdao = userdao;  
+    }
+    
+    public boolean login(String username, String password) throws SQLException {
+        User user = (User) userdao.findByUsername(username);
+        if (user == null) {
+            return false;
+        }
+        
+        if (!user.checkPassword(password, user.getPassword())) {
+            return false;
+        }
+        
+        return true;
     }
 
     public void createNewUser(String name, String username, String password) throws SQLException {
@@ -31,6 +44,12 @@ public class AppService {
         String hashedPassword = newUser.getPassword();
         userdao.createUser(name, username, hashedPassword);
     }
+    
+    public void createNewUserTableIfNotExists() throws SQLException {
+        userdao.createNewUserTable();
+    }
+    
+ 
     
     
     

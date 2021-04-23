@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2021</copyright>
     <item>
-      <title>File: 10,
+      <title>File: 11,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -131,6 +131,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#curriculatorapp.ui.CurriculatorUi.java">curriculatorapp/ui/CurriculatorUi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#curriculatorapp.controller.AppController.java">curriculatorapp/controller/AppController.java</a>
                 </td>
                 <td>
                   0

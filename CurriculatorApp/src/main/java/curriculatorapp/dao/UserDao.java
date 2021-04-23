@@ -1,5 +1,6 @@
 package curriculatorapp.dao;
 
+import curriculatorapp.domain.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -29,17 +30,34 @@ public class UserDao {
         r.close();
         s.close();
     }
-
-    public static void initTestipoyta() throws SQLException {
-        /*  * * *
-        NÄMÄ EI JÄÄ TÄNNE    
-            * * *  */
-
+    
+    public User findByUsername(String username) throws SQLException {
         Connection db = DriverManager.getConnection("jdbc:sqlite:curriculatorapp.db");
+        ResultSet rs;
+        User user;
+        try (PreparedStatement stmt = db.prepareStatement("SELECT * FROM users "
+                + "WHERE username = ?")) {
+            stmt.setString(1, username);
+            rs = stmt.executeQuery();
+            if (!rs.next()) {
+                return null;
+            }
+            user = new User(rs.getString("name"), rs.getString("username"), rs.getString("password"));
+        }
+        rs.close();
+        
+        return user;
+    }
 
-        PreparedStatement stmt = db.prepareStatement("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name    VARCHAR(255), username    VARCHAR(255),  password   VARCHAR(255))");
-        stmt.executeUpdate();
-        stmt.close();
+    public void createNewUserTable() throws SQLException {
+        Connection db = DriverManager.getConnection("jdbc:sqlite:curriculatorapp.db");
+        try (PreparedStatement stmt = db.prepareStatement("CREATE TABLE IF NOT EXISTS users "
+                + "(id INTEGER PRIMARY KEY, "
+                + "name    VARCHAR(255), "
+                + "username    VARCHAR(255) UNIQUE,  "
+                + "password   VARCHAR(255))")) {
+            stmt.executeUpdate();
+        }
         System.out.println("Luodaan tietokanta jos sitä ei ole");
 
     }

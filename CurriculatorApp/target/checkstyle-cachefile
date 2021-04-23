@@ -1,13 +1,14 @@
-#Tue Apr 20 20:59:39 EEST 2021
-/home/ehorrosw/ot-harjoitustyo/CurriculatorApp/src/main/java/curriculatorapp/controller/LoginController.java=1618941535604
+#Fri Apr 23 18:29:31 EEST 2021
+/home/ehorrosw/ot-harjoitustyo/CurriculatorApp/src/main/java/curriculatorapp/controller/LoginController.java=1619191765415
 configuration*?=73B39174D4D694D4D282188970B8FC07E317E300
-/home/ehorrosw/ot-harjoitustyo/CurriculatorApp/src/main/java/curriculatorapp/controller/RegisterController.java=1618941382411
-/home/ehorrosw/ot-harjoitustyo/CurriculatorApp/src/main/java/curriculatorapp/logic/AppService.java=1618939878674
-/home/ehorrosw/ot-harjoitustyo/CurriculatorApp/src/main/java/curriculatorapp/dao/UserDao.java=1618939878674
+/home/ehorrosw/ot-harjoitustyo/CurriculatorApp/src/main/java/curriculatorapp/controller/RegisterController.java=1619191742218
+/home/ehorrosw/ot-harjoitustyo/CurriculatorApp/src/main/java/curriculatorapp/logic/AppService.java=1619189947568
+/home/ehorrosw/ot-harjoitustyo/CurriculatorApp/src/main/java/curriculatorapp/dao/UserDao.java=1619189457215
 /home/ehorrosw/ot-harjoitustyo/CurriculatorApp/src/main/java/curriculatorapp/domain/User.java=1618941411166
 /home/ehorrosw/ot-harjoitustyo/CurriculatorApp/src/main/java/curriculatorapp/logic/LoginService.java=1618939878674
 /home/ehorrosw/ot-harjoitustyo/CurriculatorApp/src/main/java/curriculatorapp/domain/USer.java=1618939878674
+/home/ehorrosw/ot-harjoitustyo/CurriculatorApp/src/main/java/curriculatorapp/controller/AppController.java=1619191493640
 /home/ehorrosw/ot-harjoitustyo/CurriculatorApp/src/main/java/curriculatorapp/connect/Connect.java=1618939878674
-/home/ehorrosw/ot-harjoitustyo/CurriculatorApp/src/main/java/curriculatorapp/ui/CurriculatorUi.java=1618941424459
+/home/ehorrosw/ot-harjoitustyo/CurriculatorApp/src/main/java/curriculatorapp/ui/CurriculatorUi.java=1619188545374
 /home/ehorrosw/ot-harjoitustyo/CurriculatorApp/src/main/java/curriculatorapp/Main.java=1618939878674
 /home/ehorrosw/ot-harjoitustyo/CurriculatorApp/src/main/java/curriculatorapp/controller/Controller.java=1618939878674
