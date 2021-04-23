@@ -12,6 +12,11 @@
 | 11.4.21 | 3 |Login ja register kommunikoi keskenään. Register valmis  |
 | 12.4.21 | 5 |Aivan turhaa kofigurointia. Tietokantayhteys toimii ja käyttäjän lisääminen onnistuu  |
 | 16.4.21 | 4.5 |Aivan turhaa kofigurointia taas salasanan cryptaus toimii ja login toimii päästään sovellukseen  |
-|--|--|--|
-| Yhteensä |32,5  |Viikko 3 | 
+| 17.4.21 | 2 | Itse sovellusnäkymän päivitystä scenebuolderilla ja css. Kurssinlisäys kohdallaan |
+| 18.4.21| 4| Pakettiongelma, asiat eivät menneet kuten piti. Kaikki hajosi |
+|18.4.21 | 4 | Aivan liian myöhään huomattu FXML- ominaisuus/ongelma, jota ratkottiin niin että kaikki hajosi |
+|18.4.21 | 3 | Ongelman korjaus jatkui, ja korjaantui, paluu takaisin eiliseen pakettiongelmaan. Ratkottu |
+|20.4.21 | 4 | Paketti ja FXML- ongelma ratkaistu. Vaatii uutta toiminnalisuutta. Ohjelman toiminallisuus takapakkia, muu eteenpäin paljon |
+
+ Yhteensä 48.5  Viikko 4 (17h)
 
