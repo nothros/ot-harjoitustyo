@@ -17,6 +17,6 @@
 |18.4.21 | 4 | Aivan liian myöhään huomattu FXML- ominaisuus/ongelma, jota ratkottiin niin että kaikki hajosi |
 |18.4.21 | 3 | Ongelman korjaus jatkui, ja korjaantui, paluu takaisin eiliseen pakettiongelmaan. Ratkottu |
 |20.4.21 | 4 | Paketti ja FXML- ongelma ratkaistu. Vaatii uutta toiminnalisuutta. Ohjelman toiminallisuus takapakkia, muu eteenpäin paljon |
-
- Yhteensä 48.5  Viikko 4 (17h)
+|23.4.21 | 2 | Virhetekstit yms. lisätty. Paketit kunnossa. Scenesiirtymät kunnossa. Login toimintakuntoon |
+ Yhteensä 50.5  Viikko 5 (2h)
 
