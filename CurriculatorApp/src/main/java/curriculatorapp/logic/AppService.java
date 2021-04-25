@@ -38,11 +38,17 @@ public class AppService {
         return true;
     }
 
-    public void createNewUser(String name, String username, String password) throws SQLException {
+    public boolean createNewUser(String name, String username, String password) throws SQLException {
+        User user = (User) userdao.findByUsername(username);
+        if (user == null) {
         User newUser = new User(name, username);
         newUser.setPassword(password);
         String hashedPassword = newUser.getPassword();
         userdao.createUser(name, username, hashedPassword);
+        return true;
+        }
+        return false;
+        
     }
     
     public void createNewUserTableIfNotExists() throws SQLException {

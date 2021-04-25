@@ -11,15 +11,15 @@ import java.sql.Statement;
 public class UserDao {
 
     public void createUser(String name, String username, String password) throws SQLException {
+        System.out.println("Lisätään ");
         Connection db = DriverManager.getConnection("jdbc:sqlite:curriculatorapp.db");
         Statement s = db.createStatement();
         PreparedStatement p = db.prepareStatement("INSERT INTO users(name,username,password) VALUES (?,?,?)");
         p.setString(1, name);
         p.setString(2, username);
         p.setString(3, password);
-
         p.executeUpdate();
-        System.out.println("Käyttäjä lisätty");
+             System.out.println("Käyttäjä lisätty");
         p.close();
 
         ResultSet r = s.executeQuery("SELECT * FROM Users");
@@ -29,6 +29,8 @@ public class UserDao {
         }
         r.close();
         s.close();
+      
+      
     }
     
     public User findByUsername(String username) throws SQLException {
@@ -54,7 +56,7 @@ public class UserDao {
         try (PreparedStatement stmt = db.prepareStatement("CREATE TABLE IF NOT EXISTS users "
                 + "(id INTEGER PRIMARY KEY, "
                 + "name    VARCHAR(255), "
-                + "username    VARCHAR(255) UNIQUE,  "
+                + "username    VARCHAR(255),  "
                 + "password   VARCHAR(255))")) {
             stmt.executeUpdate();
         }

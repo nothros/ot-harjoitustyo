@@ -28,6 +28,7 @@ public class RegisterController implements Controller {
     public void onRegisterButtonClick() throws SQLException {
         String name = registerName.getText();
         String username = registerUsername.getText();
+        System.out.print(username);
         String password = registerPassword.getText();
         if ((name.trim().isEmpty()) || (username.trim().isEmpty()) || (password.trim().isEmpty())) {
             emptyFields();
@@ -35,10 +36,16 @@ public class RegisterController implements Controller {
             registerErrorLabel.setText("Täytä kaikki kentät!");
 
         } else {
-            appservice.createNewUser(name, username, password);
+            if (appservice.createNewUser(name, username, password)){
             registerErrorLabel.setTextFill(Color.GREEN);
             registerErrorLabel.setText("Käyttäjä luotiin, palaa takaisin!");
             emptyFields();
+        }else{
+            registerErrorLabel.setTextFill(Color.RED);
+            registerErrorLabel.setText("Käyttäjätunnus on jo käytössä!");
+            emptyFields();
+            }
+           
         }
     }
 
