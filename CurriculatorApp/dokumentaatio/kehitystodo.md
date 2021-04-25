@@ -6,10 +6,7 @@
 #### Login
  - Loginbutton ohjaa joko seurantanäkymään
  - Tai opintoluontinäkymään
-
-#### Register
- - Jos käyttäjätunnus löytyy jo tietokannasta, ilmoita
-
+ 
 #### Main
  - Käyttöliittymän FXML loppuun. 
  - Toiminallisuus
@@ -17,5 +14,6 @@
  - Controllerit
 
 #### Testit
- - Ei ole :)
+ - AppService test
+ - LoginService test
 
