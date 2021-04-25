@@ -14,17 +14,44 @@ import org.junit.Test;
  * @author ehorrosw
  */
 public class UserTest {
+
     User user;
-    String name = "TestName";
-    String username= "TestUser";
-    String password = "Password";
-    
+
     @Before
     public void setUpClass() {
-        
-        user = new User(name, username, password);
+
+        user = new User("TestName", "TestUserName");
     }
-    
-    
+
+    @Test
+    public void testCheckPassword() {
+        user.setPassword("TestPassword");
+        assertTrue(user.checkPassword("TestPassword", user.getPassword()));
+    }
+
+    @Test
+    public void testNewUserFromDataBase() {
+        user.setPassword("TestPassword");
+        String hashPassword = user.getPassword();
+        User testUser = new User("TestDBName", "TestDBUsername", hashPassword);
+        assertEquals(hashPassword, testUser.getPassword());
+
+    }
+
+    @Test
+    public void testNameGetterAndSetter() {
+        String newName = "NewName";
+        user.setName("NewName");
+        assertEquals(newName, user.getName());
+
+    }
+
+    @Test
+    public void testUsernameGetterAndSetter() {
+        String newName = "NewUsername";
+        user.setUsername("NewUsername");
+        assertEquals(newName, user.getUsername());
+
+    }
 
 }
