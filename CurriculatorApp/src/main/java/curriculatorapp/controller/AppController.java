@@ -23,28 +23,12 @@ import javafx.scene.paint.Color;
 public class AppController implements Controller {
 
     private AppService appservice;
-    @FXML
-    private ChoiceBox studyChoiceBox;
-    @FXML Label nameLabel;
+   
     @Override
     public void initService(AppService appservice) {
         this.appservice = appservice;
-        setChoices();
-        setName();
     }
     
-    @FXML
-    public void setChoices(){
-        studyChoiceBox.getItems().add(0, "Osaamispiste");
-        studyChoiceBox.getItems().add(1, "Opintopiste");
-        
-        
-    }
-    @FXML
-    public void setName(){
-        nameLabel.setText(appservice.getLoggedName()+"!");
-        
-        
-    }
+  
 
 }

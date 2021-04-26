@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:controller="curriculatorapp.controller.AppController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="parent" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="curriculatorapp.controller.NewUserController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="parent" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
          <center>
@@ -66,7 +66,7 @@
                               <Insets bottom="15.0" />
                            </VBox.margin>
                         </GridPane>
-                        <Button id="studies_button" fx:id="createStudiesButton" mnemonicParsing="false" prefHeight="53.0" prefWidth="199.0" styleClass="logreg_button" stylesheets="@stylesheet.css" text="Luo opintosuunnitelma">
+                        <Button id="studies_button" onAction="#onStudiesButtonClick" fx:id="createStudiesButton" mnemonicParsing="false" prefHeight="53.0" prefWidth="199.0" styleClass="logreg_button" stylesheets="@stylesheet.css" text="Luo opintosuunnitelma">
                            <padding>
                               <Insets left="10.0" right="10.0" top="10.0" />
                            </padding>
