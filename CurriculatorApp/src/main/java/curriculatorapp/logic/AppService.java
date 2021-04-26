@@ -20,22 +20,32 @@ import java.sql.Statement;
 public class AppService {
 
     private UserDao userdao;
+    private User loggedUser;
 
     public AppService(UserDao userdao) {
         this.userdao = userdao;  
     }
     
     public boolean login(String username, String password) throws SQLException {
-        User user = (User) userdao.findByUsername(username);
-        if (user == null) {
+        loggedUser = (User) userdao.findByUsername(username);
+        if (loggedUser == null) {
             return false;
         }
         
-        if (!user.checkPassword(password, user.getPassword())) {
+        if (!loggedUser.checkPassword(password, loggedUser.getPassword())) {
             return false;
         }
         
         return true;
+    }
+    
+    public User getLoggedUser(){
+        return loggedUser;
+        
+    }
+    
+    public String getLoggedName(){
+        return loggedUser.getName();
     }
 
     public boolean createNewUser(String name, String username, String password) throws SQLException {
@@ -43,8 +53,8 @@ public class AppService {
         if (user == null) {
         User newUser = new User(name, username);
         newUser.setPassword(password);
-        String hashedPassword = newUser.getPassword();
-        userdao.createUser(name, username, hashedPassword);
+        String cryptedPassword = newUser.getPassword();
+        userdao.createUser(name, username, cryptedPassword);
         return true;
         }
         return false;

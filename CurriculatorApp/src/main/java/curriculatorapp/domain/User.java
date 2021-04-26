@@ -5,19 +5,19 @@ import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class User {
 
-    private String name, username, password;
+    private String name, username, password, curriculum;
 
-    public User(String name, String username, String password) {
+    public User(String name, String username, String password, String curriculum) {
         this.name = name;
         this.username = username;
         this.password = password;
-
+        this.curriculum = curriculum;
     }
 
     public User(String name, String username) {
         this.name = name;
         this.username = username;
-
+        this.curriculum="";
     }
 
     public void setName(String name) {
@@ -26,6 +26,9 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+    public void setCurriculum(String curriculum) {
+        this.curriculum = curriculum;
     }
 
     public void setPassword(String password) {
@@ -42,6 +45,10 @@ public class User {
 
     public String getPassword() {
         return this.password;
+    }
+     
+    public String getCurriculum() {
+        return this.curriculum;
     }
 
     public String encryptPassword(String password) {

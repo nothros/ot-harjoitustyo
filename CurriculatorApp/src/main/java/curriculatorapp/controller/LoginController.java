@@ -4,7 +4,6 @@ import curriculatorapp.ui.CurriculatorUi;
 import curriculatorapp.logic.AppService;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.concurrent.TimeUnit;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -32,35 +31,51 @@ public class LoginController implements Controller {
     }
 
     @FXML
-    public void onLoginButtonClick() throws SQLException, IOException, InterruptedException {
+    public void onLoginButtonClick() throws SQLException, IOException {
         String username = loginUsername.getText().trim();
         String password = loginPassword.getText().trim();
 
         if (username.isEmpty() || password.isEmpty()) {
-            loginErrorLabel.setTextFill(Color.RED);
-            loginErrorLabel.setText("Täytä kaikki kentät!");
+            setNotifications("empty");
             emptyFields();
 
         } else {
-            System.out.println("Loginbutton toimii");
             if (appservice.login(username, password)) {
-                loginErrorLabel.setTextFill(Color.GREEN);
-                loginErrorLabel.setText("Kirjaudutaan sisään!");
-                CurriculatorUi.loadNewScene("MainUI", appservice);
-
+                setNotifications("login");
+                if (appservice.getLoggedUser().getCurriculum().isEmpty()) {
+                    CurriculatorUi.loadNewScene("NewUserUI", appservice);
+                } else {
+                    CurriculatorUi.loadNewScene("MainUI", appservice);
+                }
             } else {
-                loginErrorLabel.setTextFill(Color.RED);
-                loginErrorLabel.setText("Jokin ei täsmää!");
+                setNotifications("error");
                 emptyFields();
-
             }
-
         }
     }
 
     public void emptyFields() {
         loginUsername.setText("");
         loginPassword.setText("");
+    }
+
+    public void setNotifications(String reason) {
+
+        if (reason.equals("login")) {
+            loginErrorLabel.setTextFill(Color.GREEN);
+            loginErrorLabel.setText("Kirjaudutaan sisään!");
+
+        }
+        if (reason.equals("empty")) {
+            loginErrorLabel.setTextFill(Color.RED);
+            loginErrorLabel.setText("Täytä kaikki kentät!");
+
+        }
+        if (reason.equals("error")) {
+            loginErrorLabel.setTextFill(Color.RED);
+            loginErrorLabel.setText("Jokin ei täsmää!");
+
+        }
     }
 
 }

@@ -14,10 +14,11 @@ public class UserDao {
         System.out.println("Lisätään ");
         Connection db = DriverManager.getConnection("jdbc:sqlite:curriculatorapp.db");
         Statement s = db.createStatement();
-        PreparedStatement p = db.prepareStatement("INSERT INTO users(name,username,password) VALUES (?,?,?)");
+        PreparedStatement p = db.prepareStatement("INSERT INTO users(name,username,password, curriculum) VALUES (?,?,?,?)");
         p.setString(1, name);
         p.setString(2, username);
         p.setString(3, password);
+        p.setString(4, "");
         p.executeUpdate();
              System.out.println("Käyttäjä lisätty");
         p.close();
@@ -44,7 +45,7 @@ public class UserDao {
             if (!rs.next()) {
                 return null;
             }
-            user = new User(rs.getString("name"), rs.getString("username"), rs.getString("password"));
+            user = new User(rs.getString("name"), rs.getString("username"), rs.getString("password"),rs.getString("curriculum"));
         }
         rs.close();
         
@@ -57,7 +58,8 @@ public class UserDao {
                 + "(id INTEGER PRIMARY KEY, "
                 + "name    VARCHAR(255), "
                 + "username    VARCHAR(255),  "
-                + "password   VARCHAR(255))")) {
+                + "password   VARCHAR(255), "
+                + "curriculum   VARCHAR(255))")) {
             stmt.executeUpdate();
         }
         System.out.println("Luodaan tietokanta jos sitä ei ole");

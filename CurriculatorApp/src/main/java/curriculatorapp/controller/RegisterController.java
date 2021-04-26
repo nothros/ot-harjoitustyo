@@ -28,8 +28,8 @@ public class RegisterController implements Controller {
     public void onRegisterButtonClick() throws SQLException {
         String name = registerName.getText();
         String username = registerUsername.getText();
-        System.out.print(username);
         String password = registerPassword.getText();
+        
         if ((name.trim().isEmpty()) || (username.trim().isEmpty()) || (password.trim().isEmpty())) {
             emptyFields();
             registerErrorLabel.setTextFill(Color.RED);
