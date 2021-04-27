@@ -6,7 +6,7 @@ Sovellus ei ole sidottu tietyn koulutusasteen opintoihin, sillä käyttäjä voi
 opintopisteitä vai osaamispisteitä, sekä merkitä kurssit vaikka omakeksimillä nimillään!
 Sovellukseen voi luoda useampia käyttäjiä
 
-Sovellus on osa Helsingin yliopiston "Ohjelmistotekniikka -kevät 2021" suoritusta.
+Sovellus on osa Helsingin yliopiston tietojenkäsittelytieteiden aineopintojen "Ohjelmistotekniikka -kevät 2021" suoritusta.
 
 >(Curriculator- nimi tulee yhdistelmästä Curriculum[kurssi] ja Calculator [laskin])
 
@@ -16,15 +16,39 @@ Sovellus on osa Helsingin yliopiston "Ohjelmistotekniikka -kevät 2021" suoritus
  - [Vaatimusmäärittely](https://github.com/nothros/ot-harjoitustyo/blob/master/CurriculatorApp/dokumentaatio/vaatimusmaarittely.md)
  - [Arkkitehtuurikuvaus](https://github.com/nothros/ot-harjoitustyo/blob/master/CurriculatorApp/dokumentaatio/arkkitehtuuri.md)
 
+## Release
+ - Viikko 5
+
 
 ## Komentorivitoiminnot
 Ohjelman pom.xml löytyy kansiosta  
 ```sh
 CurriculatorApp/
 ```
-Ohjelman voi suorittaa komennolla
+Kun olet samassa kansiossa, missä pom.xml sijaitsee:
+### Suoritettavan jarin generointi
 ```sh
-mvn compile exec:java -Dexec.mainClass=curriculatorapp.Main
+mvn package
 ```
+generoi hakemistoon "target" suoritettavan jar-tiedoston CurriculatorApp-1.0-SNAPSHOT.jar
+### Testaus
+Ohjelman voi testata komennolla
+```sh
+mvn test
+```
+Testikattavuusraportin voi luoda komennolla
+```sh
+mvn jacoco:report
+```
+Kattavuusraporttia voi tarkastella avaamalla selaimella tiedoston sijainnista *target/site/jacoco/index.html*
+
+
+### Checkstyle
+Checkstylen voi generoida komenolla 
+```sh
+mvn jacoco:report
+```
+Mahdolliset virheilmoitukset selviävät avaamalla selaimella tiedoston sijainnista *target/site/checkstyle.html*
+
 
 
