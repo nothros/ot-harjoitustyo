@@ -42,7 +42,7 @@ Kattavuusraporttia voi tarkastella avaamalla selaimella tiedoston sijainnista *t
 ### Checkstyle
 Checkstylen voi generoida komenolla 
 ```sh
-mvn jacoco:report
+ mvn jxr:jxr checkstyle:checkstyle
 ```
 Mahdolliset virheilmoitukset selviävät avaamalla selaimella tiedoston sijainnista *target/site/checkstyle.html*
 
