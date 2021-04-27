@@ -19,7 +19,6 @@ public class UserTest {
 
     @Before
     public void setUpClass() {
-
         user = new User("TestName", "TestUserName");
     }
 
