@@ -18,6 +18,10 @@
 |18.4.21 | 3 | Ongelman korjaus jatkui, ja korjaantui, paluu takaisin eiliseen pakettiongelmaan. Ratkottu |
 |20.4.21 | 4 | Paketti ja FXML- ongelma ratkaistu. Vaatii uutta toiminnalisuutta. Ohjelman toiminallisuus takapakkia, muu eteenpäin paljon |
 |23.4.21 | 2 | Virhetekstit yms. lisätty. Paketit kunnossa. Scenesiirtymät kunnossa. Login toimintakuntoon |
+|25.4.21 | 3 | Uusi näkymä Scenebuilderilla ja päivitellään testejä |
+|26.4.21 | 2 | Uutta rakennetta jotta näkymät päivittyvät oikein ja databaset toimisivat|
+|27.4.21 | 4 | Uusien database:in luonti, ja rakenteen paikkaamista jotta toimivat. Eka kirjautuminen toiminnallisuutta vaille valmis|
 
- Yhteensä 50.5  Viikko 5 (2h)
+
+ Yhteensä 59.5  Viikko 5 (11h)
 
