@@ -1,7 +1,11 @@
 package curriculatorapp.controller;
 
+import curriculatorapp.dao.CurriculumDao;
+import curriculatorapp.domain.User;
 import curriculatorapp.ui.CurriculatorUi;
 import curriculatorapp.logic.AppService;
+import curriculatorapp.logic.LoginService;
+import curriculatorapp.logic.Service;
 import java.io.IOException;
 import java.sql.SQLException;
 import javafx.fxml.FXML;
@@ -12,7 +16,9 @@ import javafx.scene.paint.Color;
 
 public class LoginController implements Controller {
 
-    private AppService appservice;
+    CurriculumDao curriculumdao;
+    private AppService appService;
+    private LoginService loginService;
     @FXML
     public TextField loginUsername;
     @FXML
@@ -21,42 +27,36 @@ public class LoginController implements Controller {
     public Label loginErrorLabel;
 
     @Override
-    public void initService(AppService appservice) {
-        this.appservice = appservice;
+    public void initService(Service appservice) {
+        this.loginService = (LoginService) appservice;
+
     }
 
     @FXML
     public void onNewUserButtonClick() throws IOException {
-        CurriculatorUi.loadNewScene("RegisterUI", appservice);
+        CurriculatorUi.loadNewScene("RegisterUI", loginService);
     }
 
     @FXML
     public void onLoginButtonClick() throws SQLException, IOException {
         String username = loginUsername.getText().trim();
         String password = loginPassword.getText().trim();
-
         if (username.isEmpty() || password.isEmpty()) {
             setNotifications("empty");
-            emptyFields();
-
         } else {
-            if (appservice.login(username, password)) {
+            if (loginService.login(username, password)) {
                 setNotifications("login");
-                if (appservice.getLoggedUser().getCurriculum().isEmpty()) {
-                    CurriculatorUi.loadNewScene("NewUserUI", appservice);
+                User loggedUser = loginService.getLoggedUser();
+                appService = new AppService(loggedUser, loginService.getCurriculumDao(), loginService.getCoursesDao());
+                if (loggedUser.getCurriculum().isEmpty()) {
+                    CurriculatorUi.loadNewScene("NewUserUI", appService);
                 } else {
-                    CurriculatorUi.loadNewScene("MainUI", appservice);
+                    CurriculatorUi.loadNewScene("MainUI", appService);
                 }
             } else {
                 setNotifications("error");
-                emptyFields();
             }
         }
-    }
-
-    public void emptyFields() {
-        loginUsername.setText("");
-        loginPassword.setText("");
     }
 
     public void setNotifications(String reason) {
@@ -64,18 +64,26 @@ public class LoginController implements Controller {
         if (reason.equals("login")) {
             loginErrorLabel.setTextFill(Color.GREEN);
             loginErrorLabel.setText("Kirjaudutaan sisään!");
+            emptyFields();
 
         }
         if (reason.equals("empty")) {
             loginErrorLabel.setTextFill(Color.RED);
             loginErrorLabel.setText("Täytä kaikki kentät!");
+            emptyFields();
 
         }
         if (reason.equals("error")) {
             loginErrorLabel.setTextFill(Color.RED);
             loginErrorLabel.setText("Jokin ei täsmää!");
+            emptyFields();
 
         }
+    }
+
+    public void emptyFields() {
+        loginUsername.setText("");
+        loginPassword.setText("");
     }
 
 }

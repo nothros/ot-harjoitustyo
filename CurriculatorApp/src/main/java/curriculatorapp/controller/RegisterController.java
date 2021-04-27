@@ -1,7 +1,8 @@
 package curriculatorapp.controller;
 
 import curriculatorapp.ui.CurriculatorUi;
-import curriculatorapp.logic.AppService;
+import curriculatorapp.logic.LoginService;
+import curriculatorapp.logic.Service;
 import java.io.IOException;
 import java.sql.SQLException;
 import javafx.fxml.FXML;
@@ -12,7 +13,7 @@ import javafx.scene.paint.Color;
 
 public class RegisterController implements Controller {
 
-    private AppService appservice;
+    private LoginService appservice;
     @FXML
     public TextField registerName, registerUsername;
     @FXML
@@ -21,31 +22,31 @@ public class RegisterController implements Controller {
     public Label registerErrorLabel;
 
     @Override
-    public void initService(AppService appservice) {
-        this.appservice = appservice;
+    public void initService(Service appservice) {
+        this.appservice = (LoginService) appservice;
     }
 
     public void onRegisterButtonClick() throws SQLException {
         String name = registerName.getText();
         String username = registerUsername.getText();
         String password = registerPassword.getText();
-        
+
         if ((name.trim().isEmpty()) || (username.trim().isEmpty()) || (password.trim().isEmpty())) {
             emptyFields();
             registerErrorLabel.setTextFill(Color.RED);
             registerErrorLabel.setText("Täytä kaikki kentät!");
 
         } else {
-            if (appservice.createNewUser(name, username, password)){
-            registerErrorLabel.setTextFill(Color.GREEN);
-            registerErrorLabel.setText("Käyttäjä luotiin, palaa takaisin!");
-            emptyFields();
-        }else{
-            registerErrorLabel.setTextFill(Color.RED);
-            registerErrorLabel.setText("Käyttäjätunnus on jo käytössä!");
-            emptyFields();
+            if (appservice.createNewUser(name, username, password)) {
+                registerErrorLabel.setTextFill(Color.GREEN);
+                registerErrorLabel.setText("Käyttäjä luotiin, palaa takaisin!");
+                emptyFields();
+            } else {
+                registerErrorLabel.setTextFill(Color.RED);
+                registerErrorLabel.setText("Käyttäjätunnus on jo käytössä!");
+                emptyFields();
             }
-           
+
         }
     }
 

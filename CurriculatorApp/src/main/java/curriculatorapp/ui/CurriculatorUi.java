@@ -2,20 +2,13 @@ package curriculatorapp.ui;
 
 import curriculatorapp.controller.Controller;
 import curriculatorapp.dao.UserDao;
-import curriculatorapp.logic.AppService;
-import curriculatorapp.controller.LoginController;
-import java.io.FileInputStream;
+import curriculatorapp.dao.CoursesDao;
+import curriculatorapp.dao.CurriculumDao;
+import curriculatorapp.logic.LoginService;
+import curriculatorapp.logic.Service;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,17 +22,19 @@ public class CurriculatorUi extends Application {
     @Override
     public void start(Stage stage) throws IOException, FileNotFoundException, SQLException {
         UserDao dao = new UserDao();
-        AppService service = new AppService(dao);
-        service.createNewUserTableIfNotExists();
-        
-        Parent uiRoot = loadFXMLAndController("LoginUI", service);
+        CurriculumDao curriculumdao = new CurriculumDao();
+        CoursesDao coursesdao = new CoursesDao();
+        LoginService loginService = new LoginService(dao, curriculumdao, coursesdao);
+        loginService.createNewTablesIfNotExists();
+
+        Parent uiRoot = loadFXMLAndController("LoginUI", loginService);
 
         scene = new Scene(uiRoot, 800, 600);
         stage.setScene(scene);
         stage.show();
     }
 
-    public static Parent loadFXMLAndController(String fxml, AppService service) throws IOException {
+    public static Parent loadFXMLAndController(String fxml, Service service) throws IOException {
         FXMLLoader loader = new FXMLLoader(CurriculatorUi.class.getResource(fxml + ".fxml"));
         Parent root = loader.load();
         Controller controller = loader.getController();
@@ -48,7 +43,7 @@ public class CurriculatorUi extends Application {
         return root;
     }
 
-    public static void loadNewScene(String fxml, AppService service) throws IOException {
+    public static void loadNewScene(String fxml, Service service) throws IOException {
         Parent newScene = loadFXMLAndController(fxml, service);
         scene.setRoot(newScene);
     }

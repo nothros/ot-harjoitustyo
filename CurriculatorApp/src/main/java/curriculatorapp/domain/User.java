@@ -1,4 +1,3 @@
-
 package curriculatorapp.domain;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
@@ -17,7 +16,7 @@ public class User {
     public User(String name, String username) {
         this.name = name;
         this.username = username;
-        this.curriculum="";
+        this.curriculum = "";
     }
 
     public void setName(String name) {
@@ -27,6 +26,7 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+
     public void setCurriculum(String curriculum) {
         this.curriculum = curriculum;
     }
@@ -46,7 +46,7 @@ public class User {
     public String getPassword() {
         return this.password;
     }
-     
+
     public String getCurriculum() {
         return this.curriculum;
     }

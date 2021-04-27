@@ -20,20 +20,20 @@ public class UserDao {
         p.setString(3, password);
         p.setString(4, "");
         p.executeUpdate();
-             System.out.println("Käyttäjä lisätty");
+        System.out.println("Käyttäjä lisätty");
         p.close();
 
         ResultSet r = s.executeQuery("SELECT * FROM Users");
         while (r.next()) {
-            System.out.println(r.getInt("id") + " " + r.getString("name") + " " + r.getString("password"));
+            System.out.println(r.getInt("user_id") + " " + r.getString("name") + " " + r.getString("password"));
 
         }
         r.close();
         s.close();
-      
-      
+        db.close();
+
     }
-    
+
     public User findByUsername(String username) throws SQLException {
         Connection db = DriverManager.getConnection("jdbc:sqlite:curriculatorapp.db");
         ResultSet rs;
@@ -45,22 +45,23 @@ public class UserDao {
             if (!rs.next()) {
                 return null;
             }
-            user = new User(rs.getString("name"), rs.getString("username"), rs.getString("password"),rs.getString("curriculum"));
+            user = new User(rs.getString("name"), rs.getString("username"), rs.getString("password"), rs.getString("curriculum"));
         }
         rs.close();
-        
+
         return user;
     }
 
     public void createNewUserTable() throws SQLException {
         Connection db = DriverManager.getConnection("jdbc:sqlite:curriculatorapp.db");
         try (PreparedStatement stmt = db.prepareStatement("CREATE TABLE IF NOT EXISTS users "
-                + "(id INTEGER PRIMARY KEY, "
+                + "(user_id INTEGER PRIMARY KEY, "
                 + "name    VARCHAR(255), "
                 + "username    VARCHAR(255),  "
                 + "password   VARCHAR(255), "
                 + "curriculum   VARCHAR(255))")) {
             stmt.executeUpdate();
+
         }
         System.out.println("Luodaan tietokanta jos sitä ei ole");
 

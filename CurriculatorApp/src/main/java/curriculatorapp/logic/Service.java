@@ -3,18 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package curriculatorapp.controller;
+package curriculatorapp.logic;
 
-import curriculatorapp.logic.AppService;
-import curriculatorapp.logic.Service;
+import java.sql.SQLException;
 
 /**
  *
  * @author ehorrosw
  */
-public interface Controller {
+public interface Service {
 
-    public void initService(Service service);
 
     
 }

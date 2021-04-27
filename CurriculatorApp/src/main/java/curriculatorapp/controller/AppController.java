@@ -7,6 +7,7 @@ package curriculatorapp.controller;
 
 import curriculatorapp.ui.CurriculatorUi;
 import curriculatorapp.logic.AppService;
+import curriculatorapp.logic.Service;
 import java.io.IOException;
 import java.sql.SQLException;
 import javafx.fxml.FXML;
@@ -22,10 +23,10 @@ import javafx.scene.paint.Color;
  */
 public class AppController implements Controller {
 
-    private AppService appservice;
+    private Service appservice;
    
     @Override
-    public void initService(AppService appservice) {
+    public void initService(Service appservice) {
         this.appservice = appservice;
     }
     

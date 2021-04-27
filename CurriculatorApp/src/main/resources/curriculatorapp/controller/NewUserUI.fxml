@@ -29,9 +29,6 @@
                            <image>
                               <Image url="@newuser.png" />
                            </image>
-                           <cursor>
-                              <Cursor fx:constant="CLOSED_HAND" />
-                           </cursor>
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
@@ -54,7 +51,7 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </GridPane.margin>
                               </ChoiceBox>
-                              <TextField fx:id="studyChoiceBox" prefHeight="13.0" prefWidth="232.0" GridPane.rowIndex="2">
+                              <TextField fx:id="studyTextfield" prefHeight="13.0" prefWidth="232.0" GridPane.rowIndex="2">
                                  <GridPane.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </GridPane.margin>
