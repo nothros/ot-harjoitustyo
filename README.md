@@ -27,6 +27,12 @@ Sovellus on osa Helsingin yliopiston tietojenkäsittelytieteiden aineopintojen "
 mvn package
 ```
 generoi hakemistoon "target" suoritettavan jar-tiedoston CurriculatorApp-1.0-SNAPSHOT.jar
+Ohjelman voi suorittaa "target"-kansiossa, jossa jar sijaitsee komennolla
+```sh
+java -jar CurriculatorApp-1.0-SNAPSHOT.jar
+
+```
+
 ### Testaus
 Ohjelman voi testata komennolla
 ```sh
