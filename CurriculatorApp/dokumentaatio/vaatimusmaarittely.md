@@ -16,21 +16,21 @@ Sovellus koostuu kolmesta näkymästä
 
  
 ## Toiminnallisuus
-### Ennen kirjautumista
+✅ ### Ennen kirjautumista
 Käyttäjä voi luoda sovellukseen oman käyttäjätunnuksen
- - Käyttäjätunnuksen tulee olla uniikki, sovellus ilmoittaa jos näin ei ole
+ - ✅ Käyttäjätunnuksen tulee olla uniikki, sovellus ilmoittaa jos näin ei ole
  - ✅ Sovellus ilmoittaa virheestä, mikäli kaikkia syöttökenttiä ei ole täytetty
  - ✅  Sovellus kryptaa salasanan käyttäen ulkopuolista kirjastoa apunaan (BCrypt)
 
 Tai käyttäjä voi kirjautua sovellukseen olemassa olevalla käyttäjätunnuksellaan
- - Sovellus ilmoittaa mikäli käyttäjätunnusta ei löydy tai 
+ - ✅ Sovellus ilmoittaa mikäli käyttäjätunnusta ei löydy tai 
  - ✅  Jos käyttäjä ei ole täyttänyt vaadittavia kenttiä
- - Mikäli salasana on väärin, ohjelma ilmoittaa siitä.
+ - ✅ Mikäli salasana on väärin, ohjelma ilmoittaa siitä.
 
 ### Kirjautumisen jälkeen
 Ensikirjautumisella käyttäjän tulee määritellä
  - Tutkinnon nimi
- - Tutkinnon kesto haluamallaan mittarilla (opintopisteet, opintoviikot, osaamispisteet)
+ - Tutkinnon kesto haluamallaan mittarilla (opintopisteet, osaamispisteet)
 
 Päänäkymässä näkyy 
  - suoritettavat kurssit, ja ne voi merkitä tehdyksi, ja niille voi merkitä arvosanan ja suorituspäivämäärään.
