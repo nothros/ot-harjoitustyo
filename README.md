@@ -17,7 +17,7 @@ Sovellus on osa Helsingin yliopiston tietojenkäsittelytieteiden aineopintojen "
  - [Arkkitehtuurikuvaus](https://github.com/nothros/ot-harjoitustyo/blob/master/CurriculatorApp/dokumentaatio/arkkitehtuuri.md)
 
 ## Release
- - Viikko 5
+ - [Viikko 5](https://github.com/nothros/ot-harjoitustyo/releases/tag/viikko5)
 
 
 ## Komentorivitoiminnot
