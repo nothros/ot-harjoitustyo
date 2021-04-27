@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package curriculatorapp.controller;
 
 import curriculatorapp.logic.AppService;
 import curriculatorapp.logic.Service;
-import curriculatorapp.ui.CurriculatorUi;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
@@ -24,9 +18,9 @@ public class NewUserController implements Controller {
     @FXML
     private ChoiceBox studyChoiceBox;
     @FXML
-    private TextField studyTextfield;
+    private TextField studyTextfield, studyScope;
     @FXML
-    private Label nameLabel;
+    private Label nameLabel, newUsererrorlabel;
 
     @Override
     public void initService(Service appservice) {
@@ -51,14 +45,14 @@ public class NewUserController implements Controller {
     @FXML
     public void onStudiesButtonClick() throws IOException {
         String choice = String.valueOf(studyChoiceBox.getValue());
-        String curriculumName=studyTextfield.getText();
-
-        System.out.println(choice);
-    
-        if(choice.isEmpty()){
+        String curriculumName = studyTextfield.getText();
+        String scope = studyScope.getText();
+        System.out.println(choice + " " + curriculumName + " " + scope);
+        newUsererrorlabel.setText("Tähän asti päästiin!");
+        if (choice.isEmpty()) {
             System.out.println("TYHJÄON");
         }
-        
-        CurriculatorUi.loadNewScene("MainUI", appservice);
+
+        // CurriculatorUi.loadNewScene("MainUI", appservice);
     }
 }

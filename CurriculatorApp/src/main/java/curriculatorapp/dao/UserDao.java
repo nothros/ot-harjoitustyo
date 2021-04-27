@@ -9,12 +9,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UserDao {
-
+    private final Connection conn;
+    
+    public UserDao(String url) throws SQLException {
+        conn = DriverManager.getConnection("jdbc:sqlite:" + url);
+        
+    }
     public void createUser(String name, String username, String password) throws SQLException {
         System.out.println("Lisätään ");
-        Connection db = DriverManager.getConnection("jdbc:sqlite:curriculatorapp.db");
-        Statement s = db.createStatement();
-        PreparedStatement p = db.prepareStatement("INSERT INTO users(name,username,password, curriculum) VALUES (?,?,?,?)");
+        PreparedStatement p = conn.prepareStatement("INSERT INTO users(name,username,password, curriculum) VALUES (?,?,?,?)");
         p.setString(1, name);
         p.setString(2, username);
         p.setString(3, password);
@@ -22,23 +25,12 @@ public class UserDao {
         p.executeUpdate();
         System.out.println("Käyttäjä lisätty");
         p.close();
-
-        ResultSet r = s.executeQuery("SELECT * FROM Users");
-        while (r.next()) {
-            System.out.println(r.getInt("user_id") + " " + r.getString("name") + " " + r.getString("password"));
-
-        }
-        r.close();
-        s.close();
-        db.close();
-
     }
 
     public User findByUsername(String username) throws SQLException {
-        Connection db = DriverManager.getConnection("jdbc:sqlite:curriculatorapp.db");
         ResultSet rs;
         User user;
-        try (PreparedStatement stmt = db.prepareStatement("SELECT * FROM users "
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users "
                 + "WHERE username = ?")) {
             stmt.setString(1, username);
             rs = stmt.executeQuery();
@@ -53,8 +45,7 @@ public class UserDao {
     }
 
     public void createNewUserTable() throws SQLException {
-        Connection db = DriverManager.getConnection("jdbc:sqlite:curriculatorapp.db");
-        try (PreparedStatement stmt = db.prepareStatement("CREATE TABLE IF NOT EXISTS users "
+        try (PreparedStatement stmt = conn.prepareStatement("CREATE TABLE IF NOT EXISTS users "
                 + "(user_id INTEGER PRIMARY KEY, "
                 + "name    VARCHAR(255), "
                 + "username    VARCHAR(255),  "
@@ -66,4 +57,12 @@ public class UserDao {
         System.out.println("Luodaan tietokanta jos sitä ei ole");
 
     }
+
+    public void dropTable() throws SQLException {
+        try (PreparedStatement stmt = conn.prepareStatement("DROP TABLE users")) {
+            stmt.executeUpdate();
+        }
+    }
+
+  
 }

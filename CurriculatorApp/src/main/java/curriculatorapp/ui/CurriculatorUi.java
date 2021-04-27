@@ -21,7 +21,7 @@ public class CurriculatorUi extends Application {
 
     @Override
     public void start(Stage stage) throws IOException, FileNotFoundException, SQLException {
-        UserDao dao = new UserDao();
+        UserDao dao = new UserDao("curriculatorapp.db");
         CurriculumDao curriculumdao = new CurriculumDao();
         CoursesDao coursesdao = new CoursesDao();
         LoginService loginService = new LoginService(dao, curriculumdao, coursesdao);
