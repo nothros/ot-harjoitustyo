@@ -21,11 +21,7 @@ Sovellus on osa Helsingin yliopiston tietojenkäsittelytieteiden aineopintojen "
 
 
 ## Komentorivitoiminnot
-Ohjelman pom.xml löytyy kansiosta  
-```sh
-CurriculatorApp/
-```
-Kun olet samassa kansiossa, missä pom.xml sijaitsee:
+
 ### Suoritettavan jarin generointi
 ```sh
 mvn package
