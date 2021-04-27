@@ -16,7 +16,7 @@ Sovellus koostuu kolmesta näkymästä
 
  
 ## Toiminnallisuus
-✅ ### Ennen kirjautumista
+### ✅  Ennen kirjautumista
 Käyttäjä voi luoda sovellukseen oman käyttäjätunnuksen
  - ✅ Käyttäjätunnuksen tulee olla uniikki, sovellus ilmoittaa jos näin ei ole
  - ✅ Sovellus ilmoittaa virheestä, mikäli kaikkia syöttökenttiä ei ole täytetty
