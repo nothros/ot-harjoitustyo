@@ -4,14 +4,13 @@
 
 ### Käyttöliittymä
 #### Login
- - Loginbutton ohjaa joko seurantanäkymään
- - Tai opintoluontinäkymään
+ - Loginbutton ohjaa seurantanäkymään
  
+#### NewUserMain
+ - 
 #### Main
  - Käyttöliittymän FXML loppuun. 
  - Toiminallisuus
- - Tietokannat
- - Controllerit
 
 #### Testit
  - AppService test
