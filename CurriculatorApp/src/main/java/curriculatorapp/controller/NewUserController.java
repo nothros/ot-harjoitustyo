@@ -2,7 +2,9 @@ package curriculatorapp.controller;
 
 import curriculatorapp.logic.AppService;
 import curriculatorapp.logic.Service;
+import curriculatorapp.ui.CurriculatorUi;
 import java.io.IOException;
+import java.sql.SQLException;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -43,16 +45,17 @@ public class NewUserController implements Controller {
     }
 
     @FXML
-    public void onStudiesButtonClick() throws IOException {
+    public void onStudiesButtonClick() throws IOException, SQLException {
         String choice = String.valueOf(studyChoiceBox.getValue());
         String curriculumName = studyTextfield.getText();
         String scope = studyScope.getText();
         System.out.println(choice + " " + curriculumName + " " + scope);
+        appservice.createCurriculum(curriculumName, scope);
         newUsererrorlabel.setText("Tähän asti päästiin!");
         if (choice.isEmpty()) {
             System.out.println("TYHJÄON");
         }
 
-        // CurriculatorUi.loadNewScene("MainUI", appservice);
+        CurriculatorUi.loadNewScene("MainUI", appservice);
     }
 }

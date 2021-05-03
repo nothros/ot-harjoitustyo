@@ -17,11 +17,10 @@ public class UserDao {
     }
     public void createUser(String name, String username, String password) throws SQLException {
         System.out.println("Lisätään ");
-        PreparedStatement p = conn.prepareStatement("INSERT INTO users(name,username,password, curriculum) VALUES (?,?,?,?)");
+        PreparedStatement p = conn.prepareStatement("INSERT INTO Users(name,username,password) VALUES (?,?,?)");
         p.setString(1, name);
         p.setString(2, username);
         p.setString(3, password);
-        p.setString(4, "");
         p.executeUpdate();
         System.out.println("Käyttäjä lisätty");
         p.close();
@@ -30,14 +29,14 @@ public class UserDao {
     public User findByUsername(String username) throws SQLException {
         ResultSet rs;
         User user;
-        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users "
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Users "
                 + "WHERE username = ?")) {
             stmt.setString(1, username);
             rs = stmt.executeQuery();
             if (!rs.next()) {
                 return null;
             }
-            user = new User(rs.getString("name"), rs.getString("username"), rs.getString("password"), rs.getString("curriculum"));
+            user = new User(rs.getString("name"), rs.getString("username"), rs.getString("password"));
         }
         rs.close();
 
@@ -45,12 +44,11 @@ public class UserDao {
     }
 
     public void createNewUserTable() throws SQLException {
-        try (PreparedStatement stmt = conn.prepareStatement("CREATE TABLE IF NOT EXISTS users "
+        try (PreparedStatement stmt = conn.prepareStatement("CREATE TABLE IF NOT EXISTS Users "
                 + "(user_id INTEGER PRIMARY KEY, "
                 + "name    VARCHAR(255), "
                 + "username    VARCHAR(255),  "
-                + "password   VARCHAR(255), "
-                + "curriculum   VARCHAR(255))")) {
+                + "password   VARCHAR(255))")) {
             stmt.executeUpdate();
 
         }
@@ -59,7 +57,7 @@ public class UserDao {
     }
 
     public void dropTable() throws SQLException {
-        try (PreparedStatement stmt = conn.prepareStatement("DROP TABLE users")) {
+        try (PreparedStatement stmt = conn.prepareStatement("DROP TABLE Users")) {
             stmt.executeUpdate();
         }
     }

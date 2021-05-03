@@ -48,10 +48,11 @@ public class LoginController implements Controller {
                 setNotifications("login");
                 User loggedUser = loginService.getLoggedUser();
                 appService = new AppService(loggedUser, loginService.getCurriculumDao(), loginService.getCoursesDao());
-                if (loggedUser.getCurriculum().isEmpty()) {
-                    CurriculatorUi.loadNewScene("NewUserUI", appService);
-                } else {
+                
+                if (appService.checkIfCurriculumExist(username)) {
                     CurriculatorUi.loadNewScene("MainUI", appService);
+                } else {
+                    CurriculatorUi.loadNewScene("NewUserUI", appService);
                 }
             } else {
                 setNotifications("error");

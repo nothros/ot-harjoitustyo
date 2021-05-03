@@ -18,16 +18,27 @@ public class AppService implements Service {
 
     private CurriculumDao curriculumDao;
     private User loggedUser;
-    private CoursesDao coursesdao;
+    private CoursesDao coursesDao;
 
     public AppService(User loggedUser, CurriculumDao curriculumdao, CoursesDao coursesdao) throws SQLException {
         this.curriculumDao = curriculumdao;
         this.loggedUser = loggedUser;
-        this.coursesdao = coursesdao;
-
+        this.coursesDao = coursesdao;
     }
 
     public String getLoggedName() {
         return loggedUser.getName();
+    }
+
+    public String getLoggedUsername() {
+        return loggedUser.getUsername();
+    }
+
+    public void createCurriculum(String curriculumName, String studymeter) throws SQLException {
+        curriculumDao.createCurriculum(getLoggedUsername(), curriculumName, studymeter);
+    }
+
+    public boolean checkIfCurriculumExist(String username) throws SQLException {
+        return curriculumDao.findCurriculum(username);
     }
 }
