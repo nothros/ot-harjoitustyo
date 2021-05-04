@@ -28,11 +28,11 @@ Tai käyttäjä voi kirjautua sovellukseen olemassa olevalla käyttäjätunnukse
  - ✅ Mikäli salasana on väärin, ohjelma ilmoittaa siitä.
 
 ### Kirjautumisen jälkeen
-Ensikirjautumisella käyttäjän tulee määritellä
- - Tutkinnon nimi
- - Tutkinnon kesto haluamallaan mittarilla (opintopisteet, osaamispisteet)
+#### ✅ Ensikirjautuminen
+ - ✅ Käyttäjä määrittää tutkinolleen nimen
+ - ✅ ja keston haluamallaan mittarilla (opintopisteet, osaamispisteet)
 
-Päänäkymässä näkyy 
+#### Päänäkymä
  - suoritettavat kurssit, ja ne voi merkitä tehdyksi, ja niille voi merkitä arvosanan ja suorituspäivämäärään.
  - Mahdollisuus lisätä kursseja
  - Opintojen keskiarvo
