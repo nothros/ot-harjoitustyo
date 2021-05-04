@@ -19,7 +19,7 @@ Sovellus on osa Helsingin yliopiston tietojenkäsittelytieteiden aineopintojen "
 
 ## Releaset
  - [Viikko 5](https://github.com/nothros/ot-harjoitustyo/releases/tag/viikko5)
-
+ - [Viikko 6](https://github.com/nothros/ot-harjoitustyo/releases/tag/viikko6)
 
 ## Komentorivitoiminnot
 
@@ -27,10 +27,10 @@ Sovellus on osa Helsingin yliopiston tietojenkäsittelytieteiden aineopintojen "
 ```sh
 mvn package
 ```
-generoi hakemistoon "target" suoritettavan jar-tiedoston CurriculatorApp-1.0-SNAPSHOT.jar
-Ohjelman voi suorittaa "target"-kansiossa, jossa jar sijaitsee komennolla
+generoi ohjelman päähakemistoon suoritettavan jar-tiedoston CurriculatorApp.jar
+Ohjelman voi suorittaa ohjelman päähakemistossa, jossa siis jar sijaitsee komennolla
 ```sh
-java -jar CurriculatorApp-1.0-SNAPSHOT.jar
+java -jar CurriculatorApp.jar
 
 ```
 
@@ -51,7 +51,17 @@ Checkstylen voi generoida komenolla
 ```sh
  mvn jxr:jxr checkstyle:checkstyle
 ```
-Mahdolliset virheilmoitukset selviävät avaamalla selaimella tiedoston sijainnista *target/site/checkstyle.html*
+Mahdolliset virheilmoitukset selviävät avaamalla selaimessa tiedosto sijainnista *target/site/checkstyle.html*
+
+### JavaDoc
+JavaDoc:n voi generoida
+```sh
+ mvn javadoc:javadoc
+```
+JavaDocia voidaan tarkastella avaamalla selaimessa tiedosto sijainnista *target/site/apidocs/index.html*
+
+
+
 
 
 
