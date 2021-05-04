@@ -16,7 +16,6 @@ Komento täytyy suorittaa kansiossa missä jar sijaitsee, tai vaihtoehtoisesti v
 
 Tässä näkymässä voit kirjautua olemassa olevalla käyttäjätunnuksellasi ja salasanallasi. Mikäli sinulla ei ole käyttäjätunnusta, siirry rekisteröintiin "Rekisteröidy" painikkeesta
 
-<img src="https://raw.githubusercontent.com/nothros/ot-harjoitustyo/master/CurriculatorApp/dokumentaatio/kuvat/kirjaudu.png" width="600">
 
 
 
