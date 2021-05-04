@@ -1,6 +1,8 @@
 # Arkkitehtuurikuvaus
 ## Rakenne
-<img src ="https://raw.githubusercontent.com/nothros/ot-harjoitustyo/master/CurriculatorApp/dokumentaatio/kuvat/paakaavio.png" width="500"> 
+
+
+Rakenne on viisikerrokseninen, sillä fxml vaatii toimiakseen controllerit. Resources- kansio ei ole pakkaus, vaan oma kansiossa, mutta tarvittavat fxml-, sekä css- tiedostot ja kuvat sijaitsevat siellä.
 
 <p>&nbsp;</p>
 
@@ -12,6 +14,9 @@
   - domain: Luokat kuten user ja course
   - dao: tietokantoihin liittyvä toiminallisuus.
   
+### Pakkauskaavio
+
+<img src ="https://raw.githubusercontent.com/nothros/ot-harjoitustyo/master/CurriculatorApp/dokumentaatio/kuvat/paakaavio.png" width="500"> 
 
 ### Käyttöliittymä
 
@@ -37,7 +42,22 @@ Käyttöliittymä luo myös uuden userdaon, sekä appservicen- joka kuuluu sovel
 Käyttäjä luo uuden käyttäjän RegisterUi- nimisessä näkymässä, hän syöttää tekstikenttiin tiedot nimestään, käyttäjänimestään sekä salasanan. Tämän jälkeen kontrolli etenee seuraavanlaisesti.
 <img src ="https://raw.githubusercontent.com/nothros/ot-harjoitustyo/master/CurriculatorApp/dokumentaatio/kuvat/uusikayttajakaavio.png">
 Controlleri kutsuu LoginServiceä, joka ensin tarkistaa, että syötekentät ovat täytetty. Tämän jälkeen se tarkistaa UserDao:sta, onko käyttäjänimi jo käytössä. Jos ei ole, palauttaa UserDao null, ja LoginService luo uuden User-olion. Tämän jälkeen salasana cryptataan user-luokasa, ja lisätään nämä tiedot, ja cryptattu salasana tietokantaan "curriculatorapp.db". LoginService antaa LoginControllerin vaihtaa ilmoitusviestin, jotta käyttäjä osaa palata takasin Login-näkymään.
+
 #### Kirjautuminen
+Käyttäjä kirjautuu päänäkymässään käyttäjätunnuksella ja salasanalla. S
+
+<img src ="https://raw.githubusercontent.com/nothros/ot-harjoitustyo/master/CurriculatorApp/dokumentaatio/kuvat/kirjautuminen.png" width="1000">
+
+
+
+
+
+alasana tarkistetaan, vastaako se tietokantaan talletettua salattua salasanaa (salasana salataan ja tarkistetaan BCrypt-liitännäisellä. Jos käyttäjätunnus ja salasana vastaa, ja käyttäjä kirjautuu ensimmäisen kerran, siirrytään uuden opinnon luomiseen. Mikäli käyttäjältä löytyy jo opinnot, siirtyy hän itse toiminnalliseen päänäkymään. Tässä kohtaa myös LoginService vaihtuu Appserviceksi. Appservice käyttää sekä curriculumdaoa, että coursedaoa
+
+
+
+Mikäli käyttäjätunnus löytyy ja salasana ei täsmää, ilmoitetaan siitä. Toisaalta jos käyttäjätunnusta ei löydy, siitäkin ilmoitetaan.
+
 
 
 
