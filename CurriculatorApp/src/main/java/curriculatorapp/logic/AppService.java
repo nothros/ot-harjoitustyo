@@ -34,8 +34,8 @@ public class AppService implements Service {
         return loggedUser.getUsername();
     }
 
-    public void createCurriculum(String curriculumName, String studymeter) throws SQLException {
-        curriculumDao.createCurriculum(getLoggedUsername(), curriculumName, studymeter);
+    public void createCurriculum(String curriculumName, String scope, String choice) throws SQLException {
+        curriculumDao.createCurriculum(getLoggedUsername(), curriculumName, scope, choice);
     }
 
     public boolean checkIfCurriculumExist(String username) throws SQLException {

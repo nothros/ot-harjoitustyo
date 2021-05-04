@@ -27,14 +27,15 @@ public class UserDaoTest {
     UserDao userDao;
     User user;
     String testName, testUserName, testPassword;
-
+    String testDatabase;
     @Before
     public void setUp() throws FileNotFoundException, SQLException {
+        testDatabase="testdb";
         testName = "testName";
         testUserName = "testUsername";
         testPassword = "testUserPassword";
 
-        userDao = new UserDao("testdb.db");
+        userDao = new UserDao(testDatabase+".db");
         userDao.createNewUserTable();
         user = new User(testName, testUserName);
         user.setPassword(testPassword);
@@ -63,6 +64,6 @@ public class UserDaoTest {
 
     @After
     public void tearDown() throws SQLException {
-        userDao.dropTable();
+        userDao.deleteDatabase(testDatabase);
     }
 }

@@ -12,8 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *
- * @author ehorrosw
+ * Luokka Curriculums-tietokantapöydän toiminnalle.
  */
 public class CurriculumDao {
 
@@ -30,6 +29,7 @@ public class CurriculumDao {
                 + "user_id   INTEGER, "
                 + "curriculum_name    VARCHAR(255),  "
                 + "studymeter   VARCHAR(255), "
+                + "studychoice   VARCHAR(255), "
                 + " FOREIGN KEY (user_id) REFERENCES users (user_id))")) {
             stmt.executeUpdate();
 
@@ -37,21 +37,32 @@ public class CurriculumDao {
         System.out.println("Luodaan tietokanta jos sitä ei ole");
 
     }
-
-    public void createCurriculum(String loggedUsername, String curriculumName, String studymeter) throws SQLException {
+/**
+ * Metodi lisää uuden opinnon tietokantatauluun Curriculums.
+     * @param loggedUsername    Kirjautuneena olevan käyttäjän käyttätunnus
+     * @param curriculumName    Käyttäjän määrittelemä nimi opinnoilleen
+     * @param scope     Opintojen laajuus
+     * @param choice    Opintojen laajuutta kuvaaava termi 
+ */
+    public void createCurriculum(String loggedUsername, String curriculumName, String scope, String choice) throws SQLException {
         System.out.println("Lisätään ");
         PreparedStatement p1 = conn.prepareStatement("SELECT user_id FROM Users WHERE username=?");
         p1.setString(1, loggedUsername);
         ResultSet r = p1.executeQuery();
         if (r.next()) {
-            PreparedStatement p2 = conn.prepareStatement("INSERT INTO Curriculums (user_id,curriculum_name,studymeter) VALUES (?,?,?)");
+            PreparedStatement p2 = conn.prepareStatement("INSERT INTO Curriculums (user_id,curriculum_name,studymeter,studychoice) VALUES (?,?,?,?)");
             p2.setInt(1, r.getInt("user_id"));
             p2.setString(2, curriculumName);
-            p2.setString(3, studymeter);
+            p2.setString(3, scope);
+            p2.setString(4, choice);
             p2.executeUpdate();
         }
     }
-
+/**
+ * Metodi etsii, onko käyttäjällä opintoja.
+     * @param loggedUsername    Kirjautuneen käyttäjän käyttäjätunnus         
+     * @return                  Palauttaa true mikäli käyttäjällä on opintoja
+ */
     public boolean findCurriculum(String loggedUsername) throws SQLException {
         boolean exists = false;
         PreparedStatement p1 = conn.prepareStatement("SELECT user_id FROM Users WHERE username=?");

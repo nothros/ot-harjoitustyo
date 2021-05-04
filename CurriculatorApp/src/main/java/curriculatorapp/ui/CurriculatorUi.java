@@ -15,6 +15,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Luokka käynnistää sovelluksen ja vaihtaa sovelluksen näkymää
+ */
 public class CurriculatorUi extends Application {
 
     private static Scene scene;
@@ -34,6 +37,15 @@ public class CurriculatorUi extends Application {
         stage.show();
     }
 
+    /**
+     * Metodi kertoo mikä on onnistumistodennäköisyys syöteluvulla ottaen
+     * huomioon olion konstruktorissa asetetun kalibrointiarvon.
+     *
+     *
+     * @param fxml  käytettävän fxml-tiedoston nimi
+     * @param service   käytettävä sovelluslogiikka
+     * @return palauttaa ladatun näkymän
+     */
     public static Parent loadFXMLAndController(String fxml, Service service) throws IOException {
         FXMLLoader loader = new FXMLLoader(CurriculatorUi.class.getResource(fxml + ".fxml"));
         Parent root = loader.load();

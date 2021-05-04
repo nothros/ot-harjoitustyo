@@ -1,4 +1,3 @@
-
 package curriculatorapp.logic;
 
 import curriculatorapp.dao.CoursesDao;
@@ -6,7 +5,6 @@ import curriculatorapp.dao.CurriculumDao;
 import curriculatorapp.dao.UserDao;
 import curriculatorapp.domain.User;
 import java.sql.SQLException;
-
 
 public class LoginService implements Service {
 
@@ -55,7 +53,6 @@ public class LoginService implements Service {
         return false;
 
     }
-
 
     public void createNewTablesIfNotExists() throws SQLException {
         userdao.createNewUserTable();
