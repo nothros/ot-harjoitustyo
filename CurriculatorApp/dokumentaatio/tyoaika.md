@@ -23,5 +23,8 @@
 |27.4.21 | 4 | Uusien database:in luonti, ja rakenteen paikkaamista jotta toimivat. Eka kirjautuminen toiminnallisuutta vaille valmis|
 |3.5.21| 1.5 | Tietokantapäivitystä, kirjautuminen ohjaa oikeisiin näkymiin. Jar-virheiden poistamista|
 |4.5.21| 4 | JavaDoc-luontia, virhetekstin lisääminen uuden opinnon luontiin|
- Yhteensä 61  Viikko 5 (1.5h)
+|4.5.21| 4 | Loput säädöt testaukseen, virheiden mestästystä, readme-päivitystä|
+
+
+ Yhteensä 69h  Viikko 6
 
