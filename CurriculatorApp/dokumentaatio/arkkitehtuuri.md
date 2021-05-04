@@ -1,6 +1,6 @@
 # Arkkitehtuurikuvaus
 ## Rakenne
-<img src ="https://raw.githubusercontent.com/nothros/ot-harjoitustyo/master/CurriculatorApp/dokumentaatio/kuvat/paakaavio.png" width="400"> 
+<img src ="https://raw.githubusercontent.com/nothros/ot-harjoitustyo/master/CurriculatorApp/dokumentaatio/kuvat/paakaavio.png" width="500"> 
 
 <p>&nbsp;</p>
 
