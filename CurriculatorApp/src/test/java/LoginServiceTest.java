@@ -33,8 +33,8 @@ public class LoginServiceTest {
     
     @Before
     public void setUp() throws SQLException {
-        testuserdao=new UserDao("testuserDB");
-        testcurriculumdao=new CurriculumDao("testcurriculumDB");
+        testuserdao=new UserDao("testuserDB.db");
+        testcurriculumdao=new CurriculumDao("testcurriculumDB.db");
         testcoursesdao=new CoursesDao();
         loginService=new LoginService(testuserdao,testcurriculumdao, testcoursesdao);
         loginService.createNewTablesIfNotExists();
