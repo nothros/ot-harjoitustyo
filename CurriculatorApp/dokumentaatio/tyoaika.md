@@ -21,7 +21,7 @@
 |25.4.21 | 3 | Uusi näkymä Scenebuilderilla ja päivitellään testejä |
 |26.4.21 | 2 | Uutta rakennetta jotta näkymät päivittyvät oikein ja databaset toimisivat|
 |27.4.21 | 4 | Uusien database:in luonti, ja rakenteen paikkaamista jotta toimivat. Eka kirjautuminen toiminnallisuutta vaille valmis|
-
-
- Yhteensä 59.5  Viikko 5 (11h)
+|3.5.21| 1.5 | Tietokantapäivitystä, kirjautuminen ohjaa oikeisiin näkymiin. Jar-virheiden poistamista|
+|4.5.21| 4 | JavaDoc-luontia, virhetekstin lisääminen uuden opinnon luontiin|
+ Yhteensä 61  Viikko 5 (1.5h)
 
