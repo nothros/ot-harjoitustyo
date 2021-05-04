@@ -17,10 +17,7 @@
      + appcontroller
   - Dao
      + coursesdao
-     + curriculumdao
-     + userdao
    - Domain
-     + user
      + course
      + curriculum
 
