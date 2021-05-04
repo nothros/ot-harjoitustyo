@@ -8,9 +8,9 @@ import java.sql.SQLException;
 
 public class LoginService implements Service {
 
-    public UserDao userdao;
-    public CurriculumDao curriculumdao;
-    public CoursesDao coursesdao;
+    private UserDao userdao;
+    private CurriculumDao curriculumdao;
+    private CoursesDao coursesdao;
     private User loggedUser;
 
     public LoginService(UserDao userdao, CurriculumDao curriculumdao, CoursesDao coursesdao) {

@@ -5,6 +5,7 @@
  */
 package curriculatorapp.dao;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -24,7 +25,7 @@ public class CurriculumDao {
     }
 
     public void createNewTable() throws SQLException {
-        try (PreparedStatement stmt = conn.prepareStatement("CREATE TABLE IF NOT EXISTS Curriculums "
+        try ( PreparedStatement stmt = conn.prepareStatement("CREATE TABLE IF NOT EXISTS Curriculums "
                 + "(curriculum_id INTEGER PRIMARY KEY, "
                 + "user_id   INTEGER, "
                 + "curriculum_name    VARCHAR(255),  "
@@ -37,13 +38,15 @@ public class CurriculumDao {
         System.out.println("Luodaan tietokanta jos sitä ei ole");
 
     }
-/**
- * Metodi lisää uuden opinnon tietokantatauluun Curriculums.
-     * @param loggedUsername    Kirjautuneena olevan käyttäjän käyttätunnus
-     * @param curriculumName    Käyttäjän määrittelemä nimi opinnoilleen
-     * @param scope     Opintojen laajuus
-     * @param choice    Opintojen laajuutta kuvaaava termi 
- */
+
+    /**
+     * Metodi lisää uuden opinnon tietokantatauluun Curriculums.
+     *
+     * @param loggedUsername Kirjautuneena olevan käyttäjän käyttätunnus
+     * @param curriculumName Käyttäjän määrittelemä nimi opinnoilleen
+     * @param scope Opintojen laajuus
+     * @param choice Opintojen laajuutta kuvaaava termi
+     */
     public void createCurriculum(String loggedUsername, String curriculumName, String scope, String choice) throws SQLException {
         System.out.println("Lisätään ");
         PreparedStatement p1 = conn.prepareStatement("SELECT user_id FROM Users WHERE username=?");
@@ -58,20 +61,22 @@ public class CurriculumDao {
             p2.executeUpdate();
         }
     }
-/**
- * Metodi etsii, onko käyttäjällä opintoja.
-     * @param loggedUsername    Kirjautuneen käyttäjän käyttäjätunnus         
-     * @return                  Palauttaa true mikäli käyttäjällä on opintoja
- */
+
+    /**
+     * Metodi etsii, onko käyttäjällä opintoja.
+     *
+     * @param loggedUsername Kirjautuneen käyttäjän käyttäjätunnus
+     * @return Palauttaa true mikäli käyttäjällä on opintoja
+     */
     public boolean findCurriculum(String loggedUsername) throws SQLException {
         boolean exists = false;
         PreparedStatement p1 = conn.prepareStatement("SELECT user_id FROM Users WHERE username=?");
         p1.setString(1, loggedUsername);
-        try (ResultSet r1 = p1.executeQuery()) {
+        try ( ResultSet r1 = p1.executeQuery()) {
             if (r1.next()) {
                 PreparedStatement p2 = conn.prepareStatement("SELECT * FROM Curriculums WHERE user_id=?");
                 p2.setInt(1, r1.getInt("user_id"));
-                try (ResultSet r2 = p2.executeQuery()) {
+                try ( ResultSet r2 = p2.executeQuery()) {
                     if (r2.next()) {
                         String name = r2.getString("curriculum_name");
                         System.out.println(name);
@@ -82,5 +87,17 @@ public class CurriculumDao {
         }
 
         return exists;
+    }
+
+    /**
+     * Metodi poistaa koko tietokannan.Tarkoitettu testien käyttöön
+     *
+     * @param database poistettavan tietokannan nimi
+     */
+    public void deleteDatabase(String database) throws SQLException {
+        conn.close();
+        File deletedDB = new File(database + ".db");
+        deletedDB.delete();
+
     }
 }

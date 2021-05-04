@@ -4,32 +4,41 @@
  * and open the template in the editor.
  */
 
+import curriculatorapp.dao.CurriculumDao;
 import curriculatorapp.dao.UserDao;
 import curriculatorapp.domain.User;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import org.junit.After;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author ehorrosw
  */
-public class UserDaoTest {
-
-    public UserDaoTest() {
-    }
+public class CurriculumDaoTest {
 
     UserDao userDao;
+    CurriculumDao curriculumDao;
     User user;
     String testName, testUserName, testPassword;
     String testDatabase;
 
+    public CurriculumDaoTest() {
+    }
+
     @Before
     public void setUp() throws FileNotFoundException, SQLException {
-        testDatabase = "testdb";
+        testDatabase = "curriculumTestDB";
+        setUpUserTable();
+        curriculumDao = new CurriculumDao(testDatabase + ".db");
+        curriculumDao.createNewTable();
+
+    }
+    public void setUpUserTable() throws SQLException {
         testName = "testName";
         testUserName = "testUsername";
         testPassword = "testUserPassword";
@@ -42,26 +51,16 @@ public class UserDaoTest {
     }
 
     @Test
-    public void createUserAndFindsByUsername() throws SQLException {
-        userDao.createUser(user.getName(), user.getUsername(), user.getPassword());
-        User u = (User) userDao.findByUsername("testUsername");
-
-        assertEquals("testName", u.getName());
-        assertEquals("testUsername", u.getUsername());
-    }
-
-  
-   @Test
-    public void createUserNotInDB() throws SQLException {
-        userDao.createUser(user.getName(), user.getUsername(), user.getPassword());
-        User u = (User) userDao.findByUsername("noUserName");
-
-        assertEquals(null, u);
+    public void testIfCurrilumDoesNotExists() throws SQLException {
+        assertEquals(false, curriculumDao.findCurriculum("UserNotExists"));
 
     }
+
+    
 
     @After
     public void tearDown() throws SQLException {
-        userDao.deleteDatabase(testDatabase);
+        curriculumDao.deleteDatabase(testDatabase);
     }
+
 }
