@@ -4,6 +4,7 @@
 
 Rakenne on viisikerrokseninen, sillä fxml vaatii toimiakseen controllerit. Resources- kansio ei ole pakkaus, vaan oma kansiossa, mutta tarvittavat fxml-, sekä css- tiedostot ja kuvat sijaitsevat siellä.
 
+<img src=https://raw.githubusercontent.com/nothros/ot-harjoitustyo/master/CurriculatorApp/dokumentaatio/kuvat/kerrosarkkitehtuuri.png>
 <p>&nbsp;</p>
 
 <p> Ohjelman rakenne on on jaoiteltu seuraavanlaisesti</p>
