@@ -24,11 +24,25 @@ import javafx.scene.paint.Color;
 public class AppController implements Controller {
 
     private Service appservice;
+    private Label courselabel;
    
     @Override
+    @FXML
     public void initService(Service appservice) {
         this.appservice = appservice;
+       setNull();
     }
+    
+    @FXML
+    public void setNull(){
+         courselabel = new Label();
+             courselabel.setVisible(false);
+         
+    }
+    
+   
+        
+    
     
   
 
