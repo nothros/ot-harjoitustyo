@@ -234,7 +234,3 @@
 .progress-indicator:disabled {
     -fx-opacity: -fx-disabled-opacity;
 }
-
-.indeterminate {
-    -fx-opacity: 0.55;
-    -fx-stroke: linear-gradient(from 0.0% 0.0% to 70.0% 70.0%, circleindicator-color 70.0%, white 75.0%, white);
