@@ -34,6 +34,8 @@ public class CurriculatorUi extends Application {
 
         scene = new Scene(uiRoot, 800, 600);
         stage.setScene(scene);
+        stage.setResizable(false);
+
         stage.show();
     }
 

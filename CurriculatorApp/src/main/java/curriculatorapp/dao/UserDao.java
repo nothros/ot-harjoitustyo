@@ -19,15 +19,17 @@ public class UserDao {
         conn = DriverManager.getConnection("jdbc:sqlite:" + url);
 
     }
-/**
- * Metodi lisää uuden käyttäjän tietokantatauluun Users.
-     * @param name  käyttäjän nimi
-     * @param username  käyttäjätunnus
-     * @param password  salattu salasana
- */
+
+    /**
+     * Metodi lisää uuden käyttäjän tietokantatauluun Users.
+     *
+     * @param name käyttäjän nimi
+     * @param username käyttäjätunnus
+     * @param password salattu salasana
+     */
     public void createUser(String name, String username, String password) throws SQLException {
         System.out.println("Lisätään ");
-        try (PreparedStatement p = conn.prepareStatement("INSERT INTO Users(name,username,password) VALUES (?,?,?)")) {
+        try ( PreparedStatement p = conn.prepareStatement("INSERT INTO Users(name,username,password) VALUES (?,?,?)")) {
             p.setString(1, name);
             p.setString(2, username);
             p.setString(3, password);
@@ -35,15 +37,18 @@ public class UserDao {
             System.out.println("Käyttäjä lisätty");
         }
     }
-/**
- * Metodi etsii käyttäjän tietokantataulusta Users.
-     * @param username  käyttäjätunnus jolla etsitään, onko käyttäjätunnus jo olemassa
+
+    /**
+     * Metodi etsii käyttäjän tietokantataulusta Users.
+     *
+     * @param username käyttäjätunnus jolla etsitään, onko käyttäjätunnus jo
+     * olemassa
      * @return palauttaa käyttäjän oliona, mikäli tämä löytyy.
- */
+     */
     public User findByUsername(String username) throws SQLException {
         ResultSet rs;
         User user;
-        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Users "
+        try ( PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Users "
                 + "WHERE username = ?")) {
             stmt.setString(1, username);
             rs = stmt.executeQuery();
@@ -56,11 +61,12 @@ public class UserDao {
 
         return user;
     }
-/**
- * Metodi lisää Users- tietokantataulun, mikäli sitä ei ole olemassa.
- */
+
+    /**
+     * Metodi lisää Users- tietokantataulun, mikäli sitä ei ole olemassa.
+     */
     public void createNewUserTable() throws SQLException {
-        try (PreparedStatement stmt = conn.prepareStatement("CREATE TABLE IF NOT EXISTS Users "
+        try ( PreparedStatement stmt = conn.prepareStatement("CREATE TABLE IF NOT EXISTS Users "
                 + "(user_id INTEGER PRIMARY KEY, "
                 + "name    VARCHAR(255), "
                 + "username    VARCHAR(255),  "
@@ -71,10 +77,12 @@ public class UserDao {
         System.out.println("Luodaan tietokanta jos sitä ei ole");
 
     }
-/**
- * Metodi poistaa koko tietokannan.Tarkoitettu testien käyttöön
-     * @param database  poistettavan tietokannan nimi
- */
+
+    /**
+     * Metodi poistaa koko tietokannan.Tarkoitettu testien käyttöön
+     *
+     * @param database poistettavan tietokannan nimi
+     */
     public void deleteDatabase(String database) throws SQLException {
         conn.close();
         File deletedDB = new File(database + ".db");

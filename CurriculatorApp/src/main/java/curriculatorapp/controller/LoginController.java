@@ -15,8 +15,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
 /**
- * Luokka Login-näkymän kontrollointiin.
- * Login-näkymä on tarkoitettu kirjautumista varten
+ * Luokka Login-näkymän kontrollointiin. Login-näkymä on tarkoitettu
+ * kirjautumista varten
  */
 public class LoginController implements Controller {
 
@@ -39,7 +39,6 @@ public class LoginController implements Controller {
     @Override
     public void initService(Service appservice) {
         this.loginService = (LoginService) appservice;
-
     }
 
     /**
@@ -68,7 +67,7 @@ public class LoginController implements Controller {
                 User loggedUser = loginService.getLoggedUser();
                 appService = new AppService(loggedUser, loginService.getCurriculumDao(), loginService.getCoursesDao());
 
-                if (appService.checkIfCurriculumExist(username)) {
+                if (appService.checkIfCurriculumExist()) {
                     CurriculatorUi.loadNewScene("MainUI", appService);
                 } else {
                     CurriculatorUi.loadNewScene("NewUserUI", appService);

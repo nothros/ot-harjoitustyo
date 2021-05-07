@@ -19,184 +19,121 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" fx:controller="curriculatorapp.controller.AppController" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="parent" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
-         <center>
-            <Pane prefHeight="598.0" prefWidth="798.0" styleClass="parent" BorderPane.alignment="CENTER">
-               <children>
-                  <ProgressIndicator fx:id="indicator" accessibleRole="IMAGE_VIEW" layoutX="359.0" layoutY="65.0" minHeight="117.0" minWidth="110.0" prefHeight="117.0" prefWidth="110.0" progress="1.0" style="-fx-progress-color: #155e5e;" stylesheets="@stylesheet.css">
-                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
-                     </cursor>
-                     <rotationAxis>
-                        <Point3D />
-                     </rotationAxis></ProgressIndicator>
-                  <VBox alignment="CENTER" layoutX="333.0" layoutY="233.0" prefHeight="300.0" prefWidth="166.0">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="9.0" prefWidth="187.0" styleClass="calcfont" text="Olet suorittanut ">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
+<AnchorPane fx:controller="curriculatorapp.controller.AppController" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" styleClass="parent" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <BorderPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0">
+            <left>
+                <VBox alignment="CENTER" disable="true" prefHeight="600.0" prefWidth="300.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label alignment="CENTER" ellipsisString="" graphicTextGap="0.0" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" opacity="0.47" pickOnBounds="false" prefHeight="59.0" prefWidth="288.0" text="Tervetuloa" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+                            <font>
+                                <Font name="Rockwell Nova Light Italic" size="38.0" />
+                            </font>
                         </Label>
-                        <Label fx:id="donenumber" alignment="CENTER" contentDisplay="TOP" prefHeight="9.0" prefWidth="187.0" styleClass="orangenumberlabel" textAlignment="CENTER">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
+                        <Label fx:id="nameLabel" alignment="CENTER" ellipsisString="" graphicTextGap="0.0" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" opacity="0.47" pickOnBounds="false" prefHeight="52.0" prefWidth="284.0" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+                            <font>
+                                <Font name="Rockwell Nova Light Italic" size="38.0" />
+                            </font>
                         </Label>
-                        <Label fx:id="coursescopeforcalc" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="176.0" styleClass="calcfont">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="176.0" styleClass="calcfont">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="9.0" prefWidth="187.0" styleClass="calcfont" text="Keskiarvosi on">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="meannumber" alignment="CENTER" contentDisplay="TOP" prefHeight="58.0" prefWidth="193.0" styleClass="orangenumberlabel">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="9.0" prefWidth="187.0" styleClass="calcfont">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="9.0" prefWidth="187.0" styleClass="calcfont" text="Jäljellä vielä">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="leftnumber" alignment="CENTER" contentDisplay="TOP" prefHeight="9.0" prefWidth="187.0" styleClass="orangenumberlabel" textAlignment="CENTER">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="183.0" styleClass="calcfont">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="35.0" layoutY="72.0" prefHeight="42.0" prefWidth="292.0">
-                     <children>
-                        <TextField fx:id="coursename_textfield" pickOnBounds="false" prefHeight="31.0" prefWidth="205.0" styleClass="mdl-layout">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <TextField fx:id="scope_textfield" prefHeight="35.0" prefWidth="56.0" styleClass="mdl-layout" />
-                        <Button graphicTextGap="9.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="25.0" styleClass="returnbutton">
-                           <graphic>
-                              <FontAwesomeIconView glyphName="CHECK" size="25" styleClass="closeback_button">
-                                 <rotationAxis>
-                                    <Point3D />
-                                 </rotationAxis>
-                              </FontAwesomeIconView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <Label layoutX="35.0" layoutY="98.0" prefHeight="41.0" prefWidth="196.0" styleClass="o" text="Lisää uusi kurssi" textFill="#616161" />
-                  <Label layoutX="237.0" layoutY="98.0" prefHeight="41.0" prefWidth="87.0" styleClass="o" text="Laajuus" textFill="#616161" />
-                  <Label layoutX="29.0" layoutY="200.0" prefHeight="20.0" prefWidth="309.0" styleClass="calcfont" text="Kurssit" />
-                  <Label fx:id="curriculumnamelabel" ellipsisString="" graphicTextGap="0.0" layoutX="14.0" layoutY="6.0" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" opacity="0.47" pickOnBounds="false" prefHeight="59.0" prefWidth="478.0" styleClass="headerlabel" text="Koulutuksen nimi" textAlignment="CENTER" textFill="#1b1b1b" textOverrun="CLIP">
+                    </children>
+                </VBox>
+            </left>
+            <center>
+                <Pane prefHeight="598.0" prefWidth="798.0" styleClass="parent" BorderPane.alignment="CENTER">
+                    <children>
+                        <ProgressIndicator fx:id="indicator" layoutX="359.0" layoutY="65.0" minHeight="117.0" minWidth="110.0" prefHeight="117.0" prefWidth="110.0" progress="1.0" style="-fx-progress-color: #155e5e;" stylesheets="@stylesheet.css">
                      
+                        </ProgressIndicator>
+                        <VBox alignment="CENTER" layoutX="333.0" layoutY="233.0" prefHeight="300.0" prefWidth="166.0">
+                            <children>
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="9.0" prefWidth="187.0" styleClass="calcfont" text="Olet suorittanut ">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="donenumber" alignment="CENTER" contentDisplay="TOP" prefHeight="9.0" prefWidth="187.0" styleClass="orangenumberlabel" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="coursescopeforcalc" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="176.0" styleClass="calcfont">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="176.0" styleClass="calcfont">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                <Label alignment="CENTER" prefHeight="9.0" prefWidth="187.0" styleClass="calcfont" text="Keskiarvosi on">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="meannumber" alignment="CENTER" contentDisplay="TOP" prefHeight="58.0" prefWidth="193.0" styleClass="orangenumberlabel">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <Label alignment="CENTER" prefHeight="9.0" prefWidth="187.0" styleClass="calcfont">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="9.0" prefWidth="187.0" styleClass="calcfont" text="Jäljellä vielä">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="leftnumber" alignment="CENTER" contentDisplay="TOP" prefHeight="9.0" prefWidth="187.0" styleClass="orangenumberlabel" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="183.0" styleClass="calcfont">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </VBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="35.0" layoutY="72.0" prefHeight="42.0" prefWidth="292.0">
+                            <children>
+                                <TextField fx:id="coursename_textfield" pickOnBounds="false" prefHeight="31.0" prefWidth="205.0" styleClass="mdl-layout">
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets right="10.0" />
+                                    </HBox.margin>
+                                </TextField>
+                                <TextField fx:id="scope_textfield" prefHeight="35.0" prefWidth="56.0" styleClass="mdl-layout" />
+                                <Button graphicTextGap="9.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="25.0" styleClass="returnbutton">
+                                    <graphic>
+                                        <FontAwesomeIconView glyphName="CHECK" size="25" styleClass="closeback_button">
+                                            <rotationAxis>
+                                                <Point3D />
+                                            </rotationAxis>
+                                        </FontAwesomeIconView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <Label layoutX="35.0" layoutY="98.0" prefHeight="41.0" prefWidth="196.0" styleClass="o" text="Lisää uusi kurssi" textFill="#616161" />
+                        <Label layoutX="237.0" layoutY="98.0" prefHeight="41.0" prefWidth="87.0" styleClass="o" text="Laajuus" textFill="#616161" />
+                        <Label layoutX="29.0" layoutY="200.0" prefHeight="20.0" prefWidth="309.0" styleClass="calcfont" text="Kurssit" />
+                        <Label fx:id="curriculumNameLabel" layoutX="14.0" layoutY="6.0" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="59.0" prefWidth="478.0" styleClass="headerlabel" textAlignment="CENTER" textFill="#222221" >
+                        </Label>
+                        <ScrollPane fx:id="courselist" layoutX="23.0" layoutY="217.0" prefHeight="342.0" prefWidth="319.0" styleClass="invisible">
+                            <content>
                      
-                   
-                  </Label>
-                  <ScrollPane layoutX="23.0" layoutY="217.0" prefHeight="342.0" prefWidth="319.0" styleClass="invisible">
-                    <content>
-                      <AnchorPane>
-                           <children>
-                              <VBox prefHeight="340.0" prefWidth="304.0" styleClass="invisible">
-                                 <children>
-                                    <Label fx:id="courselabel" prefHeight="41.0" prefWidth="290.0" styleClass="cardpane-layout">
-                                       <graphic>
-                                          <HBox alignment="CENTER_LEFT" minHeight="33.0" prefHeight="41.0" prefWidth="264.0">
-                                             <children>
-                                                <Pane prefHeight="39.0" prefWidth="41.0" styleClass="sidebar">
-                                                   <children>
-                                                      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="1.0" prefHeight="25.0" prefWidth="34.0" styleClass="whitetext" text="5" textFill="#e1e1e1" />
-                                                      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="18.0" prefHeight="17.0" prefWidth="34.0" styleClass="miniwhitetext" text="osp" textFill="#e1e1e1" />
-                                                   </children>
-                                                   
-                                                </Pane>
-                                                <Pane prefHeight="37.0" prefWidth="34.0">
-                                                   <children>
-                                                      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="13.0" prefHeight="25.0" prefWidth="34.0" styleClass="blacktext" text="5" textFill="#e1e1e1" />
-                                                      <FontAwesomeIconView glyphName="STAR" layoutX="11.0" layoutY="13.0" styleClass="star" />
-                                                   </children>
-                                               
-                                                </Pane>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="37.0" prefWidth="172.0" styleClass="smallblacktext" text="Koulutuksen nimi tähän" textFill="#e1e1e1" />
-                                                <Button graphicTextGap="0.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="0.0" styleClass="trashbutton">
-                                                   <graphic>
-                                                      <FontAwesomeIconView glyphName="CHECK" size="17" styleClass="closeback_button"  wrappingWidth="15.142857551574707" />
-                                                   </graphic>
-                                                </Button>
-                                                <Button graphicTextGap="0.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="0.0" styleClass="trashbutton">
-                                                   <graphic>
-                                                      <FontAwesomeIconView glyphName="TRASH" size="17" styleClass="trash_button" wrappingWidth="14.142857551574707" />
-                                                   </graphic>
-                                                </Button>
-                                             </children>
-                                          </HBox>
-                                       </graphic>
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                  
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </padding>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                    </content>
-                  </ScrollPane>
-               </children>
-            </Pane>
-         </center>
-         <left>
-            <VBox alignment="CENTER" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" styleClass="sidebar" BorderPane.alignment="CENTER">
-               <children>
-                  <Label alignment="CENTER" ellipsisString="" graphicTextGap="0.0" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" opacity="0.47" pickOnBounds="false" prefHeight="59.0" prefWidth="288.0" text="Tervetuloa" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-                     <font>
-                        <Font name="Rockwell Nova Light Italic" size="38.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="namelabel" alignment="CENTER" ellipsisString="" graphicTextGap="0.0" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" opacity="0.47" pickOnBounds="false" prefHeight="52.0" prefWidth="284.0" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-                     <font>
-                        <Font name="Rockwell Nova Light Italic" size="38.0" />
-                     </font>
-                  </Label>
-                  <GridPane>
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                  </GridPane>
-               </children>
-            </VBox>
-         </left>
-      </BorderPane>
-   </children>
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </Pane>
+            </center>
+         
+        </BorderPane>
+    </children>
 </AnchorPane>

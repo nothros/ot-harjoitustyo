@@ -8,18 +8,30 @@ import at.favre.lib.crypto.bcrypt.BCrypt;
 public class User {
 
     private String name, username, password;
+    private Curriculum curriculum;
 
     public User(String name, String username, String password) {
         this.name = name;
         this.username = username;
         this.password = password;
-
+       
     }
 
     public User(String name, String username) {
         this.name = name;
         this.username = username;
 
+    }
+    
+    public void setCurriculum(Curriculum curriculum){
+
+        this.curriculum=new Curriculum(curriculum);
+        System.out.print(curriculum.getChoice());
+  
+    }
+    
+    public Curriculum getCurriculum(){
+        return this.curriculum;
     }
 
     public void setName(String name) {

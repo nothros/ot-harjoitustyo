@@ -1,5 +1,6 @@
 package curriculatorapp.controller;
 
+import curriculatorapp.domain.Curriculum;
 import curriculatorapp.logic.AppService;
 import curriculatorapp.logic.Service;
 import curriculatorapp.ui.CurriculatorUi;
@@ -25,6 +26,8 @@ public class NewUserController implements Controller {
     private TextField studyTextfield, studyScope;
     @FXML
     private Label nameLabel, newUsererrorlabel;
+    
+    private Curriculum curriculum;
 
     /**
      * Metodi asettaa tälle luokalla logiikkaluokan.
@@ -57,7 +60,7 @@ public class NewUserController implements Controller {
      */
     @FXML
     public void setName() {
-        nameLabel.setText(appservice.getLoggedName() + "!");
+        nameLabel.setText(appservice.getLoggedUser().getName() + "!");
     }
 
     /**
@@ -69,17 +72,22 @@ public class NewUserController implements Controller {
     @FXML
     public void onStudiesButtonClick() throws IOException, SQLException {
         String curriculumName = studyTextfield.getText();
-        String scope = studyScope.getText();
+        String scopeString = studyScope.getText();
         String choice = String.valueOf(studyChoiceBox.getValue());
 
-        if ((curriculumName.trim().isEmpty()) || (scope.trim().isEmpty()) || (choice.trim().isEmpty())) {
+        if ((curriculumName.trim().isEmpty()) || (scopeString.trim().isEmpty()) || (choice.trim().isEmpty())) {
             setNotifications("empty");
         }
 
         try {
-            Integer.parseInt(scope);
+            Integer.parseInt(scopeString);
+            int scope=Integer.valueOf(scopeString);
             appservice.createCurriculum(curriculumName, scope, choice);
+            curriculum = new Curriculum(curriculumName, choice, scope, appservice.getLoggedUser());
+            appservice.getLoggedUser().setCurriculum(curriculum);
+            
             CurriculatorUi.loadNewScene("MainUI", appservice);
+
         } catch (NumberFormatException e) {
             setNotifications("notNumber");
         }
