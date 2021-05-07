@@ -78,13 +78,14 @@ public class CurriculumDao {
             if (r1.next()) {
                 PreparedStatement p2 = conn.prepareStatement("SELECT * FROM Curriculums WHERE user_id=?");
                 p2.setInt(1, r1.getInt("user_id"));
-                ResultSet r2 = p2.executeQuery(); 
-                    if (!r2.next()) {
-                        return null;
-                    }
-                    curriculum = new Curriculum(r2.getString("curriculum_name"), r2.getString("studychoice"), r2.getInt("studymeter"), loggedUser);
-                
+                ResultSet r2 = p2.executeQuery();
+                if (!r2.next()) {
+                    return null;
+                }
+                curriculum = new Curriculum(r2.getString("curriculum_name"), r2.getString("studychoice"), r2.getInt("studymeter"), loggedUser);
+
             }
+
         }
 
         return curriculum;

@@ -36,9 +36,9 @@ public class AppController implements Controller {
     @Override
     @FXML
     public void initService(Service appservice) {
-       
-            this.appservice = (AppService) appservice;
-            
+
+        this.appservice = (AppService) appservice;
+
         try {
             this.curriculum = (Curriculum) this.appservice.findCurriculum();
             System.out.print("ONnistui");
@@ -47,7 +47,6 @@ public class AppController implements Controller {
         }
         setNameLabels();
 
-       
     }
 
     /**

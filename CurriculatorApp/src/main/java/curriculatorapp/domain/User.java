@@ -23,6 +23,7 @@ public class User {
 
     }
     
+    
     public void setCurriculum(Curriculum curriculum){
 
         this.curriculum=new Curriculum(curriculum);

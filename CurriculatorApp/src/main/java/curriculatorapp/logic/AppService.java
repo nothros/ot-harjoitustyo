@@ -32,17 +32,16 @@ public class AppService implements Service {
         return loggedUser;
     }
 
-
     public void createCurriculum(String curriculumName, int scope, String choice) throws SQLException {
         curriculumDao.createCurriculum(loggedUser.getName(), curriculumName, scope, choice);
     }
 
     public boolean checkIfCurriculumExist() throws SQLException {
-        curriculum=(Curriculum)findCurriculum();
+        curriculum = (Curriculum) findCurriculum();
         return curriculum != null;
     }
-    
-    public Curriculum findCurriculum() throws SQLException{
+
+    public Curriculum findCurriculum() throws SQLException {
         curriculum = (Curriculum) curriculumDao.findCurriculum(loggedUser);
         return curriculum;
     }

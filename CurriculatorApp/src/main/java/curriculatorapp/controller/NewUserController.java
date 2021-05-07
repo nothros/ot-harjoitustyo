@@ -13,9 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
 /**
- * Luokka NewUser-näkymän kontrollointiin.
- * NewUser-näkymä on tarkoitettu ensikirjautumista varten, jossa voidaan asettaa
- * itselle opinnot
+ * Luokka NewUser-näkymän kontrollointiin. NewUser-näkymä on tarkoitettu
+ * ensikirjautumista varten, jossa voidaan asettaa itselle opinnot
  */
 public class NewUserController implements Controller {
 
@@ -26,7 +25,7 @@ public class NewUserController implements Controller {
     private TextField studyTextfield, studyScope;
     @FXML
     private Label nameLabel, newUsererrorlabel;
-    
+
     private Curriculum curriculum;
 
     /**
@@ -81,11 +80,11 @@ public class NewUserController implements Controller {
 
         try {
             Integer.parseInt(scopeString);
-            int scope=Integer.valueOf(scopeString);
+            int scope = Integer.valueOf(scopeString);
             appservice.createCurriculum(curriculumName, scope, choice);
             curriculum = new Curriculum(curriculumName, choice, scope, appservice.getLoggedUser());
             appservice.getLoggedUser().setCurriculum(curriculum);
-            
+
             CurriculatorUi.loadNewScene("MainUI", appservice);
 
         } catch (NumberFormatException e) {
