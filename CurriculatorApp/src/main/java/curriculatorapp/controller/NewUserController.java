@@ -13,8 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
 /**
- * Luokka NewUser-näkymän kontrollointiin. NewUser-näkymä on tarkoitettu
- * ensikirjautumista varten, jossa voidaan asettaa itselle opinnot
+ * Luokka NewUser-näkymän kontrollointiin.
  */
 public class NewUserController implements Controller {
 
@@ -29,7 +28,7 @@ public class NewUserController implements Controller {
     private Curriculum curriculum;
 
     /**
-     * Metodi asettaa tälle luokalla logiikkaluokan.
+     * Metodi asettaa tälle luokalle logiikkaluokan.
      *
      * @param appservice Annetaan kontrollerin käyttämä logiikka sitä
      * kutsuttaessa.
@@ -75,20 +74,22 @@ public class NewUserController implements Controller {
         String choice = String.valueOf(studyChoiceBox.getValue());
 
         if ((curriculumName.trim().isEmpty()) || (scopeString.trim().isEmpty()) || (choice.trim().isEmpty())) {
+            System.out.println("TYHJÄ");
             setNotifications("empty");
-        }
+        } else {
 
-        try {
-            Integer.parseInt(scopeString);
-            int scope = Integer.valueOf(scopeString);
-            appservice.createCurriculum(curriculumName, scope, choice);
-            curriculum = new Curriculum(curriculumName, choice, scope, appservice.getLoggedUser());
-            appservice.getLoggedUser().setCurriculum(curriculum);
+            try {
+                Integer.parseInt(scopeString);
+                int scope = Integer.valueOf(scopeString);
+                appservice.createCurriculum(curriculumName, scope, choice);
+                curriculum = new Curriculum(curriculumName, choice, scope, appservice.getLoggedUser());
+                appservice.getLoggedUser().setCurriculum(curriculum);
 
-            CurriculatorUi.loadNewScene("MainUI", appservice);
+                CurriculatorUi.loadNewScene("MainUI", appservice);
 
-        } catch (NumberFormatException e) {
-            setNotifications("notNumber");
+            } catch (NumberFormatException e) {
+                setNotifications("notNumber");
+            }
         }
 
     }
@@ -105,7 +106,6 @@ public class NewUserController implements Controller {
         if (reason.equals("empty")) {
             newUsererrorlabel.setTextFill(Color.RED);
             newUsererrorlabel.setText("Täytä kaikki kentät!");
-            emptyFields();
 
         }
         if (reason.equals("notNumber")) {

@@ -63,6 +63,7 @@ public class LoginController implements Controller {
             setNotifications("empty");
         } else {
             if (loginService.login(username, password)) {
+                System.out.print("LOGGAAA");
                 setNotifications("login");
                 User loggedUser = loginService.getLoggedUser();
                 appService = new AppService(loggedUser, loginService.getCurriculumDao(), loginService.getCoursesDao());

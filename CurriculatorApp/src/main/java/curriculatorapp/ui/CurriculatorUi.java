@@ -26,7 +26,7 @@ public class CurriculatorUi extends Application {
     public void start(Stage stage) throws IOException, FileNotFoundException, SQLException {
         UserDao dao = new UserDao("curriculatorapp.db");
         CurriculumDao curriculumdao = new CurriculumDao("curriculatorapp.db");
-        CoursesDao coursesdao = new CoursesDao();
+        CoursesDao coursesdao = new CoursesDao("curriculatorapp.db");
         LoginService loginService = new LoginService(dao, curriculumdao, coursesdao);
         loginService.createNewTablesIfNotExists();
 

@@ -1,14 +1,49 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package curriculatorapp.domain;
 
+package curriculatorapp.domain;
 /**
- *
- * @author ehorrosw
+ *Kurssia kuvaava luokka 
  */
 public class Course {
+    private String courseName;
+    private boolean done;
+    private int courseScope;
+
+   
+    
+    public Course(String courseName, int courseScope) {
+        this.courseName = courseName;
+        this.courseScope = courseScope;
+        this.done = false;
+    }
+    public Course(String courseName, boolean done, int courseScope) {
+        this.courseName = courseName;
+        this.courseScope = courseScope;
+        this.done = done;
+
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
+    }
+
+    public int getCourseScope() {
+        return courseScope;
+    }
+
+    public void setCourseScope(int courseScope) {
+        this.courseScope = courseScope;
+    }
     
 }

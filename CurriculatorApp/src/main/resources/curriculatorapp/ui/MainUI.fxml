@@ -41,7 +41,7 @@
             <center>
                 <Pane prefHeight="598.0" prefWidth="798.0" styleClass="parent" BorderPane.alignment="CENTER">
                     <children>
-                        <ProgressIndicator fx:id="indicator" layoutX="359.0" layoutY="65.0" minHeight="117.0" minWidth="110.0" prefHeight="117.0" prefWidth="110.0" progress="1.0" style="-fx-progress-color: #155e5e;" stylesheets="@stylesheet.css">
+                        <ProgressIndicator fx:id="processIndicator" layoutX="359.0" layoutY="65.0" minHeight="117.0" minWidth="110.0" prefHeight="117.0" prefWidth="110.0" progress="1.0" style="-fx-progress-color: #155e5e;" stylesheets="@stylesheet.css">
                      
                         </ProgressIndicator>
                         <VBox alignment="CENTER" layoutX="333.0" layoutY="233.0" prefHeight="300.0" prefWidth="166.0">
@@ -56,7 +56,7 @@
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="coursescopeforcalc" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="176.0" styleClass="calcfont">
+                                <Label fx:id="courseMeterLabelUpper" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="176.0" styleClass="calcfont">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
@@ -91,7 +91,7 @@
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="183.0" styleClass="calcfont">
+                                <Label fx:id="courseMeterLabelLower" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="183.0" styleClass="calcfont">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
@@ -100,7 +100,7 @@
                         </VBox>
                         <HBox alignment="CENTER_LEFT" layoutX="35.0" layoutY="72.0" prefHeight="42.0" prefWidth="292.0">
                             <children>
-                                <TextField fx:id="coursename_textfield" pickOnBounds="false" prefHeight="31.0" prefWidth="205.0" styleClass="mdl-layout">
+                                <TextField fx:id="courseNameTextfield" pickOnBounds="false" prefHeight="31.0" prefWidth="205.0" styleClass="mdl-layout">
                                     <opaqueInsets>
                                         <Insets />
                                     </opaqueInsets>
@@ -108,8 +108,8 @@
                                         <Insets right="10.0" />
                                     </HBox.margin>
                                 </TextField>
-                                <TextField fx:id="scope_textfield" prefHeight="35.0" prefWidth="56.0" styleClass="mdl-layout" />
-                                <Button graphicTextGap="9.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="25.0" styleClass="returnbutton">
+                                <TextField fx:id="scopeTextfield" prefHeight="35.0" prefWidth="56.0" styleClass="mdl-layout" />
+                                <Button graphicTextGap="9.0" onAction="#onAddCourseButtonClick" mnemonicParsing="false" prefHeight="33.0" prefWidth="25.0" styleClass="addCourseButton">
                                     <graphic>
                                         <FontAwesomeIconView glyphName="CHECK" size="25" styleClass="closeback_button">
                                             <rotationAxis>
@@ -122,12 +122,17 @@
                         </HBox>
                         <Label layoutX="35.0" layoutY="98.0" prefHeight="41.0" prefWidth="196.0" styleClass="o" text="Lisää uusi kurssi" textFill="#616161" />
                         <Label layoutX="237.0" layoutY="98.0" prefHeight="41.0" prefWidth="87.0" styleClass="o" text="Laajuus" textFill="#616161" />
-                        <Label layoutX="29.0" layoutY="200.0" prefHeight="20.0" prefWidth="309.0" styleClass="calcfont" text="Kurssit" />
-                        <Label fx:id="curriculumNameLabel" layoutX="14.0" layoutY="6.0" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="59.0" prefWidth="478.0" styleClass="headerlabel" textAlignment="CENTER" textFill="#222221" >
+                        <Label fx:id="errorLabel" nodeOrientation="RIGHT_TO_LEFT"  layoutX="-25" layoutY="120" prefHeight="41.0" prefWidth="350"  textFill="#616161" />
+                        <Label  layoutX="29.0" layoutY="200.0" prefHeight="20.0" prefWidth="309.0" styleClass="calcfont" text="Kurssit" />
+                        <Label fx:id="curriculumNameLabel" layoutX="14.0" layoutY="6.0" minWidth="-Infinity" prefHeight="59.0" prefWidth="478.0" styleClass="headerlabel" textAlignment="CENTER" textFill="#222221" >
                         </Label>
                         <ScrollPane fx:id="courselist" layoutX="23.0" layoutY="217.0" prefHeight="342.0" prefWidth="319.0" styleClass="invisible">
                             <content>
-                     
+                               
+                            <VBox>
+                            
+                            </VBox>
+                            
                             </content>
                         </ScrollPane>
                     </children>

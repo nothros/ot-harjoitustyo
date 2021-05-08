@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package curriculatorapp.domain;
 
 /**
+ * Opintoja kuvaava luokka.
  *
- * @author ehorrosw
  */
 public class Curriculum {
 
@@ -20,7 +15,6 @@ public class Curriculum {
         this.choice = choice;
         this.scope = scope;
         this.user = user;
-        System.out.println(getCurriculumName());
     }
 
     Curriculum(Curriculum curriculum) {

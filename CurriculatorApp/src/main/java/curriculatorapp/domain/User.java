@@ -3,7 +3,7 @@ package curriculatorapp.domain;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
 /**
- * Olioluokka käyttäjälle. Erityiskäyttö myös salasanan kryptaamiseen ja tarkistukseen
+ * Käyttäjää kuvaava luokka
  */
 public class User {
 
@@ -14,7 +14,7 @@ public class User {
         this.name = name;
         this.username = username;
         this.password = password;
-       
+
     }
 
     public User(String name, String username) {
@@ -22,16 +22,15 @@ public class User {
         this.username = username;
 
     }
-    
-    
-    public void setCurriculum(Curriculum curriculum){
 
-        this.curriculum=new Curriculum(curriculum);
+    public void setCurriculum(Curriculum curriculum) {
+
+        this.curriculum = new Curriculum(curriculum);
         System.out.print(curriculum.getChoice());
-  
+
     }
-    
-    public Curriculum getCurriculum(){
+
+    public Curriculum getCurriculum() {
         return this.curriculum;
     }
 
@@ -58,23 +57,27 @@ public class User {
     public String getPassword() {
         return this.password;
     }
-/**
- * Tämä metodi salaa käyttäjän salasanan.
-     * @param password  Käyttäjän ehdottama salasana
-     * @return  Salattu salasana 
-     * 
- */
+
+    /**
+     * Metodi salasanan salaamiseen
+     *
+     * @param password Käyttäjän ehdottama salasana
+     * @return Salattu salasana
+     *
+     */
     public String encryptPassword(String password) {
         String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
         return bcryptHashString;
     }
-/**
- * Tämä metodi tarkastaa onko salasana oikein.
-     * @param triedPassword     Käyttäjän kokeilema salasana
-     * @param passwordDB    Tietokannassa oleva salasana
-     * @return  Palauttaa true; mikäli salasana tsämää.
-     * 
- */
+
+    /**
+     * Metodi salasanan tarkistamiseen.
+     *
+     * @param triedPassword Käyttäjän kokeilema salasana
+     * @param passwordDB Tietokannassa oleva salasana
+     * @return Palauttaa true; mikäli salasana tsämää.
+     *
+     */
     public Boolean checkPassword(String triedPassword, String passwordDB) {
         BCrypt.Result result = BCrypt.verifyer().verify(triedPassword.toCharArray(), passwordDB);
         return result.verified;

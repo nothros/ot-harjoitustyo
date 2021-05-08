@@ -20,7 +20,7 @@ public class LoginService implements Service {
     }
 
     public boolean login(String username, String password) throws SQLException {
-
+        loggedUser = (User) userdao.findByUsername(username);
         if (loggedUser == null) {
             return false;
         }
