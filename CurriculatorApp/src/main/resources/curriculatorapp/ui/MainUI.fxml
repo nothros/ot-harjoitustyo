@@ -9,6 +9,7 @@
 <?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -18,6 +19,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.ChoiceBox?>
 
 <AnchorPane fx:controller="curriculatorapp.controller.AppController" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" styleClass="parent" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
@@ -129,12 +131,71 @@
                         <ScrollPane fx:id="courselist" layoutX="23.0" layoutY="217.0" prefHeight="342.0" prefWidth="319.0" styleClass="invisible">
                             <content>
                                
-                            <VBox>
                             
-                            </VBox>
                             
                             </content>
                         </ScrollPane>
+                        <Pane fx:id="popup" layoutX="19.0" layoutY="223.0" prefHeight="150.0" prefWidth="344.0" styleClass="popup">
+                     <children>
+                        <VBox layoutY="-1.0" prefHeight="151.0" prefWidth="343.0">
+                           <children>
+                              <Pane prefHeight="41.0" prefWidth="438.0" styleClass="sidebar">
+                                 <children>
+                                    <Button fx:id="hidePopup" onAction="#onHidePopupButtonClick" graphicTextGap="9.0" layoutX="310.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="9.0" prefWidth="35.0" styleClass="returnbutton">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="CLOSE" size="17" styleClass="closeback_button">
+                                             <rotationAxis>
+                                                <Point3D />
+                                             </rotationAxis>
+                                          </FontAwesomeIconView>
+                                       </graphic>
+                                    </Button>
+                                    <Label fx:id="coursenamePopupLabel" ellipsisString="" graphicTextGap="0.0" layoutX="14.0" layoutY="-9.0" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" pickOnBounds="false" prefHeight="59.0" prefWidth="253.0" styleClass="whitetext" text="Kurssin nimi" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+                                       <font>
+                                          <Font name="Rockwell Nova Light Italic" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <GridPane>
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="10.0" prefWidth="44.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="10.0" prefWidth="106.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="7.0" prefWidth="10.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="321.0" minWidth="10.0" prefWidth="160.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="321.0" minWidth="10.0" prefWidth="80.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                     <ChoiceBox fx:id="gradeChoiceBox" prefHeight="25.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </ChoiceBox>
+                                    <DatePicker prefHeight="31.0" prefWidth="135.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                    <Label prefHeight="15.0" prefWidth="87.0" styleClass="o" text="arvosana" textFill="#616161" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                     <Button fx:id="CourseDone"  graphicTextGap="9.0" GridPane.columnIndex="4" GridPane.rowIndex="1" mnemonicParsing="false" prefHeight="9.0" prefWidth="35.0" styleClass="returnbutton">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="CHECK" size="25" styleClass="closeback_button">
+                                             <rotationAxis>
+                                                <Point3D />
+                                             </rotationAxis>
+                                          </FontAwesomeIconView>
+                                       </graphic>
+                                    </Button>
+                                    
+                                    
+                                    <Label prefHeight="15.0" prefWidth="87.0" styleClass="o" text="suorituspäivä" textFill="#616161" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
                     </children>
                 </Pane>
             </center>

@@ -5,17 +5,23 @@
  */
 package curriculatorapp.dao;
 
+import curriculatorapp.domain.Course;
+import curriculatorapp.domain.Curriculum;
+import curriculatorapp.domain.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author ehorrosw
  */
 public class CoursesDao {
+
     private final Connection conn;
 
     public CoursesDao(String url) throws SQLException {
@@ -25,41 +31,62 @@ public class CoursesDao {
 
     public void createNewTable() throws SQLException {
         Connection db = DriverManager.getConnection("jdbc:sqlite:curriculatorapp.db");
-        try (PreparedStatement stmt = db.prepareStatement("CREATE TABLE IF NOT EXISTS courses "
+        try ( PreparedStatement stmt = db.prepareStatement("CREATE TABLE IF NOT EXISTS Courses "
                 + "(course_id INTEGER PRIMARY KEY, "
-                + "curriculum_id   INTEGER, "
+                + "user_id   INTEGER, "
                 + "coursename    VARCHAR(255),  "
                 + "scope  INTEGER, "
-                + " FOREIGN KEY (curriculum_id) REFERENCES Curriculums (curriculum_id))")) {
+                + "grade  VARCHAR(255), "
+                + "done   BOOLEAN, "
+                + " FOREIGN KEY (user_id) REFERENCES Users (user_id))")) {
             stmt.executeUpdate();
 
         }
         System.out.println("Luodaan tietokanta jos sitä ei ole");
 
     }
-     public void createCourse(String loggedUsername, String coursename, int scope) throws SQLException {
+
+    public void createCourse(User loggedUser, String coursename, int scope) throws SQLException {
         System.out.println("Lisätään ");
-        PreparedStatement p1 = conn.prepareStatement("SELECT user_id FROM Users WHERE username=?");
-        p1.setString(1, loggedUsername);
-        ResultSet r1 = p1.executeQuery();
-        p1.close();
-        if (r1.next()) {
-            PreparedStatement p2 = conn.prepareStatement("SELECT curriculum_id FROM Curriculums WHERE user_id=?");
-            p2.setInt(1, r1.getInt("user_id"));
-            
-        ResultSet r2 = p2.executeQuery();
-        p2.close();
-         if (r2.next()) {
-            PreparedStatement p3 = conn.prepareStatement("INSERT INTO Courses (curriculum_id,coursename,scope) VALUES (?,?,?)");
-            p3.setInt(1, r2.getInt("curriculum_id"));
-            p3.setString(2, coursename);
-            p3.setInt(3, scope);
-            p3.executeUpdate();
-            p3.close();
-            
+        try ( PreparedStatement stmt = conn.prepareStatement("INSERT INTO Courses (user_id,coursename,scope,grade,done) VALUES (?,?,?,?,?)")) {
+            stmt.setInt(1, loggedUser.getId());
+            stmt.setString(2, coursename);
+            stmt.setInt(3, scope);
+            stmt.setString(4, "");
+            stmt.setBoolean(5, false);
+            stmt.executeUpdate();
+
         }
-         r2.close();
+
     }
-        r1.close();
-     }
+
+    public void updateCourse(Course course, String grade) throws SQLException {
+        System.out.println("päivitetään ");
+    
+                try(PreparedStatement stmt = conn.prepareStatement("UPDATE Courses SET grade=?, done=? WHERE course_id=?")){
+                stmt.setString(1, grade);
+                stmt.setBoolean(2, true);
+                stmt.setInt(3, course.getId());
+
+                stmt.executeUpdate();
+                }
+
+    }
+
+    public List<Course> findAllCourses(User loggedUser) throws SQLException {
+        List<Course> courses = new ArrayList<>();
+        Course course;
+
+        try ( PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Courses WHERE user_id=?")) {
+            stmt.setInt(1, loggedUser.getId());
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                course = new Course(rs.getInt("course_id"), rs.getString("coursename"), rs.getBoolean("done"), rs.getInt("scope"), rs.getString("grade"));
+                courses.add(course);
+            }
+        }
+        return courses;
+
+    }
 }

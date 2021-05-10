@@ -1,15 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package curriculatorapp.logic;
 
 import curriculatorapp.dao.CoursesDao;
 import curriculatorapp.dao.CurriculumDao;
+import curriculatorapp.domain.Course;
 import curriculatorapp.domain.Curriculum;
 import curriculatorapp.domain.User;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -26,6 +24,7 @@ public class AppService implements Service {
         this.curriculumDao = curriculumdao;
         this.loggedUser = loggedUser;
         this.coursesDao = coursesdao;
+        
     }
 
     public User getLoggedUser() {
@@ -33,16 +32,27 @@ public class AppService implements Service {
     }
 
     public void createCurriculum(String curriculumName, int scope, String choice) throws SQLException {
-        curriculumDao.createCurriculum(loggedUser.getName(), curriculumName, scope, choice);
+        curriculumDao.createCurriculum(loggedUser, curriculumName, scope, choice);
+  
     }
     
     public void createCourse(String loggedUsername, String courseName, int scope) throws SQLException {
-        coursesDao.createCourse(loggedUsername, courseName, scope);
+        coursesDao.createCourse(loggedUser, courseName, scope);
+        System.out.print("kurssi lisätty");
+              System.out.println(coursesDao.findAllCourses(loggedUser));
     }
 
     public boolean checkIfCurriculumExist() throws SQLException {
         curriculum = (Curriculum) findCurriculum();
         return curriculum != null;
+    }
+    
+    public void markDone(Course course, String grade) throws SQLException{
+       coursesDao.updateCourse(course, grade);
+    }
+    
+    public List<Course> findAllCourses() throws SQLException{
+        return coursesDao.findAllCourses(loggedUser);
     }
 
     public Curriculum findCurriculum() throws SQLException {

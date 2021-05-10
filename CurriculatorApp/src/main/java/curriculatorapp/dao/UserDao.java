@@ -56,7 +56,7 @@ public class UserDao {
                 return null;
             }
             System.out.print(rs.getString("password"));
-            user = new User(rs.getString("name"), rs.getString("username"), rs.getString("password"));
+            user = new User(rs.getInt("user_id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
         }
         rs.close();
 

@@ -45,22 +45,17 @@ public class CurriculumDao {
      * @param scope Opintojen laajuus
      * @param choice Opintojen laajuutta kuvaaava termi
      */
-    public void createCurriculum(String loggedUsername, String curriculumName, int scope, String choice) throws SQLException {
+    @SuppressWarnings("empty-statement")
+    public void createCurriculum(User loggedUser, String curriculumName, int scope, String choice) throws SQLException {
         System.out.println("Lisätään ");
-        PreparedStatement p1 = conn.prepareStatement("SELECT user_id FROM Users WHERE username=?");
-        p1.setString(1, loggedUsername);
-        ResultSet r = p1.executeQuery();
-        if (r.next()) {
-            PreparedStatement p2 = conn.prepareStatement("INSERT INTO Curriculums (user_id,curriculum_name,studymeter,studychoice) VALUES (?,?,?,?)");
-            p2.setInt(1, r.getInt("user_id"));
-            p2.setString(2, curriculumName);
-            p2.setInt(3, scope);
-            p2.setString(4, choice);
-            p2.executeUpdate();
+            try ( PreparedStatement stmt = conn.prepareStatement("INSERT INTO Curriculums (user_id,curriculum_name,studymeter,studychoice) VALUES (?,?,?,?)")){
+            stmt.setInt(1, loggedUser.getId());
+            stmt.setString(2, curriculumName);
+            stmt.setInt(3, scope);
+            stmt.setString(4, choice);
+            stmt.executeUpdate();
             
-           
         }
-       
     }
 
     /**
@@ -71,21 +66,18 @@ public class CurriculumDao {
      */
     public Curriculum findCurriculum(User loggedUser) throws SQLException {
         Curriculum curriculum = null;
-        PreparedStatement p1 = conn.prepareStatement("SELECT user_id FROM Users WHERE username=?");
-        p1.setString(1, loggedUser.getUsername());
-        try ( ResultSet r1 = p1.executeQuery()) {
-            if (r1.next()) {
-                PreparedStatement p2 = conn.prepareStatement("SELECT * FROM Curriculums WHERE user_id=?");
-                p2.setInt(1, r1.getInt("user_id"));
-                ResultSet r2 = p2.executeQuery();
-                if (!r2.next()) {
+
+                try(PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Curriculums WHERE user_id=?")){
+                stmt.setInt(1, loggedUser.getId());
+                ResultSet rs = stmt.executeQuery();
+                if (!rs.next()) {
                     return null;
                 }
-                curriculum = new Curriculum(r2.getString("curriculum_name"), r2.getString("studychoice"), r2.getInt("studymeter"), loggedUser);
+                curriculum = new Curriculum(rs.getString("curriculum_name"), rs.getString("studychoice"), rs.getInt("studymeter"), loggedUser);
 
             }
 
-        }
+        
 
         return curriculum;
     }

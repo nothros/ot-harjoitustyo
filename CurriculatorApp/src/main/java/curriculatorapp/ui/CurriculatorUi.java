@@ -21,9 +21,11 @@ import javafx.stage.Stage;
 public class CurriculatorUi extends Application {
 
     private static Scene scene;
-
+    private static Stage st;
+    
     @Override
     public void start(Stage stage) throws IOException, FileNotFoundException, SQLException {
+        CurriculatorUi.st=stage;
         UserDao dao = new UserDao("curriculatorapp.db");
         CurriculumDao curriculumdao = new CurriculumDao("curriculatorapp.db");
         CoursesDao coursesdao = new CoursesDao("curriculatorapp.db");
@@ -33,6 +35,7 @@ public class CurriculatorUi extends Application {
         Parent uiRoot = loadFXMLAndController("LoginUI", loginService);
 
         scene = new Scene(uiRoot, 800, 600);
+        scene.getStylesheets().add(getClass().getResource("stylesheet.css").toString());
         stage.setScene(scene);
         stage.setResizable(false);
 
@@ -61,6 +64,8 @@ public class CurriculatorUi extends Application {
         Parent newScene = loadFXMLAndController(fxml, service);
         scene.setRoot(newScene);
     }
+    
+    
 
     public static void main(String[] args) {
         launch(args);

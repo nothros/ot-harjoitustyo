@@ -9,8 +9,10 @@ public class User {
 
     private String name, username, password;
     private Curriculum curriculum;
+    private int id;
 
-    public User(String name, String username, String password) {
+    public User(int id, String name, String username, String password) {
+        this.id=id;
         this.name = name;
         this.username = username;
         this.password = password;
@@ -32,6 +34,11 @@ public class User {
 
     public Curriculum getCurriculum() {
         return this.curriculum;
+    }
+    
+    
+    public int getId() {
+        return this.id;
     }
 
     public void setName(String name) {

@@ -5,9 +5,9 @@ package curriculatorapp.domain;
  *
  */
 public class Curriculum {
-
+    
     private String curriculumName, choice;
-    private int scope;
+    private int scope, coursesDone;
     private final User user;
 
     public Curriculum(String curriculumName, String choice, int scope, User user) {
@@ -22,6 +22,8 @@ public class Curriculum {
         this.choice = curriculum.getChoice();
         this.scope = curriculum.getScope();
         this.user = curriculum.getUser();
+
+        
     }
 
     public User getUser() {
@@ -39,4 +41,15 @@ public class Curriculum {
     public int getScope() {
         return this.scope;
     }
+
+    @Override
+    public String toString() {
+        return "Curriculum{" + "curriculumName=" + curriculumName + ", choice=" + choice + ", scope=" + scope + ", user=" + user + '}';
+    }
+
+    private int getCoursesDone() {
+        return this.coursesDone;
+    }
+    
+    
 }
