@@ -33,12 +33,12 @@ public class CoursesDao {
         Connection db = DriverManager.getConnection("jdbc:sqlite:curriculatorapp.db");
         try ( PreparedStatement stmt = db.prepareStatement("CREATE TABLE IF NOT EXISTS Courses "
                 + "(course_id INTEGER PRIMARY KEY, "
-                + "user_id   INTEGER, "
+                + "curriculum_id   INTEGER, "
                 + "coursename    VARCHAR(255),  "
                 + "scope  INTEGER, "
                 + "grade  VARCHAR(255), "
                 + "done   BOOLEAN, "
-                + " FOREIGN KEY (user_id) REFERENCES Users (user_id))")) {
+                + " FOREIGN KEY (curriculum_id) REFERENCES Curriculums (curriculum_id))")) {
             stmt.executeUpdate();
 
         }
@@ -46,10 +46,10 @@ public class CoursesDao {
 
     }
 
-    public void createCourse(User loggedUser, String coursename, int scope) throws SQLException {
+    public void createCourse(Curriculum userCurriculum, String coursename, int scope) throws SQLException {
         System.out.println("Lisätään ");
-        try ( PreparedStatement stmt = conn.prepareStatement("INSERT INTO Courses (user_id,coursename,scope,grade,done) VALUES (?,?,?,?,?)")) {
-            stmt.setInt(1, loggedUser.getId());
+        try ( PreparedStatement stmt = conn.prepareStatement("INSERT INTO Courses (curriculum_id,coursename,scope,grade,done) VALUES (?,?,?,?,?)")) {
+            stmt.setInt(1, userCurriculum.getId());
             stmt.setString(2, coursename);
             stmt.setInt(3, scope);
             stmt.setString(4, "");
@@ -73,12 +73,12 @@ public class CoursesDao {
 
     }
 
-    public List<Course> findAllCourses(User loggedUser) throws SQLException {
+    public List<Course> findAllCourses(Curriculum userCurriculum) throws SQLException {
         List<Course> courses = new ArrayList<>();
         Course course;
 
-        try ( PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Courses WHERE user_id=?")) {
-            stmt.setInt(1, loggedUser.getId());
+        try ( PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Courses WHERE curriculum_id=?")) {
+            stmt.setInt(1, userCurriculum.getId());
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {

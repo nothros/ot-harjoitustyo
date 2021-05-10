@@ -33,13 +33,12 @@ public class AppService implements Service {
 
     public void createCurriculum(String curriculumName, int scope, String choice) throws SQLException {
         curriculumDao.createCurriculum(loggedUser, curriculumName, scope, choice);
-  
     }
     
-    public void createCourse(String loggedUsername, String courseName, int scope) throws SQLException {
-        coursesDao.createCourse(loggedUser, courseName, scope);
+    public void createCourse(String courseName, int scope) throws SQLException {
+        coursesDao.createCourse(curriculum, courseName, scope);
         System.out.print("kurssi lisätty");
-              System.out.println(coursesDao.findAllCourses(loggedUser));
+              System.out.println(coursesDao.findAllCourses(curriculum));
     }
 
     public boolean checkIfCurriculumExist() throws SQLException {
@@ -52,7 +51,7 @@ public class AppService implements Service {
     }
     
     public List<Course> findAllCourses() throws SQLException{
-        return coursesDao.findAllCourses(loggedUser);
+        return coursesDao.findAllCourses(curriculum);
     }
 
     public Curriculum findCurriculum() throws SQLException {

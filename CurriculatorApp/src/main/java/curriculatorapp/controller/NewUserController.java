@@ -83,7 +83,7 @@ public class NewUserController implements Controller {
                 int scope = Integer.valueOf(scopeString);
                 appservice.createCurriculum(curriculumName, scope, choice);
                 curriculum = new Curriculum(curriculumName, choice, scope, appservice.getLoggedUser());
-                appservice.getLoggedUser().setCurriculum(curriculum);
+                
 
                 CurriculatorUi.loadNewScene("MainUI", appservice);
 

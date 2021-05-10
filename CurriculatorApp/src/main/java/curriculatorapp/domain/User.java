@@ -25,12 +25,7 @@ public class User {
 
     }
 
-    public void setCurriculum(Curriculum curriculum) {
-
-        this.curriculum = new Curriculum(curriculum);
-        System.out.print(curriculum.getChoice());
-
-    }
+    
 
     public Curriculum getCurriculum() {
         return this.curriculum;

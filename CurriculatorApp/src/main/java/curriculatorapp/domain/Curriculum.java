@@ -1,29 +1,39 @@
 package curriculatorapp.domain;
 
+import java.util.ArrayList;
+
 /**
  * Opintoja kuvaava luokka.
  *
  */
 public class Curriculum {
-    
+    private ArrayList<Course> courses;
     private String curriculumName, choice;
-    private int scope, coursesDone;
+    private int id, scope, coursesDone;
     private final User user;
 
-    public Curriculum(String curriculumName, String choice, int scope, User user) {
+
+    
+     public Curriculum(String curriculumName, String choice, int scope, User user) {
         this.curriculumName = curriculumName;
         this.choice = choice;
         this.scope = scope;
         this.user = user;
+        this.courses = new ArrayList<>();
+    }
+     
+        public Curriculum(int id, String curriculumName, String choice, int scope, User user) {
+        this.id=id;
+        this.curriculumName = curriculumName;
+        this.choice = choice;
+        this.scope = scope;
+        this.user = user;
+        
     }
 
-    Curriculum(Curriculum curriculum) {
-        this.curriculumName = curriculum.getCurriculumName();
-        this.choice = curriculum.getChoice();
-        this.scope = curriculum.getScope();
-        this.user = curriculum.getUser();
-
-        
+    
+    public int getId(){
+        return this.id;
     }
 
     public User getUser() {

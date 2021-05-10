@@ -73,7 +73,7 @@ public class CurriculumDao {
                 if (!rs.next()) {
                     return null;
                 }
-                curriculum = new Curriculum(rs.getString("curriculum_name"), rs.getString("studychoice"), rs.getInt("studymeter"), loggedUser);
+                curriculum = new Curriculum(rs.getInt("curriculum_id"), rs.getString("curriculum_name"), rs.getString("studychoice"), rs.getInt("studymeter"), loggedUser);
 
             }
 

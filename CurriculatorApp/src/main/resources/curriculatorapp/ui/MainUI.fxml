@@ -111,7 +111,7 @@
                                     </HBox.margin>
                                 </TextField>
                                 <TextField fx:id="scopeTextfield" prefHeight="35.0" prefWidth="56.0" styleClass="mdl-layout" />
-                                <Button graphicTextGap="9.0" onAction="#onAddCourseButtonClick" mnemonicParsing="false" prefHeight="33.0" prefWidth="25.0" styleClass="addCourseButton">
+                                <Button graphicTextGap="9.0" onAction="#onAddCourseButtonClick" mnemonicParsing="false" prefHeight="33.0" prefWidth="25.0" styleClass="invisible">
                                     <graphic>
                                         <FontAwesomeIconView glyphName="CHECK" size="25" styleClass="closeback_button">
                                             <rotationAxis>

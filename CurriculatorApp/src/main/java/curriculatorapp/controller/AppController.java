@@ -73,7 +73,7 @@ public class AppController implements Controller {
 
         try {
             this.curriculum = (Curriculum) this.appservice.findCurriculum();
-            System.out.print("ONnistui" + curriculum.toString());
+            System.out.print("Onnistui" + curriculum.toString());
         } catch (SQLException ex) {
             Logger.getLogger(AppController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -113,7 +113,7 @@ public class AppController implements Controller {
 
                 course = new Course(courseName, coursescope);
                 setNotifications("ok");
-                appservice.createCourse(appservice.getLoggedUser().getUsername(), courseName, coursescope);
+                appservice.createCourse(courseName, coursescope);
 
             } catch (NumberFormatException e) {
                 System.out.print("PLLEFLEÅFL");
