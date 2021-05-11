@@ -16,24 +16,18 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Luokka käynnistää sovelluksen ja vaihtaa sovelluksen näkymää
+ * Luokka käynnistää sovelluksen ja vaihtaa sovelluksen näkymää.
  */
 public class CurriculatorUi extends Application {
 
     private static Scene scene;
-    private static Stage st;
-    
+
     @Override
     public void start(Stage stage) throws IOException, FileNotFoundException, SQLException {
-        CurriculatorUi.st=stage;
-        UserDao dao = new UserDao("curriculatorapp.db");
-        CurriculumDao curriculumdao = new CurriculumDao("curriculatorapp.db");
-        CoursesDao coursesdao = new CoursesDao("curriculatorapp.db");
-        LoginService loginService = new LoginService(dao, curriculumdao, coursesdao);
-        loginService.createNewTablesIfNotExists();
+        String databaseName = "curriculatorapp.db";
+        LoginService service = initDatabaseAndService(databaseName);
 
-        Parent uiRoot = loadFXMLAndController("LoginUI", loginService);
-
+        Parent uiRoot = loadFXMLAndController("LoginUI", service);
         scene = new Scene(uiRoot, 800, 600);
         scene.getStylesheets().add(getClass().getResource("stylesheet.css").toString());
         stage.setScene(scene);
@@ -43,13 +37,12 @@ public class CurriculatorUi extends Application {
     }
 
     /**
-     * Metodi kertoo mikä on onnistumistodennäköisyys syöteluvulla ottaen
-     * huomioon olion konstruktorissa asetetun kalibrointiarvon.
+     * Metodi FXML-tiedoston ja kontrollin asettamiseen.
      *
-     *
-     * @param fxml  käytettävän fxml-tiedoston nimi
-     * @param service   käytettävä sovelluslogiikka
+     * @param fxml käytettävän fxml-tiedoston nimi
+     * @param service käytettävä sovelluslogiikka
      * @return palauttaa ladatun näkymän
+     * @throws java.io.IOException
      */
     public static Parent loadFXMLAndController(String fxml, Service service) throws IOException {
         FXMLLoader loader = new FXMLLoader(CurriculatorUi.class.getResource(fxml + ".fxml"));
@@ -60,12 +53,34 @@ public class CurriculatorUi extends Application {
         return root;
     }
 
+    /**
+     * Metodi uuden näkymän asettamiseen.
+     *
+     * @param fxml käytettävän fxml-tiedoston nimi
+     * @param service käytettävä sovelluslogiikka
+     * @throws java.io.IOException
+     */
     public static void loadNewScene(String fxml, Service service) throws IOException {
         Parent newScene = loadFXMLAndController(fxml, service);
         scene.setRoot(newScene);
     }
-    
-    
+
+    /**
+     * Metodi asettaa tietokannan ja lataa servicen.
+     *
+     * @param db tietokannan nimi
+     * @return palauttaa servicen
+     * @throws java.sql.SQLException
+     */
+    public LoginService initDatabaseAndService(String db) throws SQLException {
+        UserDao dao = new UserDao(db);
+        CurriculumDao curriculumdao = new CurriculumDao(db);
+        CoursesDao coursesdao = new CoursesDao(db);
+        LoginService loginService = new LoginService(dao, curriculumdao, coursesdao);
+        loginService.createNewTablesIfNotExists();
+
+        return loginService;
+    }
 
     public static void main(String[] args) {
         launch(args);

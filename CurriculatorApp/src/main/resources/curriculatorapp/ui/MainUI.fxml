@@ -53,7 +53,7 @@
                                         <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="donenumber" alignment="CENTER" contentDisplay="TOP" prefHeight="9.0" prefWidth="187.0" styleClass="orangenumberlabel" textAlignment="CENTER">
+                                <Label fx:id="doneCoursesAmount" alignment="CENTER" contentDisplay="TOP" prefHeight="9.0" prefWidth="187.0" styleClass="orangenumberlabel" textAlignment="CENTER">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
@@ -73,12 +73,12 @@
                                         <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="meannumber" alignment="CENTER" contentDisplay="TOP" prefHeight="58.0" prefWidth="193.0" styleClass="orangenumberlabel">
+                                <Label fx:id="courseAverage" alignment="CENTER" contentDisplay="TOP" prefHeight="58.0" prefWidth="187.0" styleClass="orangenumberlabel"  textAlignment="CENTER">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <Label alignment="CENTER" prefHeight="9.0" prefWidth="187.0" styleClass="calcfont">
+                                <Label alignment="CENTER" prefHeight="9.0" prefWidth="176.0" styleClass="calcfont">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
@@ -88,7 +88,7 @@
                                         <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="leftnumber" alignment="CENTER" contentDisplay="TOP" prefHeight="9.0" prefWidth="187.0" styleClass="orangenumberlabel" textAlignment="CENTER">
+                                <Label fx:id="coursesLeft" alignment="CENTER" contentDisplay="TOP" prefHeight="9.0" prefWidth="187.0" styleClass="orangenumberlabel" textAlignment="CENTER">
                                     <font>
                                         <Font size="24.0" />
                                     </font>

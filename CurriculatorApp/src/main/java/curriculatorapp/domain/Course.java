@@ -50,6 +50,10 @@ public class Course {
     public int getCourseScope() {
         return courseScope;
     }
+    public String getCourseGrade() {
+        return courseGrade;
+    }
+
 
     public void setCourseScope(int courseScope) {
         this.courseScope = courseScope;

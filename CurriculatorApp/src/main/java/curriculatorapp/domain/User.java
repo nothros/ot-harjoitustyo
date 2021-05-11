@@ -3,7 +3,7 @@ package curriculatorapp.domain;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
 /**
- * Käyttäjää kuvaava luokka
+ * Käyttäjää kuvaava luokka.
  */
 public class User {
 

@@ -57,7 +57,14 @@ public class AppController implements Controller {
     private Label errorLabel;
     @FXML
     private Label coursenamePopupLabel;
-
+    @FXML 
+    private Label doneCoursesAmount;
+    @FXML
+    private Label courseAverage;
+    @FXML
+    private Label coursesLeft;
+    
+    
     private VBox todoNodes;
     @FXML
     ChoiceBox gradeChoiceBox;
@@ -66,24 +73,26 @@ public class AppController implements Controller {
     @Override
     public void initService(Service appservice) {
 
-        this.appservice = (AppService) appservice;
-        todoNodes = new VBox(10);
-        popup.setVisible(false);
-        setChoices();
-
         try {
+            this.appservice = (AppService) appservice;
+            todoNodes = new VBox(10);
+            popup.setVisible(false);
+            setChoices();
+            
+            
             this.curriculum = (Curriculum) this.appservice.findCurriculum();
             System.out.print("Onnistui" + curriculum.toString());
-        } catch (SQLException ex) {
-            Logger.getLogger(AppController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        setLabels();
-        try {
+            
+            
+            
             courselist.setContent(reDrawList());
+            
+            setLabels();
+            setStats();
         } catch (SQLException ex) {
             Logger.getLogger(AppController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }
 
     /**
@@ -96,6 +105,13 @@ public class AppController implements Controller {
         curriculumNameLabel.setText(curriculum.getCurriculumName());
         courseMeterLabelUpper.setText(curriculum.getChoice() + "ttä");
         courseMeterLabelLower.setText(curriculum.getChoice() + "ttä");
+    }
+    
+    @FXML 
+    public void setStats() throws SQLException{
+        doneCoursesAmount.setText(""+appservice.coursesDoneAmount());
+        courseAverage.setText(appservice.calculateAverageGrade());
+        coursesLeft.setText(appservice.calculateLeftCourses());
     }
 
     @FXML
@@ -197,6 +213,7 @@ public class AppController implements Controller {
                      }
                      try {
                          reDrawList();
+                         
                      } catch (SQLException ex) {
                          Logger.getLogger(AppController.class.getName()).log(Level.SEVERE, null, ex);
                      }
@@ -218,7 +235,8 @@ public class AppController implements Controller {
     }
     
     @FXML
-    public void onHidePopupButtonClick(){
+    public void onHidePopupButtonClick() throws SQLException{
+        setStats();
         popup.setVisible(false);
     }
    

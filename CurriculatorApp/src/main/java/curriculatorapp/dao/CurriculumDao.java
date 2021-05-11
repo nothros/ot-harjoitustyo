@@ -1,4 +1,3 @@
-
 package curriculatorapp.dao;
 
 import curriculatorapp.domain.Curriculum;
