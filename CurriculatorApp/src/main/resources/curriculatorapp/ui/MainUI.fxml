@@ -43,7 +43,7 @@
             <center>
                 <Pane prefHeight="598.0" prefWidth="798.0" styleClass="parent" BorderPane.alignment="CENTER">
                     <children>
-                        <ProgressIndicator fx:id="processIndicator" layoutX="359.0" layoutY="65.0" minHeight="117.0" minWidth="110.0" prefHeight="117.0" prefWidth="110.0" progress="1.0" style="-fx-progress-color: #155e5e;" stylesheets="@stylesheet.css">
+                        <ProgressIndicator fx:id="progressIndicator" layoutX="359.0" layoutY="65.0" minHeight="117.0" minWidth="110.0" prefHeight="117.0" prefWidth="110.0" progress="1.0" style="-fx-progress-color: #155e5e;" stylesheets="@stylesheet.css">
                      
                         </ProgressIndicator>
                         <VBox alignment="CENTER" layoutX="333.0" layoutY="233.0" prefHeight="300.0" prefWidth="166.0">
@@ -176,7 +176,8 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </GridPane.margin>
                               </ChoiceBox>
-                                    <DatePicker prefHeight="31.0" prefWidth="135.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                    <DatePicker prefHeight="31.0" prefWidth="135.0" GridPane.columnIndex="3" GridPane.rowIndex="1" visible="false" />
+                                    <Label  fx:id="popupErrorLabel" nodeOrientation="RIGHT_TO_LEFT"  GridPane.columnIndex="3" GridPane.rowIndex="1" prefHeight="41.0" prefWidth="350" textFill="#616161" />
                                     <Label prefHeight="15.0" prefWidth="87.0" styleClass="o" text="arvosana" textFill="#616161" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                      <Button fx:id="CourseDone"  graphicTextGap="9.0" GridPane.columnIndex="4" GridPane.rowIndex="1" mnemonicParsing="false" prefHeight="9.0" prefWidth="35.0" styleClass="returnbutton">
                                        <graphic>

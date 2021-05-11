@@ -81,12 +81,16 @@ public class NewUserController implements Controller {
             try {
                 Integer.parseInt(scopeString);
                 int scope = Integer.valueOf(scopeString);
+                if(scope<=0){
+                    setNotifications("zero");
+                }else{
                 appservice.createCurriculum(curriculumName, scope, choice);
                 curriculum = new Curriculum(curriculumName, choice, scope, appservice.getLoggedUser());
                 
 
                 CurriculatorUi.loadNewScene("MainUI", appservice);
-
+                }
+                    
             } catch (NumberFormatException e) {
                 setNotifications("notNumber");
             }
@@ -111,6 +115,12 @@ public class NewUserController implements Controller {
         if (reason.equals("notNumber")) {
             newUsererrorlabel.setTextFill(Color.RED);
             newUsererrorlabel.setText("Laajuuden on oltava numero!");
+            emptyFields();
+
+        }
+        if (reason.equals("zero")) {
+            newUsererrorlabel.setTextFill(Color.RED);
+            newUsererrorlabel.setText("Laajuuden on oltava suurempi kuin 0!");
             emptyFields();
 
         }

@@ -4,6 +4,7 @@ import curriculatorapp.domain.Course;
 import curriculatorapp.domain.Curriculum;
 import curriculatorapp.logic.AppService;
 import curriculatorapp.logic.Service;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -14,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -29,7 +31,6 @@ import javafx.scene.paint.Color;
  */
 public class AppController implements Controller {
 
-    
     private Course course;
     private Curriculum curriculum;
     private AppService appservice;
@@ -57,18 +58,21 @@ public class AppController implements Controller {
     private Label errorLabel;
     @FXML
     private Label coursenamePopupLabel;
-    @FXML 
+    @FXML
     private Label doneCoursesAmount;
     @FXML
     private Label courseAverage;
     @FXML
     private Label coursesLeft;
-    
-    
+    @FXML
+    private Label popupErrorLabel;
+    @FXML
+    private ProgressIndicator progressIndicator;
     private VBox todoNodes;
     @FXML
     ChoiceBox gradeChoiceBox;
-    @FXML Button CourseDone;
+    @FXML
+    Button CourseDone;
 
     @Override
     public void initService(Service appservice) {
@@ -78,21 +82,18 @@ public class AppController implements Controller {
             todoNodes = new VBox(10);
             popup.setVisible(false);
             setChoices();
-            
-            
+
             this.curriculum = (Curriculum) this.appservice.findCurriculum();
             System.out.print("Onnistui" + curriculum.toString());
-            
-            
-            
+
             courselist.setContent(reDrawList());
-            
+
             setLabels();
             setStats();
         } catch (SQLException ex) {
             Logger.getLogger(AppController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     /**
@@ -106,12 +107,13 @@ public class AppController implements Controller {
         courseMeterLabelUpper.setText(curriculum.getChoice() + "ttä");
         courseMeterLabelLower.setText(curriculum.getChoice() + "ttä");
     }
-    
-    @FXML 
-    public void setStats() throws SQLException{
-        doneCoursesAmount.setText(""+appservice.coursesDoneAmount());
+
+    @FXML
+    public void setStats() throws SQLException {
+        doneCoursesAmount.setText("" + appservice.coursesDoneAmount());
         courseAverage.setText(appservice.calculateAverageGrade());
         coursesLeft.setText(appservice.calculateLeftCourses());
+        progressIndicator.setProgress(appservice.getProgressPercent());
     }
 
     @FXML
@@ -121,15 +123,24 @@ public class AppController implements Controller {
         if ((courseName.trim().isEmpty()) || (courseScope.trim().isEmpty())) {
             System.out.println("TYHJÄ");
             setNotifications("empty");
-        } else {
+        }else {
 
             try {
                 Integer.parseInt(courseScope);
                 int coursescope = Integer.valueOf(courseScope);
-
-                course = new Course(courseName, coursescope);
+                if (coursescope>curriculum.getScope()){
+                    setNotifications("tooBigCourse");
+                }
+                else if(coursescope<=0){
+                    setNotifications("zero");
+                }
+                
+                else{
+                        course = new Course(courseName, coursescope);
                 setNotifications("ok");
                 appservice.createCourse(courseName, coursescope);
+                }
+            
 
             } catch (NumberFormatException e) {
                 System.out.print("PLLEFLEÅFL");
@@ -150,7 +161,7 @@ public class AppController implements Controller {
         for (Course c : courses) {
             System.out.println(c.toString() + " kurssi on " + c.isDone());
             if (!c.isDone()) {
-                todoNodes.getChildren().add(createTodoNode(c));
+                todoNodes.getChildren().add(createCourseNode(c));
             }
         }
         return todoNodes;
@@ -175,7 +186,21 @@ public class AppController implements Controller {
             emptyFields();
 
         }
+        if (reason.equals("tooBigCourse")){
+            errorLabel.setTextFill(Color.RED);
+            errorLabel.setText("Laajuus on liian suuri!");
+            emptyFields();
+        }
 
+        if (reason.equals("gradeEmpty")) {
+            popupErrorLabel.setTextFill(Color.RED);
+            popupErrorLabel.setText("Valitse arvosana!");
+            
+        } if (reason.equals("zero")) {
+            errorLabel.setTextFill(Color.RED);
+            errorLabel.setText("Laajuuden on oltava suurempi kuin 0");
+        }
+        
     }
 
     /**
@@ -186,43 +211,55 @@ public class AppController implements Controller {
         scopeTextfield.setText("");
     }
 
-    public Node createTodoNode(Course course) {
+    public Node createCourseNode(Course course) {
+        Label listLabel=new Label();
         HBox box = new HBox();
         box.setMinSize(290, 40);
-        Pane cpane= new Pane();
+        box.getStyleClass().add("cardpane-layout");
+        
+        Pane cpane = new Pane();
         cpane.getStyleClass().add("sidebar");
-        cpane.setMinSize(39, 40);
-        Label scope = new Label(""+course.getCourseScope());
+        cpane.setMinSize(40, 40);
+        
+        Label scope = new Label("" + course.getCourseScope());
         Label name = new Label(course.getCourseName());
+        
         scope.getStyleClass().add("whitetext");
+        name.setMinHeight(28); 
         cpane.getChildren().add(scope);
-        name.setMinHeight(28);
-        Button button = new Button("done");
+       
+        Button button = new Button("Done!");
+        
         button.setOnAction(e -> {
             coursenamePopupLabel.setText(course.getCourseName());
-            popup.setVisible(true); 
-            CourseDone.setOnAction(d ->{
-                 System.out.print("PAINETTU");
-         String grade= String.valueOf(gradeChoiceBox.getValue());
-                    System.out.println(grade);
-                    if(!grade.trim().isEmpty()){
-                     try {
-                         appservice.markDone(course, grade);
-                     } catch (SQLException ex) {
-                         Logger.getLogger(AppController.class.getName()).log(Level.SEVERE, null, ex);
-                     }
-                     try {
-                         reDrawList();
-                         
-                     } catch (SQLException ex) {
-                         Logger.getLogger(AppController.class.getName()).log(Level.SEVERE, null, ex);
-                     }
+            popup.setVisible(true);
+            CourseDone.setOnAction(d -> {
+                System.out.print("PAINETTU");
+                String grade = String.valueOf(gradeChoiceBox.getValue());
+                System.out.println(grade);
+                if (!grade.trim().isEmpty()) {
+                    try {
+                        appservice.markDone(course, grade);
+                        setStats();
+                        gradeChoiceBox.getSelectionModel().select(0);
+                        errorLabel.setText("");
+                        popupErrorLabel.setText("");
+                        popup.setVisible(false);
+                        
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AppController.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                
+                    try {
+                        reDrawList();
+
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AppController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    setNotifications("gradeEmpty");
+                }
+
             });
- 
-    
-            
 
         });
 
@@ -230,18 +267,17 @@ public class AppController implements Controller {
         HBox.setHgrow(spacer, Priority.ALWAYS);
         box.setPadding(new Insets(0, 5, 0, 5));
 
-        box.getChildren().addAll(cpane,name, spacer, button);
+        box.getChildren().addAll(listLabel, cpane, name, spacer, button);
         return box;
     }
-    
+
     @FXML
-    public void onHidePopupButtonClick() throws SQLException{
-        setStats();
+    public void onHidePopupButtonClick() throws SQLException {
+
         popup.setVisible(false);
     }
-   
-    
-        @FXML
+
+    @FXML
     public void setChoices() {
         gradeChoiceBox.getItems().add(0, "");
         gradeChoiceBox.getItems().add(1, "Hyväksytty");
@@ -252,11 +288,5 @@ public class AppController implements Controller {
         gradeChoiceBox.getItems().add(6, "5");
         gradeChoiceBox.getSelectionModel().select(0);
     }
-    
- 
-    
-
-    
-    
 
 }

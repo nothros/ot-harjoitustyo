@@ -84,7 +84,7 @@
                               <Insets bottom="5.0" left="25.0" right="25.0" top="25.0" />
                            </VBox.margin>
                         </Button>
-                        <Label fx:id="newUsererrorlabel" alignment="CENTER" contentDisplay="RIGHT" prefHeight="14.0" prefWidth="179.0" styleClass="log_error-message" textAlignment="CENTER" textFill="#cd0000">
+                        <Label fx:id="newUsererrorlabel" alignment="CENTER" contentDisplay="RIGHT" prefHeight="14.0" prefWidth="300.0" styleClass="log_error-message" textAlignment="CENTER" textFill="#cd0000">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>

@@ -91,6 +91,13 @@ public class AppService implements Service {
         return avg;
         
     }
+    public double getProgressPercent() throws SQLException{
+         int done = coursesDoneAmount();
+         int scope = curriculum.getScope();
+         double percent=(double) done/scope;
+         
+         return percent;
+    }
     
     public int coursesDoneAmount() throws SQLException{
          List<Course> doneCourses=coursesDone();
