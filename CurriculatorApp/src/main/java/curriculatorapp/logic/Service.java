@@ -5,14 +5,10 @@
  */
 package curriculatorapp.logic;
 
-import java.sql.SQLException;
-
 /**
  *
  * @author ehorrosw
  */
 public interface Service {
-
-
-    
+ 
 }

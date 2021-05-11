@@ -16,7 +16,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Luokka käynnistää sovelluksen ja vaihtaa sovelluksen näkymää.
+ * Luokka sovelluksen käynnistämiseen ja näkymän vaihtamiseen.
  */
 public class CurriculatorUi extends Application {
 

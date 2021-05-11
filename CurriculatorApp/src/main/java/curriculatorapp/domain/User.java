@@ -12,7 +12,7 @@ public class User {
     private int id;
 
     public User(int id, String name, String username, String password) {
-        this.id=id;
+        this.id = id;
         this.name = name;
         this.username = username;
         this.password = password;
@@ -25,13 +25,10 @@ public class User {
 
     }
 
-    
-
     public Curriculum getCurriculum() {
         return this.curriculum;
     }
-    
-    
+
     public int getId() {
         return this.id;
     }
@@ -65,7 +62,6 @@ public class User {
      *
      * @param password Käyttäjän ehdottama salasana
      * @return Salattu salasana
-     *
      */
     public String encryptPassword(String password) {
         String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
@@ -78,7 +74,6 @@ public class User {
      * @param triedPassword Käyttäjän kokeilema salasana
      * @param passwordDB Tietokannassa oleva salasana
      * @return Palauttaa true; mikäli salasana tsämää.
-     *
      */
     public Boolean checkPassword(String triedPassword, String passwordDB) {
         BCrypt.Result result = BCrypt.verifyer().verify(triedPassword.toCharArray(), passwordDB);

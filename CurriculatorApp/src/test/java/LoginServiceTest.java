@@ -35,7 +35,7 @@ public class LoginServiceTest {
     public void setUp() throws SQLException {
         testuserdao=new UserDao("testuserDB.db");
         testcurriculumdao=new CurriculumDao("testcurriculumDB.db");
-        testcoursesdao=new CoursesDao();
+       // testcoursesdao=new CoursesDao();
         loginService=new LoginService(testuserdao,testcurriculumdao, testcoursesdao);
         loginService.createNewTablesIfNotExists();
         

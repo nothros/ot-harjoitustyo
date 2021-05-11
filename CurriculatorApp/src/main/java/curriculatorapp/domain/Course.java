@@ -1,7 +1,7 @@
 package curriculatorapp.domain;
 
 /**
- * Kurssia kuvaava luokka
+ * Kurssia kuvaava luokka.
  */
 public class Course {
 
@@ -24,7 +24,6 @@ public class Course {
         this.courseScope = courseScope;
         this.done = done;
         this.courseGrade = courseGrade;
-
     }
 
     public int getId() {
@@ -50,18 +49,13 @@ public class Course {
     public int getCourseScope() {
         return courseScope;
     }
+
     public String getCourseGrade() {
         return courseGrade;
     }
 
-
     public void setCourseScope(int courseScope) {
         this.courseScope = courseScope;
-    }
-
-    @Override
-    public String toString() {
-        return "Course{" + "courseName=" + courseName + ", done=" + done + ", courseScope=" + courseScope + ", courseGrade=" + courseGrade + ", id=" + id + '}';
     }
 
 }

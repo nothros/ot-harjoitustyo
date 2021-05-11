@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package curriculatorapp.dao;
 
 import curriculatorapp.domain.Course;
 import curriculatorapp.domain.Curriculum;
-import curriculatorapp.domain.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,8 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author ehorrosw
+ * Luokka Courses-tietokantataulun toiminnalle.
  */
 public class CoursesDao {
 
@@ -29,9 +22,14 @@ public class CoursesDao {
 
     }
 
+    /**
+     * Metodi lisää uuden Courses- tietokantataulun
+     *
+     * @throws java.sql.SQLException
+     */
     public void createNewTable() throws SQLException {
         Connection db = DriverManager.getConnection("jdbc:sqlite:curriculatorapp.db");
-        try ( PreparedStatement stmt = db.prepareStatement("CREATE TABLE IF NOT EXISTS Courses "
+        try (PreparedStatement stmt = db.prepareStatement("CREATE TABLE IF NOT EXISTS Courses "
                 + "(course_id INTEGER PRIMARY KEY, "
                 + "curriculum_id   INTEGER, "
                 + "coursename    VARCHAR(255),  "
@@ -42,13 +40,19 @@ public class CoursesDao {
             stmt.executeUpdate();
 
         }
-        System.out.println("Luodaan tietokanta jos sitä ei ole");
 
     }
 
+    /**
+     * Metodi lisää kurssin tauluun.
+     *
+     * @param userCurriculum Käyttäjän opinnot
+     * @param coursename käyttäjän lisäämä kurssin nimi
+     * @param scope käyttäjän valitsema laajuus.
+     * @throws java.sql.SQLException
+     */
     public void createCourse(Curriculum userCurriculum, String coursename, int scope) throws SQLException {
-        System.out.println("Lisätään ");
-        try ( PreparedStatement stmt = conn.prepareStatement("INSERT INTO Courses (curriculum_id,coursename,scope,grade,done) VALUES (?,?,?,?,?)")) {
+        try (PreparedStatement stmt = conn.prepareStatement("INSERT INTO Courses (curriculum_id,coursename,scope,grade,done) VALUES (?,?,?,?,?)")) {
             stmt.setInt(1, userCurriculum.getId());
             stmt.setString(2, coursename);
             stmt.setInt(3, scope);
@@ -60,24 +64,36 @@ public class CoursesDao {
 
     }
 
+    /**
+     * Metodi päivittää opintojen kurssin
+     *
+     * @param course kurssi
+     * @param grade arvosana
+     * @throws java.sql.SQLException
+     */
     public void updateCourse(Course course, String grade) throws SQLException {
-        System.out.println("päivitetään ");
-    
-                try(PreparedStatement stmt = conn.prepareStatement("UPDATE Courses SET grade=?, done=? WHERE course_id=?")){
-                stmt.setString(1, grade);
-                stmt.setBoolean(2, true);
-                stmt.setInt(3, course.getId());
+        try (PreparedStatement stmt = conn.prepareStatement("UPDATE Courses SET grade=?, done=? WHERE course_id=?")) {
+            stmt.setString(1, grade);
+            stmt.setBoolean(2, true);
+            stmt.setInt(3, course.getId());
 
-                stmt.executeUpdate();
-                }
+            stmt.executeUpdate();
+        }
 
     }
 
+    /**
+     * Metodi palauttaa opintojen kaikki kurssit listassa
+     *
+     * @param userCurriculum Käyttäjän opinnot
+     * @return palauttaa kurssit listassa
+     * @throws java.sql.SQLException
+     */
     public List<Course> findAllCourses(Curriculum userCurriculum) throws SQLException {
         List<Course> courses = new ArrayList<>();
         Course course;
 
-        try ( PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Courses WHERE curriculum_id=?")) {
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Courses WHERE curriculum_id=?")) {
             stmt.setInt(1, userCurriculum.getId());
 
             ResultSet rs = stmt.executeQuery();
@@ -90,4 +106,3 @@ public class CoursesDao {
 
     }
 }
-

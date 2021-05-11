@@ -41,8 +41,7 @@ public class NewUserController implements Controller {
     }
 
     /**
-     * Metodi asettaa Choicebox:lle valinnat. Näistä käyttäjä voi valita, millä
-     * opintojen laajuutta mitataan
+     * Metodi asettaa Choicebox:lle valinnat.
      */
     @FXML
     public void setChoices() {
@@ -62,40 +61,34 @@ public class NewUserController implements Controller {
     }
 
     /**
-     * Metodi kontrolloi Luo uusi opinto-painikkeen toimintaa. Se tarkastaa onko
+     * Metodi kontrolloi Luo uusi opinto-painikkeen toimintaa.Se tarkastaa onko
      * tarvittavat tekstikentät tyhjinä, mikäli eivät, luo tämä uuden opinnon
      * annetuilla tiedoilla, ja kutsuu metodia ilmoituskentän täyttämiseen
      * ehdoin
+     *
+     * @throws java.io.IOException
+     * @throws java.sql.SQLException
      */
     @FXML
     public void onStudiesButtonClick() throws IOException, SQLException {
         String curriculumName = studyTextfield.getText();
         String scopeString = studyScope.getText();
         String choice = String.valueOf(studyChoiceBox.getValue());
-
         if ((curriculumName.trim().isEmpty()) || (scopeString.trim().isEmpty()) || (choice.trim().isEmpty())) {
-            System.out.println("TYHJÄ");
             setNotifications("empty");
         } else {
-
             try {
-                Integer.parseInt(scopeString);
-                int scope = Integer.valueOf(scopeString);
-                if(scope<=0){
+                int scope = Integer.parseInt(scopeString);
+                if (scope <= 0) {
                     setNotifications("zero");
-                }else{
-                appservice.createCurriculum(curriculumName, scope, choice);
-                curriculum = new Curriculum(curriculumName, choice, scope, appservice.getLoggedUser());
-                
-
-                CurriculatorUi.loadNewScene("MainUI", appservice);
+                } else {
+                    appservice.createCurriculum(curriculumName, scope, choice);
+                    CurriculatorUi.loadNewScene("MainUI", appservice);
                 }
-                    
             } catch (NumberFormatException e) {
                 setNotifications("notNumber");
             }
         }
-
     }
 
     /**

@@ -6,6 +6,9 @@ import curriculatorapp.dao.UserDao;
 import curriculatorapp.domain.User;
 import java.sql.SQLException;
 
+/**
+ * Luokka Login- ja Register näkymän toiminnallisuuteen.
+ */
 public class LoginService implements Service {
 
     private UserDao userdao;
@@ -19,12 +22,20 @@ public class LoginService implements Service {
         this.coursesdao = coursesdao;
     }
 
-    public boolean login(String username, String password) throws SQLException {
+    /**
+     * Metodi käyttäjätunnuksen ja salasanan tarkastukseen.
+     *
+     * @param username Käyttäjän syöttämä käyttäjätunnus.
+     * @param password Käyttäjän syöttämä salasana.
+     * @return Palauttaa false- jos käyttäjätunnusta ei löydy tai jos salasana
+     * ei täsmää, muuten true.
+     * @throws java.sql.SQLException
+     */
+    public boolean checkUsernameAndPassword(String username, String password) throws SQLException {
         loggedUser = (User) userdao.findByUsername(username);
         if (loggedUser == null) {
             return false;
         }
-
         return loggedUser.checkPassword(password, loggedUser.getPassword());
     }
 
@@ -41,6 +52,9 @@ public class LoginService implements Service {
         return coursesdao;
     }
 
+    /**
+     * Luokka Login- ja Registernäkymän toiminnallisuuteen.
+     */
     public boolean createNewUser(String name, String username, String password) throws SQLException {
         User user = (User) userdao.findByUsername(username);
         if (user == null) {
@@ -51,7 +65,6 @@ public class LoginService implements Service {
             return true;
         }
         return false;
-
     }
 
     public void createNewTablesIfNotExists() throws SQLException {

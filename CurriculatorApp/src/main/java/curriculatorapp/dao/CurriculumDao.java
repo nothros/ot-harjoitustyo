@@ -22,7 +22,7 @@ public class CurriculumDao {
     }
 
     public void createNewTable() throws SQLException {
-        try ( PreparedStatement stmt = conn.prepareStatement("CREATE TABLE IF NOT EXISTS Curriculums "
+        try (PreparedStatement stmt = conn.prepareStatement("CREATE TABLE IF NOT EXISTS Curriculums "
                 + "(curriculum_id INTEGER PRIMARY KEY, "
                 + "user_id   INTEGER, "
                 + "curriculum_name    VARCHAR(255),  "
@@ -32,51 +32,48 @@ public class CurriculumDao {
             stmt.executeUpdate();
 
         }
-        System.out.println("Luodaan tietokanta jos sitä ei ole");
 
     }
 
     /**
      * Metodi lisää uuden opinnon tietokantatauluun Curriculums.
      *
-     * @param loggedUsername Kirjautuneena olevan käyttäjän käyttätunnus
+     * @param loggedUser Sisäänkirjautunut käyttäjä
      * @param curriculumName Käyttäjän määrittelemä nimi opinnoilleen
      * @param scope Opintojen laajuus
      * @param choice Opintojen laajuutta kuvaaava termi
+     * @throws java.sql.SQLException
      */
-    @SuppressWarnings("empty-statement")
     public void createCurriculum(User loggedUser, String curriculumName, int scope, String choice) throws SQLException {
-        System.out.println("Lisätään ");
-            try ( PreparedStatement stmt = conn.prepareStatement("INSERT INTO Curriculums (user_id,curriculum_name,studymeter,studychoice) VALUES (?,?,?,?)")){
+        try (PreparedStatement stmt = conn.prepareStatement("INSERT INTO Curriculums (user_id,curriculum_name,studymeter,studychoice) VALUES (?,?,?,?)")) {
             stmt.setInt(1, loggedUser.getId());
             stmt.setString(2, curriculumName);
             stmt.setInt(3, scope);
             stmt.setString(4, choice);
             stmt.executeUpdate();
-            
+
         }
     }
 
     /**
      * Metodi etsii, onko käyttäjällä opintoja.
      *
-     * @param loggedUsername Kirjautuneen käyttäjän käyttäjätunnus
+     * @param loggedUser sisäänkirjautunut käyttäjä
      * @return Palauttaa true mikäli käyttäjällä on opintoja
+     * @throws java.sql.SQLException
      */
     public Curriculum findCurriculum(User loggedUser) throws SQLException {
         Curriculum curriculum = null;
 
-                try(PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Curriculums WHERE user_id=?")){
-                stmt.setInt(1, loggedUser.getId());
-                ResultSet rs = stmt.executeQuery();
-                if (!rs.next()) {
-                    return null;
-                }
-                curriculum = new Curriculum(rs.getInt("curriculum_id"), rs.getString("curriculum_name"), rs.getString("studychoice"), rs.getInt("studymeter"), loggedUser);
-
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Curriculums WHERE user_id=?")) {
+            stmt.setInt(1, loggedUser.getId());
+            ResultSet rs = stmt.executeQuery();
+            if (!rs.next()) {
+                return null;
             }
+            curriculum = new Curriculum(rs.getInt("curriculum_id"), rs.getString("curriculum_name"), rs.getString("studychoice"), rs.getInt("studymeter"), loggedUser);
 
-        
+        }
 
         return curriculum;
     }

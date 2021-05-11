@@ -123,24 +123,20 @@ public class AppController implements Controller {
         if ((courseName.trim().isEmpty()) || (courseScope.trim().isEmpty())) {
             System.out.println("TYHJÄ");
             setNotifications("empty");
-        }else {
+        } else {
 
             try {
                 Integer.parseInt(courseScope);
                 int coursescope = Integer.valueOf(courseScope);
-                if (coursescope>curriculum.getScope()){
+                if (coursescope > curriculum.getScope()) {
                     setNotifications("tooBigCourse");
-                }
-                else if(coursescope<=0){
+                } else if (coursescope <= 0) {
                     setNotifications("zero");
+                } else {
+                    course = new Course(courseName, coursescope);
+                    setNotifications("ok");
+                    appservice.createCourse(courseName, coursescope);
                 }
-                
-                else{
-                        course = new Course(courseName, coursescope);
-                setNotifications("ok");
-                appservice.createCourse(courseName, coursescope);
-                }
-            
 
             } catch (NumberFormatException e) {
                 System.out.print("PLLEFLEÅFL");
@@ -186,7 +182,7 @@ public class AppController implements Controller {
             emptyFields();
 
         }
-        if (reason.equals("tooBigCourse")){
+        if (reason.equals("tooBigCourse")) {
             errorLabel.setTextFill(Color.RED);
             errorLabel.setText("Laajuus on liian suuri!");
             emptyFields();
@@ -195,12 +191,13 @@ public class AppController implements Controller {
         if (reason.equals("gradeEmpty")) {
             popupErrorLabel.setTextFill(Color.RED);
             popupErrorLabel.setText("Valitse arvosana!");
-            
-        } if (reason.equals("zero")) {
+
+        }
+        if (reason.equals("zero")) {
             errorLabel.setTextFill(Color.RED);
             errorLabel.setText("Laajuuden on oltava suurempi kuin 0");
         }
-        
+
     }
 
     /**
@@ -212,24 +209,24 @@ public class AppController implements Controller {
     }
 
     public Node createCourseNode(Course course) {
-        Label listLabel=new Label();
+        Label listLabel = new Label();
         HBox box = new HBox();
         box.setMinSize(290, 40);
         box.getStyleClass().add("cardpane-layout");
-        
+
         Pane cpane = new Pane();
         cpane.getStyleClass().add("sidebar");
         cpane.setMinSize(40, 40);
-        
+
         Label scope = new Label("" + course.getCourseScope());
         Label name = new Label(course.getCourseName());
-        
+
         scope.getStyleClass().add("whitetext");
-        name.setMinHeight(28); 
+        name.setMinHeight(28);
         cpane.getChildren().add(scope);
-       
+
         Button button = new Button("Done!");
-        
+
         button.setOnAction(e -> {
             coursenamePopupLabel.setText(course.getCourseName());
             popup.setVisible(true);
@@ -245,7 +242,7 @@ public class AppController implements Controller {
                         errorLabel.setText("");
                         popupErrorLabel.setText("");
                         popup.setVisible(false);
-                        
+
                     } catch (SQLException ex) {
                         Logger.getLogger(AppController.class.getName()).log(Level.SEVERE, null, ex);
                     }

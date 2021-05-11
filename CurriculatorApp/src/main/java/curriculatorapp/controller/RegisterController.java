@@ -12,8 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
 /**
- * Luokka Register-näkymän kontrollointiin. Register-näkymä on tarkoitettu uuden
- * käyttäjän luomista varten
+ * Luokka Register-näkymän kontrollointiin.
  */
 public class RegisterController implements Controller {
 
@@ -37,9 +36,9 @@ public class RegisterController implements Controller {
     }
 
     /**
-     * Metodi kontrolloi Rekisteröi-painikkeen toimintaa. Se tarkastaa onko
-     * tarvittavat tekstikentät tyhjinä, mikäli eivät, luo tämä uuden käyttäjän
-     * annetuilla tiedoilla, ja kutsuu metodia ilmoituskentän täyttämiseen
+     * Metodi kontrolloi Rekisteröi-painikkeen toimintaa.
+     *
+     * @throws java.sql.SQLException
      */
     public void onRegisterButtonClick() throws SQLException {
         String name = registerName.getText();
@@ -63,8 +62,10 @@ public class RegisterController implements Controller {
     }
 
     /**
-     * Metodi kutsuu CurriculatorUI-luokan metodia. Vaihdetaan näkymä
+     * Metodi kutsuu CurriculatorUI-luokan metodia.Vaihdetaan näkymä
      * rekisteröinti-näkymään
+     *
+     * @throws java.io.IOException
      */
     public void onReturnbuttonClick() throws IOException {
         CurriculatorUi.loadNewScene("LoginUI", appservice);

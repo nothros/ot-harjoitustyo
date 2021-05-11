@@ -62,8 +62,7 @@ public class LoginController implements Controller {
         if (username.isEmpty() || password.isEmpty()) {
             setNotifications("empty");
         } else {
-            if (loginService.login(username, password)) {
-                System.out.print("LOGGAAA");
+            if (loginService.checkUsernameAndPassword(username, password)) {
                 setNotifications("login");
                 User loggedUser = loginService.getLoggedUser();
                 appService = new AppService(loggedUser, loginService.getCurriculumDao(), loginService.getCoursesDao());
