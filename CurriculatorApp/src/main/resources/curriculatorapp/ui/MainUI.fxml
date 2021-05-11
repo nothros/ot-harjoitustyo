@@ -46,6 +46,7 @@
                         <ProgressIndicator fx:id="progressIndicator" layoutX="359.0" layoutY="65.0" minHeight="117.0" minWidth="110.0" prefHeight="117.0" prefWidth="110.0" progress="1.0" style="-fx-progress-color: #155e5e;" stylesheets="@stylesheet.css">
                      
                         </ProgressIndicator>
+                        
                         <VBox alignment="CENTER" layoutX="333.0" layoutY="233.0" prefHeight="300.0" prefWidth="166.0">
                             <children>
                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="9.0" prefWidth="187.0" styleClass="calcfont" text="Olet suorittanut ">
@@ -63,17 +64,17 @@
                                         <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="176.0" styleClass="calcfont">
+                                  <Label alignment="CENTER" prefHeight="9.0" prefWidth="176.0" styleClass="calcfont">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <Label alignment="CENTER" prefHeight="9.0" prefWidth="187.0" styleClass="calcfont" text="Keskiarvosi on">
+                                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="9.0" prefWidth="187.0" styleClass="calcfont" text="Keskiarvosi on">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="courseAverage" alignment="CENTER" contentDisplay="TOP" prefHeight="58.0" prefWidth="187.0" styleClass="orangenumberlabel"  textAlignment="CENTER">
+                                <Label fx:id="courseAverage" alignment="CENTER" contentDisplay="TOP" prefHeight="9.0" prefWidth="187.0" styleClass="orangenumberlabel"  textAlignment="CENTER">
                                     <font>
                                         <Font size="24.0" />
                                     </font>

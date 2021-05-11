@@ -4,13 +4,13 @@ import curriculatorapp.domain.Course;
 import curriculatorapp.domain.Curriculum;
 import curriculatorapp.logic.AppService;
 import curriculatorapp.logic.Service;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -22,6 +22,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
@@ -68,7 +69,7 @@ public class AppController implements Controller {
     private Label popupErrorLabel;
     @FXML
     private ProgressIndicator progressIndicator;
-    private VBox todoNodes;
+    private VBox courseNodes;
     @FXML
     ChoiceBox gradeChoiceBox;
     @FXML
@@ -79,7 +80,7 @@ public class AppController implements Controller {
 
         try {
             this.appservice = (AppService) appservice;
-            todoNodes = new VBox(10);
+            courseNodes = new VBox(10);
             popup.setVisible(false);
             setChoices();
 
@@ -121,7 +122,6 @@ public class AppController implements Controller {
         String courseName = courseNameTextfield.getText();
         String courseScope = scopeTextfield.getText();
         if ((courseName.trim().isEmpty()) || (courseScope.trim().isEmpty())) {
-            System.out.println("TYHJÄ");
             setNotifications("empty");
         } else {
 
@@ -139,7 +139,6 @@ public class AppController implements Controller {
                 }
 
             } catch (NumberFormatException e) {
-                System.out.print("PLLEFLEÅFL");
                 setNotifications("notNumber");
             }
 
@@ -151,16 +150,17 @@ public class AppController implements Controller {
 
         List<Course> courses = appservice.findAllCourses();
         System.out.print(courses.toString());
-        todoNodes.getChildren().clear();
-        todoNodes.setMaxWidth(280);
-        todoNodes.setMinWidth(280);
+        courseNodes.getChildren().clear();
+        courseNodes.setMaxWidth(280);
+        courseNodes.setMinWidth(280);
         for (Course c : courses) {
             System.out.println(c.toString() + " kurssi on " + c.isDone());
             if (!c.isDone()) {
-                todoNodes.getChildren().add(createCourseNode(c));
+                courseNodes.getChildren().add(createCourseNode(c));
+                
             }
         }
-        return todoNodes;
+        return courseNodes;
 
     }
 
@@ -211,20 +211,31 @@ public class AppController implements Controller {
     public Node createCourseNode(Course course) {
         Label listLabel = new Label();
         HBox box = new HBox();
-        box.setMinSize(290, 40);
+        box.setMinSize(300, 40);
         box.getStyleClass().add("cardpane-layout");
 
-        Pane cpane = new Pane();
-        cpane.getStyleClass().add("sidebar");
-        cpane.setMinSize(40, 40);
-
+        StackPane aPane = new StackPane();
+        aPane.getStyleClass().add("sidebar");
+        aPane.setMinSize(40, 40);
+        
         Label scope = new Label("" + course.getCourseScope());
-        Label name = new Label(course.getCourseName());
-
         scope.getStyleClass().add("whitetext");
-        name.setMinHeight(28);
-        cpane.getChildren().add(scope);
-
+        
+        aPane.getChildren().add(scope);  
+        aPane.setAlignment(scope,Pos.CENTER);
+        
+        StackPane bPane = new StackPane();
+        bPane.setMinSize(180,40);
+        
+        Label name = new Label("   "+course.getCourseName());
+        name.getStyleClass().add("smallblacktext");
+        
+        bPane.getChildren().add(name);  
+        bPane.setAlignment(name,Pos.CENTER_LEFT);
+        
+        
+        StackPane cPane = new StackPane();
+        cPane.setMinSize(80,40);
         Button button = new Button("Done!");
 
         button.setOnAction(e -> {
@@ -260,11 +271,13 @@ public class AppController implements Controller {
 
         });
 
-        Region spacer = new Region();
-        HBox.setHgrow(spacer, Priority.ALWAYS);
+        
+        
+       cPane.getChildren().add(button);  
+        cPane.setAlignment(button,Pos.CENTER);
         box.setPadding(new Insets(0, 5, 0, 5));
 
-        box.getChildren().addAll(listLabel, cpane, name, spacer, button);
+        box.getChildren().addAll( aPane, bPane, cPane);
         return box;
     }
 
