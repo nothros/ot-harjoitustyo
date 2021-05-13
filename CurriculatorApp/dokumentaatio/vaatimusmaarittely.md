@@ -29,9 +29,9 @@ Tai käyttäjä voi kirjautua sovellukseen olemassa olevalla käyttäjätunnukse
  - Mikäli salasana on väärin, ohjelma ilmoittaa siitä.
 
 ### Kirjautumisen jälkeen
-#### ✅ Ensikirjautuminen
- - ✅ Käyttäjä määrittää tutkinolleen nimen
- - ✅ ja laajuuden haluamallaan mittarilla (opintopisteet, osaamispisteet)
+#### Ensikirjautuminen
+ - Käyttäjä määrittää tutkinolleen nimen
+ - ja laajuuden haluamallaan mittarilla (opintopisteet, osaamispisteet)
 
 #### Päänäkymä
  - suoritettavat kurssit, ja ne voi merkitä tehdyksi, ja niille voi merkitä arvosanan
