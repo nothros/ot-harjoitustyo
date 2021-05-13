@@ -7,39 +7,42 @@ Sovelluksen tarkoituksena on pitää kirjaa suoritetuista kursseista, sekä tark
 Vain yksi käyttäjärooli eli normaalikäyttäjä
 
 ## Käyttöliittymäluonnos
-Sovellus koostuu kolmesta näkymästä
-- ✅ Login- näkymä, josta käyttäjä kirjautuu sisään tai 
-- ✅ Register- näkymä, josta käyttäjätilin voi luoda
-- Päänäkymä (kirjautumisen jälkeen) Jossa kaikki toiminnallisuus
+Sovellus koostuu neljästä näkymästä
+- Login- näkymä, josta käyttäjä kirjautuu sisään
+- Register- näkymä, josta käyttäjätilin voi luoda
+- Uuden opinnon lisäys- näkymä, jossa käyttäjä coi lisätä itselleen seurattavan opinnon ja sille laajuuden
+- Päänäkymä (kirjautumisen ja opintojen lisäämisen jälkeen) jossa kaikki toiminnallisuus
 
 <img src="https://github.com/nothros/ot-harjoitustyo/blob/master/CurriculatorApp/dokumentaatio/kuvat/kayttoliittymaluonnos.png" width="750">
 
  
 ## Toiminnallisuus
-### ✅  Ennen kirjautumista
+###  Ennen kirjautumista
 Käyttäjä voi luoda sovellukseen oman käyttäjätunnuksen
- - ✅ Käyttäjätunnuksen tulee olla uniikki, sovellus ilmoittaa jos näin ei ole
- - ✅ Sovellus ilmoittaa virheestä, mikäli kaikkia syöttökenttiä ei ole täytetty
- - ✅  Sovellus kryptaa salasanan käyttäen ulkopuolista kirjastoa apunaan (BCrypt)
+ -  Käyttäjätunnuksen tulee olla uniikki, sovellus ilmoittaa jos näin ei ole
+ -  Sovellus ilmoittaa virheestä, mikäli kaikkia syöttökenttiä ei ole täytetty
+ -  Sovellus kryptaa salasanan käyttäen ulkopuolista kirjastoa apunaan (BCrypt)
 
 Tai käyttäjä voi kirjautua sovellukseen olemassa olevalla käyttäjätunnuksellaan
- - ✅ Sovellus ilmoittaa mikäli käyttäjätunnusta ei löydy tai 
- - ✅  Jos käyttäjä ei ole täyttänyt vaadittavia kenttiä
- - ✅ Mikäli salasana on väärin, ohjelma ilmoittaa siitä.
+ - Sovellus ilmoittaa mikäli käyttäjätunnusta ei löydy tai 
+ - Jos käyttäjä ei ole täyttänyt vaadittavia kenttiä
+ - Mikäli salasana on väärin, ohjelma ilmoittaa siitä.
 
 ### Kirjautumisen jälkeen
 #### ✅ Ensikirjautuminen
  - ✅ Käyttäjä määrittää tutkinolleen nimen
- - ✅ ja keston haluamallaan mittarilla (opintopisteet, osaamispisteet)
+ - ✅ ja laajuuden haluamallaan mittarilla (opintopisteet, osaamispisteet)
 
 #### Päänäkymä
- - suoritettavat kurssit, ja ne voi merkitä tehdyksi, ja niille voi merkitä arvosanan ja suorituspäivämäärään.
+ - suoritettavat kurssit, ja ne voi merkitä tehdyksi, ja niille voi merkitä arvosanan
  - Mahdollisuus lisätä kursseja
  - Opintojen keskiarvo
  - Ympyräkaavio suoritettujen ja suorittamattomien opintopisteiden suhteesta
  - Suoritettujen opintopisteiden lukumäärä
+ - Jäljellä olevien opintopisteiden/osaamispisteiden määrä
+ - Mahdollisuus kirjautua ulos
 
 ## Jatkokehitysideat
 - Kursseille on omat pääluokat
-- Kurssit eivät poistu näkymästä, vaan siirtyvät laajempaan kurssinseurantanäkymään
+- Kurssit eivät poistu näkymästä, vaan siirtyvät laajempaan kurssinseurantanäkymään, josta voi tarkastella kurssin arvosanoja
 - Lisää statistiikkaa mm. Kurssien suoritustahdille/kk/jakso/vuosi
