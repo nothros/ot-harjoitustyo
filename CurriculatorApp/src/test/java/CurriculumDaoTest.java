@@ -6,6 +6,7 @@
 
 import curriculatorapp.dao.CurriculumDao;
 import curriculatorapp.dao.UserDao;
+import curriculatorapp.domain.Curriculum;
 import curriculatorapp.domain.User;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
@@ -19,7 +20,7 @@ import org.junit.Test;
  * @author ehorrosw
  */
 public class CurriculumDaoTest {
-
+    Curriculum curriculum;
     UserDao userDao;
     CurriculumDao curriculumDao;
     User user;
@@ -51,7 +52,17 @@ public class CurriculumDaoTest {
 
     @Test
     public void testIfCurrilumDoesNotExists() throws SQLException {
-      //  assertEquals(false, curriculumDao.findCurriculum("UserNotExists"));
+        user = new User("NoName", "NoUserName");
+        user.setPassword("NoPass");
+       assertEquals(null, curriculumDao.findCurriculum(user));
+
+    }
+    
+    @Test
+    public void testIfCurrilumDoesExists() throws SQLException {
+        curriculum = new Curriculum(1, "name", "choice", 3, user);
+        curriculumDao.createCurriculum(user, "name", 3, "choice");
+       assertEquals(curriculum, curriculumDao.findCurriculum(user));
 
     }
 

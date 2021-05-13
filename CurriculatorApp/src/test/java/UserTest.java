@@ -32,7 +32,7 @@ public class UserTest {
     public void testNewUserFromDataBase() {
         user.setPassword("TestPassword");
         String hashPassword = user.getPassword();
-        User testUser = new User("TestDBName", "TestDBUsername", hashPassword);
+        User testUser = new User(1, "TestDBName", "TestDBUsername", hashPassword);
         assertEquals(hashPassword, testUser.getPassword());
 
     }

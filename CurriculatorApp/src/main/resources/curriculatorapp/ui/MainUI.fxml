@@ -27,6 +27,7 @@
             <left>
                 <VBox alignment="CENTER" disable="true" prefHeight="600.0" prefWidth="300.0" styleClass="sidebar" BorderPane.alignment="CENTER">
                     <children>
+                 
                         <Label alignment="CENTER" ellipsisString="" graphicTextGap="0.0" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" opacity="0.47" pickOnBounds="false" prefHeight="59.0" prefWidth="288.0" text="Tervetuloa" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
                             <font>
                                 <Font name="Rockwell Nova Light Italic" size="38.0" />
@@ -43,6 +44,11 @@
             <center>
                 <Pane prefHeight="598.0" prefWidth="798.0" styleClass="parent" BorderPane.alignment="CENTER">
                     <children>
+                                     <Button onAction="#onLogoutButtonClick" graphicTextGap="9.0" layoutX="-4.0" layoutY="-3.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="25.0" styleClass="returnbutton">
+               <graphic>
+                  <FontAwesomeIconView glyphName="ARROW_LEFT" size="17" styleClass="closeback_button"/>
+               </graphic>
+            </Button>
                         <ProgressIndicator fx:id="progressIndicator" layoutX="359.0" layoutY="65.0" minHeight="117.0" minWidth="110.0" prefHeight="117.0" prefWidth="110.0" progress="1.0" style="-fx-progress-color: #155e5e;" stylesheets="@stylesheet.css">
                      
                         </ProgressIndicator>
@@ -127,7 +133,7 @@
                         <Label layoutX="237.0" layoutY="98.0" prefHeight="41.0" prefWidth="87.0" styleClass="o" text="Laajuus" textFill="#616161" />
                         <Label fx:id="errorLabel" nodeOrientation="RIGHT_TO_LEFT"  layoutX="-25" layoutY="120" prefHeight="41.0" prefWidth="350"  textFill="#616161" />
                         <Label  layoutX="29.0" layoutY="200.0" prefHeight="20.0" prefWidth="309.0" styleClass="calcfont" text="Kurssit" />
-                        <Label fx:id="curriculumNameLabel" layoutX="14.0" layoutY="6.0" minWidth="-Infinity" prefHeight="59.0" prefWidth="478.0" styleClass="headerlabel" textAlignment="CENTER" textFill="#222221" >
+                        <Label fx:id="curriculumNameLabel" layoutX="20.0" layoutY="6.0" minWidth="-Infinity" prefHeight="59.0" prefWidth="478.0" styleClass="headerlabel" textAlignment="CENTER" textFill="#222221" >
                         </Label>
                         <ScrollPane fx:id="courselist" layoutX="23.0" layoutY="217.0" prefHeight="342.0" prefWidth="319.0" styleClass="invisible">
                             <content>
@@ -191,7 +197,7 @@
                                     </Button>
                                     
                                     
-                                    <Label prefHeight="15.0" prefWidth="87.0" styleClass="o" text="suorituspäivä" textFill="#616161" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                    <Label prefHeight="15.0" prefWidth="87.0" styleClass="o" text="" textFill="#616161" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
                            </children>

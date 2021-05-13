@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -23,6 +23,7 @@
          <center>
             <Pane prefHeight="598.0" prefWidth="798.0" styleClass="parent" BorderPane.alignment="CENTER">
                <children>
+              
                   <VBox alignment="TOP_CENTER" layoutX="46.0" layoutY="116.0" prefHeight="437.0" prefWidth="409.0">
                      <children>
                         <ImageView fitHeight="116.0" fitWidth="128.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">

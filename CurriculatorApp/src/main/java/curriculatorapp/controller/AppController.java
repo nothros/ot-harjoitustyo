@@ -1,9 +1,15 @@
 package curriculatorapp.controller;
 
+import curriculatorapp.dao.CoursesDao;
+import curriculatorapp.dao.CurriculumDao;
+import curriculatorapp.dao.UserDao;
 import curriculatorapp.domain.Course;
 import curriculatorapp.domain.Curriculum;
 import curriculatorapp.logic.AppService;
+import curriculatorapp.logic.LoginService;
 import curriculatorapp.logic.Service;
+import curriculatorapp.ui.CurriculatorUi;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -109,6 +115,23 @@ public class AppController implements Controller {
         courseMeterLabelLower.setText(curriculum.getChoice() + "ttä");
     }
 
+    /**
+     * Metodi ulos kirjautumiseen.
+     *
+     * @throws java.io.IOException
+     * @throws java.sql.SQLException
+     */
+    @FXML
+    public void onLogoutButtonClick() throws IOException, SQLException {
+        String url="curriculatorapp.db";
+        UserDao userdao=new UserDao(url);
+        CurriculumDao curriculumdao = new CurriculumDao(url);
+        CoursesDao coursesdao = new CoursesDao(url);
+        LoginService loginservice = new LoginService(userdao, curriculumdao, coursesdao);
+        CurriculatorUi.loadNewScene("LoginUI", loginservice);
+        
+    }
+
     @FXML
     public void setStats() throws SQLException {
         doneCoursesAmount.setText("" + appservice.coursesDoneAmount());
@@ -157,7 +180,7 @@ public class AppController implements Controller {
             System.out.println(c.toString() + " kurssi on " + c.isDone());
             if (!c.isDone()) {
                 courseNodes.getChildren().add(createCourseNode(c));
-                
+
             }
         }
         return courseNodes;
@@ -217,34 +240,31 @@ public class AppController implements Controller {
         StackPane aPane = new StackPane();
         aPane.getStyleClass().add("sidebar");
         aPane.setMinSize(40, 40);
-        
+
         Label scope = new Label("" + course.getCourseScope());
         scope.getStyleClass().add("whitetext");
-        
-        aPane.getChildren().add(scope);  
-        aPane.setAlignment(scope,Pos.CENTER);
-        
+
+        aPane.getChildren().add(scope);
+        aPane.setAlignment(scope, Pos.CENTER);
+
         StackPane bPane = new StackPane();
-        bPane.setMinSize(180,40);
-        
-        Label name = new Label("   "+course.getCourseName());
+        bPane.setMinSize(180, 40);
+
+        Label name = new Label("   " + course.getCourseName());
         name.getStyleClass().add("smallblacktext");
-        
-        bPane.getChildren().add(name);  
-        bPane.setAlignment(name,Pos.CENTER_LEFT);
-        
-        
+
+        bPane.getChildren().add(name);
+        bPane.setAlignment(name, Pos.CENTER_LEFT);
+
         StackPane cPane = new StackPane();
-        cPane.setMinSize(80,40);
-        Button button = new Button("Done!");
+        cPane.setMinSize(80, 40);
+        Button button = new Button("Tehty!");
 
         button.setOnAction(e -> {
             coursenamePopupLabel.setText(course.getCourseName());
             popup.setVisible(true);
             CourseDone.setOnAction(d -> {
-                System.out.print("PAINETTU");
                 String grade = String.valueOf(gradeChoiceBox.getValue());
-                System.out.println(grade);
                 if (!grade.trim().isEmpty()) {
                     try {
                         appservice.markDone(course, grade);
@@ -271,13 +291,11 @@ public class AppController implements Controller {
 
         });
 
-        
-        
-       cPane.getChildren().add(button);  
-        cPane.setAlignment(button,Pos.CENTER);
+        cPane.getChildren().add(button);
+        cPane.setAlignment(button, Pos.CENTER);
         box.setPadding(new Insets(0, 5, 0, 5));
 
-        box.getChildren().addAll( aPane, bPane, cPane);
+        box.getChildren().addAll(aPane, bPane, cPane);
         return box;
     }
 

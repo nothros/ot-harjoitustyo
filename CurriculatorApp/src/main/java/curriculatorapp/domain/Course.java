@@ -1,5 +1,7 @@
 package curriculatorapp.domain;
 
+import java.util.Objects;
+
 /**
  * Kurssia kuvaava luokka.
  */
@@ -57,5 +59,48 @@ public class Course {
     public void setCourseScope(int courseScope) {
         this.courseScope = courseScope;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 53 * hash + Objects.hashCode(this.courseName);
+        hash = 53 * hash + (this.done ? 1 : 0);
+        hash = 53 * hash + this.courseScope;
+        hash = 53 * hash + Objects.hashCode(this.courseGrade);
+        hash = 53 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Course other = (Course) obj;
+        if (this.done != other.done) {
+            return false;
+        }
+        if (this.courseScope != other.courseScope) {
+            return false;
+        }
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.courseName, other.courseName)) {
+            return false;
+        }
+        if (!Objects.equals(this.courseGrade, other.courseGrade)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
 }

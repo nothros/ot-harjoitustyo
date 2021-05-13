@@ -50,8 +50,6 @@ public class AppService implements Service {
      */
     public void createCourse(String courseName, int scope) throws SQLException {
         coursesDao.createCourse(curriculum, courseName, scope);
-        System.out.print("kurssi lisätty");
-        System.out.println(coursesDao.findAllCourses(curriculum));
     }
 
     public boolean checkIfCurriculumExist() throws SQLException {
@@ -107,7 +105,6 @@ public class AppService implements Service {
         int courseAmount = 0;
         for (Course c : done) {
             if (c.getCourseGrade().length() == 1) {
-                System.out.println("ON PIDEMPI" + c.getCourseGrade());
                 gradeSum += Integer.valueOf(c.getCourseGrade());
                 courseAmount += 1;
             }
@@ -131,6 +128,9 @@ public class AppService implements Service {
     public double getProgressPercent() throws SQLException {
         int done = coursesDoneAmount();
         int scope = curriculum.getScope();
+        if(scope ==0){
+            return 0;
+        }
         double percent = (double) done / scope;
 
         return percent;

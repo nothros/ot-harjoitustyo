@@ -54,6 +54,11 @@ public class LoginService implements Service {
 
     /**
      * Luokka Login- ja Registernäkymän toiminnallisuuteen.
+     * @param name
+     * @param username
+     * @param password
+     * @return 
+     * @throws java.sql.SQLException
      */
     public boolean createNewUser(String name, String username, String password) throws SQLException {
         User user = (User) userdao.findByUsername(username);

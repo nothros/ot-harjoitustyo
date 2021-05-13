@@ -2,6 +2,7 @@ package curriculatorapp.dao;
 
 import curriculatorapp.domain.Course;
 import curriculatorapp.domain.Curriculum;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -28,8 +29,7 @@ public class CoursesDao {
      * @throws java.sql.SQLException
      */
     public void createNewTable() throws SQLException {
-        Connection db = DriverManager.getConnection("jdbc:sqlite:curriculatorapp.db");
-        try (PreparedStatement stmt = db.prepareStatement("CREATE TABLE IF NOT EXISTS Courses "
+        try ( PreparedStatement stmt = conn.prepareStatement("CREATE TABLE IF NOT EXISTS Courses "
                 + "(course_id INTEGER PRIMARY KEY, "
                 + "curriculum_id   INTEGER, "
                 + "coursename    VARCHAR(255),  "
@@ -52,7 +52,7 @@ public class CoursesDao {
      * @throws java.sql.SQLException
      */
     public void createCourse(Curriculum userCurriculum, String coursename, int scope) throws SQLException {
-        try (PreparedStatement stmt = conn.prepareStatement("INSERT INTO Courses (curriculum_id,coursename,scope,grade,done) VALUES (?,?,?,?,?)")) {
+        try ( PreparedStatement stmt = conn.prepareStatement("INSERT INTO Courses (curriculum_id,coursename,scope,grade,done) VALUES (?,?,?,?,?)")) {
             stmt.setInt(1, userCurriculum.getId());
             stmt.setString(2, coursename);
             stmt.setInt(3, scope);
@@ -72,7 +72,7 @@ public class CoursesDao {
      * @throws java.sql.SQLException
      */
     public void updateCourse(Course course, String grade) throws SQLException {
-        try (PreparedStatement stmt = conn.prepareStatement("UPDATE Courses SET grade=?, done=? WHERE course_id=?")) {
+        try ( PreparedStatement stmt = conn.prepareStatement("UPDATE Courses SET grade=?, done=? WHERE course_id=?")) {
             stmt.setString(1, grade);
             stmt.setBoolean(2, true);
             stmt.setInt(3, course.getId());
@@ -103,6 +103,37 @@ public class CoursesDao {
             }
         }
         return courses;
+
+    }
+    
+        public Course findOneCourse(Curriculum userCurriculum, String courseName) throws SQLException {
+        Course course = null;
+
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Courses WHERE curriculum_id=?")) {
+            stmt.setInt(1, userCurriculum.getId());
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                if(rs.getString("coursename").equals(courseName)){
+                     course = new Course(rs.getInt("course_id"), rs.getString("coursename"), rs.getBoolean("done"), rs.getInt("scope"), rs.getString("grade"));
+                }
+               
+   
+            }
+        }
+        return course;
+
+    }
+
+    /**
+     * Metodi poistaa koko tietokannan.Tarkoitettu testien käyttöön
+     *
+     * @param database poistettavan tietokannan nimi
+     */
+    public void deleteDatabase(String database) throws SQLException {
+        conn.close();
+        File deletedDB = new File(database + ".db");
+        deletedDB.delete();
 
     }
 }

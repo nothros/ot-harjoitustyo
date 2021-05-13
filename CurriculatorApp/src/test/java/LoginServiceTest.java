@@ -35,21 +35,22 @@ public class LoginServiceTest {
     public void setUp() throws SQLException {
         testuserdao=new UserDao("testuserDB.db");
         testcurriculumdao=new CurriculumDao("testcurriculumDB.db");
-       // testcoursesdao=new CoursesDao();
+        testcoursesdao=new CoursesDao("testCourse.db");
         loginService=new LoginService(testuserdao,testcurriculumdao, testcoursesdao);
         loginService.createNewTablesIfNotExists();
+        
         
     }
     
     @Test
     public void loginCanNotFindUser() throws SQLException{
-        boolean notExists=loginService.login("usernameNotExists", "noPassWord");
+        boolean notExists=loginService.checkUsernameAndPassword("usernameNotExists", "noPassWord");
         assertEquals(false, notExists);
     }
     @Test
     public void loginFindUser() throws SQLException{
         boolean isTrue=loginService.createNewUser("testFindname","testFindUser", "testFindPassword");
-        boolean successLogin=loginService.login("testFindUser", "testFindPassword");
+        boolean successLogin=loginService.checkUsernameAndPassword("testFindUser", "testFindPassword");
         assertEquals(true, successLogin);
     }
     
@@ -58,7 +59,7 @@ public class LoginServiceTest {
         boolean mustBeTrue=loginService.createNewUser("Testname","Testusername", "Testpassword");
         assertEquals(true, mustBeTrue);
     }
-    
+   
     @Test
     public void createNewUserWhenUsernameExists() throws SQLException{
         boolean isTrue=loginService.createNewUser("OtherTestName","OtherUserName", "OtherTestpassword");
@@ -70,6 +71,7 @@ public class LoginServiceTest {
     public void tearDown() throws SQLException {
         testuserdao.deleteDatabase("testuserDB");
         testcurriculumdao.deleteDatabase("testcurriculumDB");
+        testcoursesdao.deleteDatabase("testCourse.db");
     }
 
   

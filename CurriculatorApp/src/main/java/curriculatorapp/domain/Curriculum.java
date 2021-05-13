@@ -1,6 +1,7 @@
 package curriculatorapp.domain;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Opintoa kuvaava luokka.
@@ -48,4 +49,43 @@ public class Curriculum {
     public int getScope() {
         return this.scope;
     }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Curriculum other = (Curriculum) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.scope != other.scope) {
+            return false;
+        }
+        if (!Objects.equals(this.choice, other.choice)) {
+            return false;
+        }
+        if (!Objects.equals(this.user, other.user)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.choice);
+        hash = 79 * hash + this.id;
+        hash = 79 * hash + this.scope;
+        hash = 79 * hash + Objects.hashCode(this.user);
+        return hash;
+    }
+    
 }
