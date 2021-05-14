@@ -25,7 +25,13 @@
 |4.5.21| 4 | JavaDoc-luontia, virhetekstin lisääminen uuden opinnon luontiin|
 |4.5.21| 4 | Loput säädöt testaukseen, virheiden mestästystä, readme-päivitystä|
 |6.5.21| 2 | Mainfxml kuntoon.|
+|7.5.21| 1.5 | CurriculumDaon korjauksia|
+|8.5.21| 2 | CoursesDaon rakentaminen|
+|9.5.21| 3 | Pääohjelman toiminnallisuutta|
+|10.5.21| 3 | Pääohjelman toiminnallisuutta|
+|11.5.21| 3 | Kurssilistan toiminnallisuus ja parantelua|
+|13.5.21| 2 | Vaatimusmäärittelynä ja korjauksia ohjelmaan, sekä testejä|
+|14.5.21| 4 | Testejä, ja dokumentaatio kuntoon. Ohjelma valmis tältä erää!|
 
-
- Yhteensä 69h  Viikko 6
+Yhteensä 89.5h 
 
