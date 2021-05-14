@@ -13,7 +13,7 @@ Sovellus koostuu neljästä näkymästä
 - Uuden opinnon lisäys- näkymä, jossa käyttäjä coi lisätä itselleen seurattavan opinnon ja sille laajuuden
 - Päänäkymä (kirjautumisen ja opintojen lisäämisen jälkeen) jossa kaikki toiminnallisuus
 
-<img src="https://github.com/nothros/ot-harjoitustyo/blob/master/CurriculatorApp/dokumentaatio/kuvat/kayttoliittymaluonnos.png" width="750">
+<img src="https://github.com/nothros/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/kayttoliittymaluonnos.png" width="750">
 
  
 ## Toiminnallisuus
