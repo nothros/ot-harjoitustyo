@@ -11,15 +11,18 @@ Sovellus on osa Helsingin yliopiston tietojenkäsittelytieteiden aineopintojen "
 >(Curriculator- nimi tulee yhdistelmästä Curriculum[kurssi] ja Calculator [laskin])
 
 ## Dokumentaatio
+ - [Käyttöohje](https://github.com/nothros/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
+ - [Vaatimusmäärittely](https://github.com/nothros/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+ - [Arkkitehtuurikuvaus](https://github.com/nothros/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+ - [Testausdokumentti](https://github.com/nothros/ot-harjoitustyo/blob/master/dokumentaatio/testaus.md)
+ - [Työaikakirjanpito](https://github.com/nothros/ot-harjoitustyo/blob/master/dokumentaatio/tyoaika.md)
+ 
 
- - [Työaikakirjanpito](https://github.com/nothros/ot-harjoitustyo/blob/master/CurriculatorApp/dokumentaatio/tyoaika.md)
- - [Vaatimusmäärittely](https://github.com/nothros/ot-harjoitustyo/blob/master/CurriculatorApp/dokumentaatio/vaatimusmaarittely.md)
- - [Arkkitehtuurikuvaus](https://github.com/nothros/ot-harjoitustyo/blob/master/CurriculatorApp/dokumentaatio/arkkitehtuuri.md)
- - [Käyttöohje](https://github.com/nothros/ot-harjoitustyo/blob/master/CurriculatorApp/dokumentaatio/kayttoohje.md)
-
+ 
 ## Releaset
- - [Viikko 5](https://github.com/nothros/ot-harjoitustyo/releases/tag/viikko5)
+ - [Loppupalautus](https://github.com/nothros/ot-harjoitustyo/releases/tag/loppupalautus)
  - [Viikko 6](https://github.com/nothros/ot-harjoitustyo/releases/tag/viikko6)
+ - [Viikko 5](https://github.com/nothros/ot-harjoitustyo/releases/tag/viikko5)
 
 ## Komentorivitoiminnot
 
