@@ -66,12 +66,6 @@ public class Curriculum {
         if (this.id != other.id) {
             return false;
         }
-        if (this.scope != other.scope) {
-            return false;
-        }
-        if (!Objects.equals(this.choice, other.choice)) {
-            return false;
-        }
         if (!Objects.equals(this.user, other.user)) {
             return false;
         }
@@ -80,12 +74,12 @@ public class Curriculum {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.choice);
-        hash = 79 * hash + this.id;
-        hash = 79 * hash + this.scope;
-        hash = 79 * hash + Objects.hashCode(this.user);
+        int hash = 3;
+        hash = 19 * hash + this.id;
+        hash = 19 * hash + Objects.hashCode(this.user);
         return hash;
     }
+
+    
     
 }

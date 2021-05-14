@@ -90,7 +90,7 @@ public class CoursesDaoTest {
         curriculumtest = curriculumDao.findCurriculum(user);
         coursesDao.createCourse(curriculumtest, "Course1", 10);
         Course check = coursesDao.findOneCourse(curriculumtest, "Course1");
-        coursesDao.updateCourse(check, "5");
+        coursesDao.updateCourse(check, "hyväksytty");
         Course check2 = coursesDao.findOneCourse(curriculumtest, "Course1");
 
         assertNotEquals(check, check2);

@@ -86,7 +86,7 @@ public class AppService implements Service {
     public String calculateLeftCourses() throws SQLException {
         int done = coursesDoneAmount();
         int leftCourses = curriculum.getScope() - done;
-        if (leftCourses < 0) {
+        if (leftCourses <= 0) {
             return "0";
         }
 

@@ -71,7 +71,7 @@ public class LoginServiceTest {
     public void tearDown() throws SQLException {
         testuserdao.deleteDatabase("testuserDB");
         testcurriculumdao.deleteDatabase("testcurriculumDB");
-        testcoursesdao.deleteDatabase("testCourse.db");
+        testcoursesdao.deleteDatabase("testCourse");
     }
 
   

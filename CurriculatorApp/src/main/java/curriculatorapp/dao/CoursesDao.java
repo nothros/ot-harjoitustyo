@@ -129,6 +129,7 @@ public class CoursesDao {
      * Metodi poistaa koko tietokannan.Tarkoitettu testien käyttöön
      *
      * @param database poistettavan tietokannan nimi
+     * @throws java.sql.SQLException
      */
     public void deleteDatabase(String database) throws SQLException {
         conn.close();

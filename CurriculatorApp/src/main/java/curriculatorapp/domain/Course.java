@@ -60,16 +60,8 @@ public class Course {
         this.courseScope = courseScope;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + Objects.hashCode(this.courseName);
-        hash = 53 * hash + (this.done ? 1 : 0);
-        hash = 53 * hash + this.courseScope;
-        hash = 53 * hash + Objects.hashCode(this.courseGrade);
-        hash = 53 * hash + this.id;
-        return hash;
-    }
+   
+    
 
     @Override
     public boolean equals(Object obj) {
@@ -86,19 +78,19 @@ public class Course {
         if (this.done != other.done) {
             return false;
         }
-        if (this.courseScope != other.courseScope) {
-            return false;
-        }
+        
         if (this.id != other.id) {
             return false;
         }
-        if (!Objects.equals(this.courseName, other.courseName)) {
-            return false;
-        }
-        if (!Objects.equals(this.courseGrade, other.courseGrade)) {
-            return false;
-        }
         return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 71 * hash + (this.done ? 1 : 0);
+        hash = 71 * hash + this.id;
+        return hash;
     }
     
     
