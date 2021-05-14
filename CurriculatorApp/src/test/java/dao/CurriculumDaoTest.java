@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package dao;
 
 import curriculatorapp.dao.CurriculumDao;
 import curriculatorapp.dao.UserDao;
@@ -16,10 +12,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Testaa CurriculumDao-luokkaa ja tietokannan toimintaa.
  *
- * @author ehorrosw
+ *
  */
 public class CurriculumDaoTest {
+
     Curriculum curriculum;
     UserDao userDao;
     CurriculumDao curriculumDao;
@@ -27,9 +25,12 @@ public class CurriculumDaoTest {
     String testName, testUserName, testPassword;
     String testDatabase;
 
-    public CurriculumDaoTest() {
-    }
-
+    /**
+     * Metodi tarvittavien tietokantojen rakentamiseen.
+     *
+     * @throws java.io.FileNotFoundException
+     * @throws java.sql.SQLException
+     */
     @Before
     public void setUp() throws FileNotFoundException, SQLException {
         testDatabase = "curriculumTestDB";
@@ -38,6 +39,12 @@ public class CurriculumDaoTest {
         curriculumDao.createNewTable();
 
     }
+
+    /**
+     * Apumetodi käyttäjän lisäämiseen ja tietokannan rakentamiseen.
+     *
+     * @throws java.sql.SQLException
+     */
     public void setUpUserTable() throws SQLException {
         testName = "testName";
         testUserName = "testUsername";
@@ -50,24 +57,37 @@ public class CurriculumDaoTest {
 
     }
 
+    /**
+     * Tarkistaa, että tietokantaa ei ole olamassa.
+     *
+     * @throws java.sql.SQLException
+     */
     @Test
     public void testIfCurrilumDoesNotExists() throws SQLException {
         user = new User("NoName", "NoUserName");
         user.setPassword("NoPass");
-       assertEquals(null, curriculumDao.findCurriculum(user));
+        assertEquals(null, curriculumDao.findCurriculum(user));
 
     }
-    
+
+    /**
+     * Tarkistaa tietokanta lisää curriculumin tietokantaan
+     *
+     * @throws java.sql.SQLException
+     */
     @Test
     public void testIfCurrilumDoesExists() throws SQLException {
         curriculum = new Curriculum(1, "name", "choice", 3, user);
         curriculumDao.createCurriculum(user, "name", 3, "choice");
-       assertEquals(curriculum, curriculumDao.findCurriculum(user));
+        assertEquals(curriculum, curriculumDao.findCurriculum(user));
 
     }
 
-    
-
+    /**
+     * Poistaa tietokantatiedoston.
+     *
+     * @throws java.sql.SQLException
+     */
     @After
     public void tearDown() throws SQLException {
         curriculumDao.deleteDatabase(testDatabase);

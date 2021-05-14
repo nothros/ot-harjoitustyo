@@ -1,6 +1,5 @@
 package curriculatorapp.controller;
 
-import curriculatorapp.domain.Curriculum;
 import curriculatorapp.logic.AppService;
 import curriculatorapp.logic.Service;
 import curriculatorapp.ui.CurriculatorUi;
@@ -24,8 +23,6 @@ public class NewUserController implements Controller {
     private TextField studyTextfield, studyScope;
     @FXML
     private Label nameLabel, newUsererrorlabel;
-
-    private Curriculum curriculum;
 
     /**
      * Metodi asettaa tälle luokalle logiikkaluokan.
@@ -61,10 +58,7 @@ public class NewUserController implements Controller {
     }
 
     /**
-     * Metodi kontrolloi Luo uusi opinto-painikkeen toimintaa.Se tarkastaa onko
-     * tarvittavat tekstikentät tyhjinä, mikäli eivät, luo tämä uuden opinnon
-     * annetuilla tiedoilla, ja kutsuu metodia ilmoituskentän täyttämiseen
-     * ehdoin
+     * Metodi kontrolloi Luo uusi opinto-painikkeen toimintaa.
      *
      * @throws java.io.IOException
      * @throws java.sql.SQLException

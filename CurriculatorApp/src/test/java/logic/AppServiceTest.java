@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package logic;
 
 import curriculatorapp.dao.CoursesDao;
 import curriculatorapp.dao.CurriculumDao;
@@ -13,15 +9,12 @@ import curriculatorapp.domain.User;
 import curriculatorapp.logic.AppService;
 import java.sql.SQLException;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author ehorrosw
+ * Testit AppService luokalle.
  */
 public class AppServiceTest {
 
@@ -37,9 +30,9 @@ public class AppServiceTest {
     Course course;
     AppService appService;
 
-    public AppServiceTest() {
-    }
-
+    /**
+     * Asettaa tarvittavan tietokannat ja AppServicen.
+     */
     @Before
     public void setUp() throws SQLException {
         testDatabase = "courseTestDB";
@@ -51,6 +44,9 @@ public class AppServiceTest {
         appService.createCurriculum("Name", 200, "Choice");
     }
 
+    /**
+     * Apuluokka User-taulun luomiseen.
+     */
     public void setUpUserTable() throws SQLException {
         testName = "testName";
         testUserName = "testUsername";
@@ -65,12 +61,22 @@ public class AppServiceTest {
 
     }
 
+    /**
+     * Apuluokka Curriculum-taulun luomiseen.
+     *
+     * @throws java.sql.SQLException
+     */
     public void setUpCurriculumTable() throws SQLException {
         curriculumDao = new CurriculumDao(testDatabase + ".db");
         curriculumDao.createNewTable();
 
     }
 
+    /**
+     * Testi, että suoritettu prosenttimäärä on nolla.
+     *
+     * @throws java.sql.SQLException
+     */
     @Test
     public void calculatePercentZero() throws SQLException {
         double DELTA = 1e-15;
@@ -80,6 +86,11 @@ public class AppServiceTest {
         assertEquals(0.0, zero, DELTA);
     }
 
+    /**
+     * Testi joka testaa, että kursseja on oikea määrä suoritettuna.
+     *
+     * @throws java.sql.SQLException
+     */
     @Test
     public void calculateLeftCoursesReturnRightAmount() throws SQLException {
         curriculumtest = appService.findCurriculum();
@@ -92,6 +103,12 @@ public class AppServiceTest {
 
     }
 
+    /**
+     * Testi joka testaa, että kursseja palautetaan nolla jos suoritukset menee
+     * yli.
+     *
+     * @throws java.sql.SQLException
+     */
     @Test
     public void calculateLeftCoursesReturnsZero() throws SQLException {
         curriculumtest = appService.findCurriculum();
@@ -104,6 +121,11 @@ public class AppServiceTest {
 
     }
 
+    /**
+     * Testi keskiarvon laskemiselle.
+     *
+     * @throws java.sql.SQLException
+     */
     @Test
     public void calculateAverage() throws SQLException {
         curriculumtest = appService.findCurriculum();
@@ -115,12 +137,17 @@ public class AppServiceTest {
         assertEquals("5.00", average);
 
     }
-    
-      @Test
+
+    /**
+     * Testi, että suoritettu prosenttimäärä on 1.0.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
     public void calculatePercent100() throws SQLException {
         double DELTA = 1e-15;
         curriculumtest = appService.findCurriculum();
-         appService.createCourse("Course3", 200);
+        appService.createCourse("Course3", 200);
         Course donecourse = coursesDao.findOneCourse(curriculumtest, "Course3");
         appService.markDone(donecourse, "5");
         double one = appService.getProgressPercent();
@@ -128,6 +155,11 @@ public class AppServiceTest {
         assertEquals(1.0, one, DELTA);
     }
 
+    /**
+     * Poistaa tietokannat kokonaan.
+     *
+     * @throws java.sql.SQLException
+     */
     @After
     public void tearDown() throws SQLException {
         userDao.deleteDatabase(testDatabase);

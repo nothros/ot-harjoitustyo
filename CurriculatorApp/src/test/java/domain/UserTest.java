@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package domain;
 
 import curriculatorapp.domain.User;
 import static org.junit.Assert.*;
@@ -10,8 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- *
- * @author ehorrosw
+ * Testit User oliolle.
  */
 public class UserTest {
 
@@ -22,12 +17,18 @@ public class UserTest {
         user = new User("TestName", "TestUserName");
     }
 
+    /**
+     * Tarkistetaan että salasanan tarkistus toimii oikein.
+     */
     @Test
     public void testCheckPassword() {
         user.setPassword("TestPassword");
         assertTrue(user.checkPassword("TestPassword", user.getPassword()));
     }
 
+    /**
+     * Tarkistetaan että tietokantaan lisätään kryptattu salasana.
+     */
     @Test
     public void testNewUserFromDataBase() {
         user.setPassword("TestPassword");
@@ -37,6 +38,9 @@ public class UserTest {
 
     }
 
+    /**
+     * Testaa gettereitä ja settereitä.
+     */
     @Test
     public void testNameGetterAndSetter() {
         String newName = "NewName";
@@ -45,6 +49,9 @@ public class UserTest {
 
     }
 
+    /**
+     * Testaa gettereitä ja settereitä.
+     */
     @Test
     public void testUsernameGetterAndSetter() {
         String newName = "NewUsername";

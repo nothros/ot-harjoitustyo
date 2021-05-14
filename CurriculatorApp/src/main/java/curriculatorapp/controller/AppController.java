@@ -26,15 +26,12 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 /**
- *
- * @author ehorrosw
+ * Luokka Main-näkymän kontrollointiin.
  */
 public class AppController implements Controller {
 
@@ -43,8 +40,7 @@ public class AppController implements Controller {
     private AppService appservice;
     @FXML
     private Pane popup;
-    @FXML
-    private Label courselabel;
+
     @FXML
     private ScrollPane courselist;
     @FXML
@@ -55,10 +51,9 @@ public class AppController implements Controller {
     private Label courseMeterLabelLower;
     @FXML
     private Label courseMeterLabelUpper;
+
     @FXML
-    private Button addCourseButton;
-    @FXML
-    private TextField courseNameTextfield, gradeTextfield;
+    private TextField courseNameTextfield;
     @FXML
     private TextField scopeTextfield;
     @FXML
@@ -79,8 +74,15 @@ public class AppController implements Controller {
     @FXML
     ChoiceBox gradeChoiceBox;
     @FXML
-    Button CourseDone;
+    Button courseDone;
 
+    /**
+     * Metodi asettaa tälle luokalla logiikkaluokan ja asettaa näytettävät
+     * labelit.
+     *
+     * @param appservice Annetaan kontrollerin käyttämä logiikka sitä
+     * kutsuttaessa.
+     */
     @Override
     public void initService(Service appservice) {
 
@@ -89,12 +91,8 @@ public class AppController implements Controller {
             courseNodes = new VBox(10);
             popup.setVisible(false);
             setChoices();
-
             this.curriculum = (Curriculum) this.appservice.findCurriculum();
-            System.out.print("Onnistui" + curriculum.toString());
-
             courselist.setContent(reDrawList());
-
             setLabels();
             setStats();
         } catch (SQLException ex) {
@@ -104,7 +102,7 @@ public class AppController implements Controller {
     }
 
     /**
-     * Metodi kenttien täyttämiseen..
+     * Metodi kenttien täyttämiseen.
      *
      */
     @FXML
@@ -123,15 +121,20 @@ public class AppController implements Controller {
      */
     @FXML
     public void onLogoutButtonClick() throws IOException, SQLException {
-        String url="curriculatorapp.db";
-        UserDao userdao=new UserDao(url);
+        String url = "curriculatorapp.db";
+        UserDao userdao = new UserDao(url);
         CurriculumDao curriculumdao = new CurriculumDao(url);
         CoursesDao coursesdao = new CoursesDao(url);
         LoginService loginservice = new LoginService(userdao, curriculumdao, coursesdao);
         CurriculatorUi.loadNewScene("LoginUI", loginservice);
-        
+
     }
 
+    /**
+     * Metodi statistiikan asettamiseen.
+     *
+     * @throws java.sql.SQLException
+     */
     @FXML
     public void setStats() throws SQLException {
         doneCoursesAmount.setText("" + appservice.coursesDoneAmount());
@@ -140,6 +143,11 @@ public class AppController implements Controller {
         progressIndicator.setProgress(appservice.getProgressPercent());
     }
 
+    /**
+     * Metodi lisää uuden kurssin listaan.
+     *
+     * @throws java.sql.SQLException
+     */
     @FXML
     public void onAddCourseButtonClick() throws SQLException {
         String courseName = courseNameTextfield.getText();
@@ -169,15 +177,19 @@ public class AppController implements Controller {
         }
     }
 
+    /**
+     * Metodi listan näyttämiseen ja päivittämiseen.
+     *
+     * @return palauttaa VBoxin
+     * @throws java.sql.SQLException
+     */
     public Node reDrawList() throws SQLException {
 
         List<Course> courses = appservice.findAllCourses();
-        System.out.print(courses.toString());
         courseNodes.getChildren().clear();
         courseNodes.setMaxWidth(280);
         courseNodes.setMinWidth(280);
         for (Course c : courses) {
-            System.out.println(c.toString() + " kurssi on " + c.isDone());
             if (!c.isDone()) {
                 courseNodes.getChildren().add(createCourseNode(c));
 
@@ -187,6 +199,13 @@ public class AppController implements Controller {
 
     }
 
+    /**
+     * Metodi asettaa ilmoituskenttään ilmoitukset. Mikäli tekstikentät ovat
+     * tyhjiä kirjautuessa tai jos käyttäjätunnus/salasana on virheellinen
+     *
+     * @param reason Mahdollisen virheilmoituksen syy, kuten empty- tyhjä
+     * kenttä.
+     */
     public void setNotifications(String reason) {
 
         if (reason.equals("empty")) {
@@ -231,8 +250,13 @@ public class AppController implements Controller {
         scopeTextfield.setText("");
     }
 
+    /**
+     * Metodi luo HBox noden kurssilistaan.
+     *
+     * @param course Luotava kurssi
+     * @return palauttaa HBoxin
+     */
     public Node createCourseNode(Course course) {
-        Label listLabel = new Label();
         HBox box = new HBox();
         box.setMinSize(300, 40);
         box.getStyleClass().add("cardpane-layout");
@@ -263,7 +287,7 @@ public class AppController implements Controller {
         button.setOnAction(e -> {
             coursenamePopupLabel.setText(course.getCourseName());
             popup.setVisible(true);
-            CourseDone.setOnAction(d -> {
+            courseDone.setOnAction(d -> {
                 String grade = String.valueOf(gradeChoiceBox.getValue());
                 if (!grade.trim().isEmpty()) {
                     try {
@@ -299,12 +323,20 @@ public class AppController implements Controller {
         return box;
     }
 
+    /**
+     * Metodi piilottaa kurssinsuoritus popupin
+     *
+     * @throws java.sql.SQLException
+     */
     @FXML
     public void onHidePopupButtonClick() throws SQLException {
-
         popup.setVisible(false);
     }
 
+    /**
+     * Metodi asettaa arvosanavalikolle vaihtoehdot
+     *
+     */
     @FXML
     public void setChoices() {
         gradeChoiceBox.getItems().add(0, "");

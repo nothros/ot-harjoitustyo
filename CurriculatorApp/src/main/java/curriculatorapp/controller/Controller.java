@@ -5,7 +5,6 @@
  */
 package curriculatorapp.controller;
 
-import curriculatorapp.logic.AppService;
 import curriculatorapp.logic.Service;
 
 /**

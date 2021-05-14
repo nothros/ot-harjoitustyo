@@ -15,8 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
 /**
- * Luokka Login-näkymän kontrollointiin. Login-näkymä on tarkoitettu
- * kirjautumista varten
+ * Luokka Login-näkymän kontrollointiin. 
  */
 public class LoginController implements Controller {
 

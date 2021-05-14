@@ -21,7 +21,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.ChoiceBox?>
 
-<AnchorPane fx:controller="curriculatorapp.controller.AppController" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" styleClass="parent" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="curriculatorapp.controller.AppController" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" styleClass="parent" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <BorderPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0">
             <left>
@@ -186,7 +186,7 @@
                                     <DatePicker prefHeight="31.0" prefWidth="135.0" GridPane.columnIndex="3" GridPane.rowIndex="1" visible="false" />
                                     <Label  fx:id="popupErrorLabel" nodeOrientation="RIGHT_TO_LEFT"  GridPane.columnIndex="3" GridPane.rowIndex="1" prefHeight="41.0" prefWidth="350" textFill="#616161" />
                                     <Label prefHeight="15.0" prefWidth="87.0" styleClass="o" text="arvosana" textFill="#616161" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                     <Button fx:id="CourseDone"  graphicTextGap="9.0" GridPane.columnIndex="4" GridPane.rowIndex="1" mnemonicParsing="false" prefHeight="9.0" prefWidth="35.0" styleClass="returnbutton">
+                                     <Button fx:id="courseDone"  graphicTextGap="9.0" GridPane.columnIndex="4" GridPane.rowIndex="1" mnemonicParsing="false" prefHeight="9.0" prefWidth="35.0" styleClass="returnbutton">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="CHECK" size="25" styleClass="closeback_button">
                                              <rotationAxis>

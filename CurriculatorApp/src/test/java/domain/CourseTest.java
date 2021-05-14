@@ -1,23 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package domain;
 
 import curriculatorapp.domain.Course;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author ehorrosw
+ * Testit Course oliolle.
  */
 public class CourseTest {
 
+    /**
+     * Testaa että samat id:t on sama kurssi.
+     */
     @Test
     public void equalWhenSameId() {
         Course c1 = new Course(1, null, true, 0, null);
@@ -25,6 +19,9 @@ public class CourseTest {
         assertTrue(c1.equals(c2));
     }
 
+    /**
+     * Testaa että eri id:t ei ole sama kurssi.
+     */
     @Test
     public void noEqualWhenDifferentId() {
         Course c1 = new Course(1, null, true, 0, null);
@@ -32,6 +29,9 @@ public class CourseTest {
         assertFalse(c1.equals(c2));
     }
 
+    /**
+     * Testaa että eri tyyppi ei ole course.
+     */
     @Test
     public void nonEqualWhenDifferentType() {
         Course c = new Course(1, null, true, 0, null);

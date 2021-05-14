@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package dao;
 
 import curriculatorapp.dao.UserDao;
 import curriculatorapp.domain.User;
@@ -14,19 +10,21 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author ehorrosw
+ * Kurssi UserDaon testaamiseen.
  */
 public class UserDaoTest {
-
-    public UserDaoTest() {
-    }
 
     UserDao userDao;
     User user;
     String testName, testUserName, testPassword;
     String testDatabase;
 
+    /**
+     * Lisää tarvittavat tietokannat ja käyttäjän.
+     *
+     * @throws java.io.FileNotFoundException
+     * @throws java.sql.SQLException
+     */
     @Before
     public void setUp() throws FileNotFoundException, SQLException {
         testDatabase = "testdb";
@@ -41,17 +39,25 @@ public class UserDaoTest {
 
     }
 
+    /**
+     * Tarkistetaan että käyttäjä löytyy tietokannasta.
+     *
+     * @throws java.sql.SQLException
+     */
     @Test
     public void createUserAndFindsByUsername() throws SQLException {
         userDao.createUser(user.getName(), user.getUsername(), user.getPassword());
         User u = (User) userDao.findByUsername("testUsername");
 
-        assertEquals("testName", u.getName());
         assertEquals("testUsername", u.getUsername());
     }
 
-  
-   @Test
+    /**
+     * Tarkistetaan että käyttäjää ei ole tietokannassa.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
     public void createUserNotInDB() throws SQLException {
         userDao.createUser(user.getName(), user.getUsername(), user.getPassword());
         User u = (User) userDao.findByUsername("noUserName");
@@ -60,6 +66,11 @@ public class UserDaoTest {
 
     }
 
+    /**
+     * Poistaa tietokantatiedoston.
+     *
+     * @throws java.sql.SQLException
+     */
     @After
     public void tearDown() throws SQLException {
         userDao.deleteDatabase(testDatabase);

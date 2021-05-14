@@ -1,9 +1,10 @@
+package dao;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import curriculatorapp.dao.CoursesDao;
 import curriculatorapp.dao.CurriculumDao;
 import curriculatorapp.dao.UserDao;
@@ -14,15 +15,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
+ * Testaa CoursesDao-luokkaa ja tietokannan toimintaa.
  *
- * @author ehorrosw
+ *
  */
 public class CoursesDaoTest {
 
@@ -37,9 +37,11 @@ public class CoursesDaoTest {
     String testDatabase;
     Course course;
 
-    public CoursesDaoTest() {
-    }
-
+    /**
+     * Metodi tarvittavien tietokantojen rakentamiseen.
+     *
+     * @throws java.sql.SQLException
+     */
     @Before
     public void setUp() throws SQLException {
         testDatabase = "curriculumTestDB";
@@ -49,6 +51,11 @@ public class CoursesDaoTest {
         coursesDao.createNewTable();
     }
 
+    /**
+     * Apumetodi käyttäjän lisäämiseen ja tietokannan rakentamiseen.
+     *
+     * @throws java.sql.SQLException
+     */
     public void setUpUserTable() throws SQLException {
         testName = "testName";
         testUserName = "testUsername";
@@ -62,6 +69,11 @@ public class CoursesDaoTest {
 
     }
 
+    /**
+     * Apumetodi curriculum-taulun rakentamiseen.
+     *
+     * @throws java.sql.SQLException
+     */
     public void setUpCurriculumTable() throws SQLException {
         user = userDao.findByUsername(testUserName);
 
@@ -71,6 +83,11 @@ public class CoursesDaoTest {
 
     }
 
+    /**
+     * Tarkistaa että metodi palauttaa kaikki käyttäjän kurssit
+     *
+     * @throws java.sql.SQLException
+     */
     @Test
     public void checkIfReturnAllCoursesFromUser() throws SQLException {
         curriculumtest = curriculumDao.findCurriculum(user);
@@ -85,6 +102,11 @@ public class CoursesDaoTest {
         assertEquals(courses, testCourses);
     }
 
+    /**
+     * Tarkistaa että metodi päivittää kurssit.
+     *
+     * @throws java.sql.SQLException
+     */
     @Test
     public void checkIfCourseUpDate() throws SQLException {
         curriculumtest = curriculumDao.findCurriculum(user);
@@ -96,6 +118,11 @@ public class CoursesDaoTest {
         assertNotEquals(check, check2);
     }
 
+    /**
+     * Poistaa tietokantatiedoston.
+     *
+     * @throws java.sql.SQLException
+     */
     @After
     public void tearDown() throws SQLException {
         coursesDao.deleteDatabase(testDatabase);

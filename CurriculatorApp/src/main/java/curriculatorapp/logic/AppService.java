@@ -128,7 +128,7 @@ public class AppService implements Service {
     public double getProgressPercent() throws SQLException {
         int done = coursesDoneAmount();
         int scope = curriculum.getScope();
-        if(scope ==0){
+        if (scope == 0) {
             return 0;
         }
         double percent = (double) done / scope;
