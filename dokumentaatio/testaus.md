@@ -24,7 +24,7 @@ Testikattavuus on 87% jota pienensi hashcoden testaamattomuus. haarautumakattavu
 
 ## Järjestelmätestaus
 
-Ohjelman toiminta on testattu käyttöohjeen osoittamalla tavalla manuaalisesti.
+Ohjelman toiminta on testattu [käyttöohjeen](https://github.com/nothros/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md) osoittamalla tavalla manuaalisesti.
 
 ## Puutteet
 
