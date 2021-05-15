@@ -70,6 +70,8 @@ Käyttäjä syöttää kurssin nimen, sekä laajuuden. Ja tämän jälkeen ruudu
 Kun kurssi on lisätty onnistuneesti, luodaan kursille oma elementti kurssilistaan, josta käyttäjä voi merkitä kurssin suoritetuksi. 
 
 
+### Puutteet
 
+Sovelluslogiikkaan jäi puutteita päätoiminnallisuuden osalta, sillä tässä kohtaa oletetaan jo, että käyttäjä on onnistuneesti kirjautunut sisään. Näin ollen AppService tai CoursesDao ei juurikaan palauta onnistuneista lisäyksistä mitään. Kuitenkin tässä kohtaa ohjelman toimintaa tapahtuma on lähes riskitön. Ongelmaksi tämä saattaa muuttua, mikäli käyttäjällä olisi useampi opintoluonnos.
 
 
