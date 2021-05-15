@@ -59,6 +59,16 @@ Salasana tarkistetaan, vastaako se tietokantaan talletettua salattua salasanaa (
 
 Mikäli käyttäjätunnus löytyy ja salasana ei täsmää, ilmoitetaan siitä. Toisaalta jos käyttäjätunnusta ei löydy, siitäkin ilmoitetaan.
 
+#### Kurssin lisääminen
+Päänäkymässä käyttäjä voi lisätä itselleen uuden kurssin
+
+<img src ="https://raw.githubusercontent.com/nothros/ot-harjoitustyo/master/dokumentaatio/kuvat/kurssinlisays.png" width="1000">
+
+
+Käyttäjä syöttää kurssin nimen, sekä laajuuden. Ja tämän jälkeen ruudulle ilmestyy teksti onnistuneesta kurssin lisäämisestä. Kurssin lisääminen ei onnistu, mikäli kurssin laajuus on opintojen laajuutta suurempi, tai mikäli syötekentät on tyhjät, tai mikäli laajuus ei ole numero. Tästä huolehtii AppController.
+
+Kun kurssi on lisätty onnistuneesti, luodaan kursille oma elementti kurssilistaan, josta käyttäjä voi merkitä kurssin suoritetuksi. 
+
 
 
 
